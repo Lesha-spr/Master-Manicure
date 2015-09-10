@@ -75,4 +75,5 @@ gulp.task('watch', function() {
     });
 });
 
+gulp.task('build', ['templates', 'compress', 'less']);
 gulp.task('default', ['templates', 'compress', 'less', 'watch']);
