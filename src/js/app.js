@@ -1,12 +1,10 @@
 var $ = require('jquery');
 var pubsub = require('./pubsub');
 
-var MM = {
-    modules: {}
-};
-
+var MM = {};
 var app = MM;
 
+app.modules = {};
 app.pubsub = new pubsub();
 
 module.exports = app;
