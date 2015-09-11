@@ -10,7 +10,25 @@ var sourcemaps = require('gulp-sourcemaps');
 var browserify = require('browserify');
 var babelify = require('babelify');
 var uglify = require('gulp-uglify');
+var handlebars = require('gulp-handlebars');
+var wrap = require('gulp-wrap');
+var declare = require('gulp-declare');
+var concat = require('gulp-concat');
 var watch = require('gulp-watch');
+
+gulp.task('handlebars', function(){
+    gulp.src('src/js/templates/**/*.hbs')
+        .pipe(handlebars({
+            handlebars: require('handlebars')
+        }))
+        .pipe(wrap('Handlebars.template(<%= contents %>)'))
+        .pipe(declare({
+            namespace: 'MM.templates',
+            noRedeclare: true, // Avoid duplicate declarations
+        }))
+        .pipe(concat('templates.js'))
+        .pipe(gulp.dest('build/js/'));
+});
 
 gulp.task('templates', function() {
     var LOCALS = {};
@@ -73,7 +91,11 @@ gulp.task('watch', function() {
     watch('./src/templates/**/*', function() {
         gulp.run(['templates']);
     });
+
+    watch('./src/js/templates/**/*', function() {
+        gulp.run(['handlebars']);
+    });
 });
 
-gulp.task('build', ['templates', 'compress', 'less']);
-gulp.task('default', ['templates', 'compress', 'less', 'watch']);
+gulp.task('build', ['templates', 'handlebars', 'compress', 'less']);
+gulp.task('default', ['templates', 'handlebars', 'compress', 'less', 'watch']);

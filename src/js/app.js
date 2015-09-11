@@ -1,10 +1,13 @@
 var $ = require('jquery');
 var pubsub = require('./pubsub');
 
-var MM = {};
+window.Handlebars = require('handlebars');
+window.MM = {};
+
 var app = MM;
 
-app.modules = {};
+app.modules = app.modules || {};
+app.templates = app.templates || {};
 app.pubsub = new pubsub();
 
 module.exports = app;

@@ -1,3 +1,7 @@
+var app = require('./../app.js');
+
+const DEFAULTS = {};
+
 class Navigation {
     constructor($element) {
         this.elems = {
@@ -8,7 +12,7 @@ class Navigation {
     }
 
     initialize() {
-
+        console.log(app.templates.component());
     }
 }
 

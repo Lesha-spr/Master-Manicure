@@ -1,6 +1,6 @@
 var $ = require('jquery');
 
-module.exports = (app, elements) => {
+module.exports = (app = {}, elements = []) => {
     elements = Array.prototype.slice.call(elements);
 
     elements.forEach(element => {
