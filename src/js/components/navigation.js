@@ -1,4 +1,5 @@
 var $ = require('jquery');
+var app = require('./../app');
 
 class Navigation {
     constructor($element) {

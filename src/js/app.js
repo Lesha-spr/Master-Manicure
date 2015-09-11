@@ -1,4 +1,5 @@
 var $ = require('jquery');
+var pubsub = require('./pubsub');
 
 var MM = {
     modules: {}
@@ -6,7 +7,13 @@ var MM = {
 
 var app = MM;
 
+app.pubsub = new pubsub();
+
+module.exports = app;
+
 // Components
 app.Navigation = require('./components/navigation');
 
-require('./start')(app, document.querySelectorAll('[data-module]'));
+$(function() {
+    require('./start')(app, document.querySelectorAll('[data-module]'));
+});
