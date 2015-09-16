@@ -1,20 +1,19 @@
-var $ = require('jquery');
-var pubsub = require('./pubsub');
+import $ from 'jquery';
+import Handlebars from 'handlebars';
+import PubSub from './pubsub.js';
+import start from './start.js';
 
-window.Handlebars = require('handlebars');
+// Global objects
+window.Handlebars = Handlebars;
 window.MM = {};
 
-var app = MM;
+MM.modules = MM.modules || {};
+MM.templates = MM.templates || {};
+MM.pubsub = new PubSub();
 
-app.modules = app.modules || {};
-app.templates = app.templates || {};
-app.pubsub = new pubsub();
-
-module.exports = app;
+export default MM;
 
 // Components
-app.Navigation = require('./components/navigation');
+import Navigation from './components/navigation.js'; MM.Navigation = Navigation;
 
-$(function() {
-    require('./start')(app, document.querySelectorAll('[data-module]'));
-});
+start();

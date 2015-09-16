@@ -1,4 +1,4 @@
-var $ = require('jquery');
+import $ from 'jquery';
 
 class PubSub {
     constructor(options) {
@@ -27,4 +27,4 @@ class PubSub {
     }
 }
 
-module.exports = PubSub;
+export default PubSub;
