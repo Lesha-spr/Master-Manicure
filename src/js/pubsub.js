@@ -1,8 +1,8 @@
 import $ from 'jquery';
 
 class PubSub {
-    constructor(options) {
-        this.options = options || {};
+    constructor(options = {}) {
+        this.options = options;
         this.observers = {};
     }
 
@@ -14,9 +14,9 @@ class PubSub {
         this.observers[event].add(handler);
     }
 
-    publish(event) {
+    publish(event, ...args) {
         if (this.observers[event]) {
-            this.observers[event].fire.apply(event, Array.prototype.slice.call(arguments, 1));
+            this.observers[event].fire.apply(event, ...args);
         }
     }
 
