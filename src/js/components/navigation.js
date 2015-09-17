@@ -1,11 +1,12 @@
+import $ from 'jquery';
 import app from './../app.js';
 
 const DEFAULTS = {};
 
 class Navigation {
-    constructor($element) {
+    constructor(element) {
         this.elems = {
-            $component: $element
+            $component: $(element)
         };
 
         this.initialize();
@@ -16,4 +17,6 @@ class Navigation {
     }
 }
 
-module.exports = Navigation;
+app.Navigation = Navigation;
+
+export default Navigation;

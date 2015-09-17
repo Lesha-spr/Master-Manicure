@@ -62,7 +62,7 @@ gulp.task('less', function() {
 
 gulp.task('compress', function() {
     var b = browserify({
-        entries: 'src/js/app.js',
+        entries: 'src/js/initialize.js',
         debug: true,
         // defining transforms here will avoid crashing your stream
         transform: [babelify]
