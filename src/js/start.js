@@ -8,10 +8,22 @@ export default (() => {
 
         _modules.split(' ').forEach(Module => {
             if (!app.modules[Module]) {
-                app.modules[Module] = [];
+                app.modules[Module] = new Map();
             }
 
-            app.modules[Module].push(new app[Module](element));
+            if (!app.modules[Module].has(element)) {
+                try {
+                    app.modules[Module].set(element, new app[Module](element));
+                } catch (error) {
+                    let message = ['Attempt to initialize', Module, 'on', element, 'but there was an', error];
+
+                    console.warn(...message);
+                }
+            } else {
+                let message = ['Attempt to initialize', Module, 'twice on', element];
+
+                console.warn(...message);
+            }
         });
     });
 });

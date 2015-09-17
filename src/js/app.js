@@ -5,8 +5,8 @@ import PubSub from './pubsub.js';
 window.Handlebars = window.Handlebars || Handlebars;
 window.MM = window.MM || {};
 
-MM.modules = MM.modules || {};
 MM.templates = MM.templates || {};
+MM.modules = MM.modules || new Set();
 MM.pubsub = MM.pubsub || new PubSub();
 
 export default MM;
