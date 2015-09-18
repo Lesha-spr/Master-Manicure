@@ -6,7 +6,7 @@ const DEFAULTS = {};
 class Navigation {
     constructor(element) {
         this.elems = {
-            $component: $(element)
+            $root: $(element)
         };
 
         this.initialize();
