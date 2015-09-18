@@ -4,7 +4,7 @@ export default (() => {
     let elements = [...document.querySelectorAll('[data-module]')];
 
     elements.forEach(element => {
-        let _modules = element.dataset.module;
+        let _modules = element.getAttribute('data-module');
 
         _modules.split(' ').forEach(Module => {
             if (!app.modules[Module]) {
