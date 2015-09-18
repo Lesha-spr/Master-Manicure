@@ -80,21 +80,10 @@ gulp.task('compress', function() {
 });
 
 gulp.task('watch', function() {
-    watch('./src/js/**/*', function() {
-        gulp.run(['compress']);
-    });
-
-    watch('./src/styles/**/*', function() {
-        gulp.run(['less']);
-    });
-
-    watch('./src/templates/**/*', function() {
-        gulp.run(['templates']);
-    });
-
-    watch('./src/js/templates/**/*', function() {
-        gulp.run(['handlebars']);
-    });
+    gulp.watch('./src/js/**/*', ['compress']);
+    gulp.watch('./src/styles/**/*', ['less']);
+    gulp.watch('./src/templates/**/*', ['templates']);
+    gulp.watch('./src/js/templates/**/*', ['handlebars']);
 });
 
 gulp.task('build', ['templates', 'handlebars', 'compress', 'less']);
