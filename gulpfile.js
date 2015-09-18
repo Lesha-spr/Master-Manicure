@@ -41,6 +41,12 @@ gulp.task('templates', function() {
         .pipe(gulp.dest('./build/templates/pages/'));
 });
 
+gulp.task('index', function() {
+    gulp.src('./index.jade')
+        .pipe(jade())
+        .pipe(gulp.dest('./'));
+});
+
 gulp.task('less', function() {
     return gulp.src(['src/styles/styles.less'])
     /**
@@ -88,8 +94,8 @@ gulp.task('watch', function() {
         gulp.run(['less']);
     });
 
-    watch('./src/templates/**/*', function() {
-        gulp.run(['templates']);
+    watch(['./src/templates/**/*', './index.jade'], function() {
+        gulp.run(['templates', 'index']);
     });
 
     watch('./src/js/templates/**/*', function() {
@@ -97,5 +103,5 @@ gulp.task('watch', function() {
     });
 });
 
-gulp.task('build', ['templates', 'handlebars', 'compress', 'less']);
-gulp.task('default', ['templates', 'handlebars', 'compress', 'less', 'watch']);
+gulp.task('build', ['index', 'templates', 'handlebars', 'compress', 'less']);
+gulp.task('default', ['index', 'templates', 'handlebars', 'compress', 'less', 'watch']);
