@@ -29,16 +29,19 @@
 }
 
 .nav__phone__item {
-  padding: 0 10px;
-
-  &:first-child {
-    border-bottom: 1px solid @colorGrey;
-  }
+  font-size: 20px;
+  line-height: 1.5;
 }
 
 .nav__phone__link {
+  display: inline-block;
+  padding: 0 10px;
   color: @colorGrey;
   text-decoration: none;
+
+  .nav__phone__item:first-child & {
+    border-bottom: 1px solid @colorGrey;
+  }
 }
 
 .nav__categories {
@@ -84,6 +87,7 @@
 
 .nav__copy {
   font-size: 12px;
+  font-weight: normal;
 }
 
 .nav__copy__link {
