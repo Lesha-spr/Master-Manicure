@@ -14,6 +14,7 @@ var handlebars = require('gulp-handlebars');
 var wrap = require('gulp-wrap');
 var declare = require('gulp-declare');
 var concat = require('gulp-concat');
+var gulpCopy = require('gulp-copy');
 var watch = require('gulp-watch');
 
 gulp.task('handlebars', function(){
@@ -39,6 +40,11 @@ gulp.task('templates', function() {
             pretty: true
         }))
         .pipe(gulp.dest('./build/templates/pages/'));
+});
+
+gulp.task('copy', function() {
+    return gulp.src('./src/i/**/*')
+        .pipe(gulpCopy('./build/i', {prefix: 2}));
 });
 
 gulp.task('less', function() {
@@ -86,5 +92,5 @@ gulp.task('watch', function() {
     gulp.watch('./src/js/templates/**/*', ['handlebars']);
 });
 
-gulp.task('build', ['templates', 'handlebars', 'compress', 'less']);
-gulp.task('default', ['templates', 'handlebars', 'compress', 'less', 'watch']);
+gulp.task('build', ['templates', 'copy', 'handlebars', 'compress', 'less']);
+gulp.task('default', ['templates', 'copy', 'handlebars', 'compress', 'less', 'watch']);

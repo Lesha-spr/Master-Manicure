@@ -1,0 +1,92 @@
+@import "./../vars";
+@import "./../mixins/oban";
+@import "./../mixins/custom-mixins";
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  padding: 20px 0;
+  background: #000;
+  text-align: center;
+  font-weight: lighter;
+  overflow-y: auto;
+  color: #fff;
+}
+
+.nav__reducer {
+  padding: 0 20px;
+}
+
+.nav__logo {
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.nav__phone {
+  margin-bottom: 20px;
+}
+
+.nav__phone__item {
+  padding: 0 10px;
+
+  &:first-child {
+    border-bottom: 1px solid @colorGrey;
+  }
+}
+
+.nav__phone__link {
+  color: @colorGrey;
+  text-decoration: none;
+}
+
+.nav__categories {
+  .oban-list-unstyled();
+  margin-bottom: 20px;
+}
+
+.nav__categories__item {
+  border-bottom: 1px dotted #fff;
+  padding: 4px 0;
+  font-size: 14px;
+  text-transform: uppercase;
+
+  &:first-child {
+    border-top: 1px dotted #fff;
+  }
+}
+
+.nav__categories__link {
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav__sections {
+  .oban-list-unstyled();
+  margin-bottom: 20px;
+}
+
+.nav__sections__item {
+  font-size: 12px;
+}
+
+.nav__sections__item__link {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+
+  &:hover {
+    background: #fff;
+    color: #000;
+  }
+}
+
+.nav__copy {
+  font-size: 12px;
+}
+
+.nav__copy__link {
+  color: @colorOrange;
+  text-decoration: none;
+}
