@@ -1,12 +1,14 @@
 import app from './app.js';
 
-export default (() => {
-    let elements = [...document.querySelectorAll('[data-module]')];
+export default () => {
+    let elements = document.querySelectorAll('[data-module]');
 
-    elements.forEach(element => {
+    for (let element of Array.from(elements)) {
         let _modules = element.getAttribute('data-module');
 
-        _modules.split(' ').forEach(Module => {
+        _modules = _modules.split(' ');
+
+        for (let Module of _modules) {
             if (!app.modules[Module]) {
                 app.modules[Module] = new Map();
             }
@@ -24,6 +26,6 @@ export default (() => {
 
                 console.warn(...message);
             }
-        });
-    });
-});
+        }
+    }
+};
