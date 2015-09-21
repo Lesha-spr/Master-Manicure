@@ -18,10 +18,11 @@ var gulpCopy = require('gulp-copy');
 var watch = require('gulp-watch');
 var merge = require('merge-stream');
 var spritesmith = require('gulp.spritesmith');
+var camelCase = require('camelcase');
 
 gulp.task('sprite', function () {
     var spriteData = gulp.src('./src/styles/icons/**/*.png').pipe(spritesmith({
-        //retinaSrcFilter: ['*@2x.png'],
+        //retinaSrcFilter: ['./src/styles/icons/**/*@2x.png'],
         //retinaImgName: 'sprite@2x.png',
         imgName: 'sprite.png',
         cssName: 'sprite.less'
@@ -43,11 +44,11 @@ gulp.task('handlebars', function(){
         }))
         .pipe(wrap('Handlebars.template(<%= contents %>)'))
         .pipe(declare({
-            namespace: 'MM.templates',
+            root: 'module.exports',
             noRedeclare: true // Avoid duplicate declarations
         }))
         .pipe(concat('templates.js'))
-        .pipe(gulp.dest('build/js/'));
+        .pipe(gulp.dest('src/js/'));
 });
 
 gulp.task('templates', function() {
@@ -85,7 +86,7 @@ gulp.task('less', ['sprite'], function() {
         .pipe(gulp.dest('build/styles'));
 });
 
-gulp.task('compress', function() {
+gulp.task('compress', ['handlebars'], function() {
     var b = browserify({
         entries: 'src/js/initialize.js',
         debug: true,

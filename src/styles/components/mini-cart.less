@@ -1,0 +1,25 @@
+@import "./../vars";
+@import "./../sprite";
+
+.mini-cart {
+  position: fixed;
+  top: 20px;
+  right: 25px;
+  .sprite(@i-mini-cart);
+}
+
+.mini-cart__entries {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 23px;
+  height: 23px;
+  line-height: 23px;
+  text-align: center;
+  border-radius: 50%;
+  background: @colorRed;
+
+  color: #fff;
+  font-size: 16px;
+  overflow: hidden;
+}

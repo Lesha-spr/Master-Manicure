@@ -11,6 +11,7 @@ html
         <![endif]-->
     body
         include ./../components/navigation
-        block content
+        main.main
+            include ./../components/mini-cart
+            block content
         script(src='../../js/app.js')
-        script(src='../../js/templates.js')

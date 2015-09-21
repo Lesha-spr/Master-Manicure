@@ -1,19 +1,27 @@
 import $ from 'jquery';
+import _ from 'lodash';
 import app from './../app.js';
-
-const DEFAULTS = {};
 
 class Navigation {
     constructor(element) {
+        let $root = $(element);
+
         this.elems = {
-            $root: $(element)
+            $root: $root,
+            $window: $(window),
+            $body: $(document.body)
         };
 
         this.initialize();
+        this.bindEvents();
     }
 
     initialize() {
-        console.log(app.templates.component());
+
+    }
+
+    bindEvents() {
+
     }
 }
 
