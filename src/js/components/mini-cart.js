@@ -7,8 +7,10 @@ const DEFAULTS = {
 
 class MiniCart {
     constructor(element) {
+        let $root = $(element);
+
         this.elems = {
-            $root: $(element)
+            $root: $root
         };
 
         this.initialize();
