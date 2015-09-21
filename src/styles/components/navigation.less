@@ -1,0 +1,188 @@
+@import "./../vars";
+@import "./../mixins/oban";
+@import "./../mixins/custom-mixins";
+@import "./../sprite";
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  overflow-y: auto;
+  background: #000;
+  text-align: center;
+  font-weight: lighter;
+  color: #fff;
+}
+
+.nav__inner {
+  padding: 13px 0;
+}
+
+.nav__row {
+  &_top {
+    margin-bottom: 25px;
+  }
+
+  &_middle {
+    margin-bottom: 23px;
+  }
+}
+
+.nav__reducer {
+  padding: 0 40px;
+}
+
+.nav__logo {
+  display: inline-block;
+  margin-bottom: 11px;
+}
+
+.nav__logo__image {
+  display: inline-block;
+
+  &_mobile {
+    display: none;
+  }
+}
+
+.nav__phone__item {
+  font-size: 17px;
+  line-height: 1.4;
+}
+
+.nav__phone__link {
+  display: inline-block;
+  padding: 0 10px;
+  color: @colorGrey;
+  text-decoration: none;
+
+  .nav__phone__item:first-child & {
+    border-bottom: 1px solid @colorGrey;
+  }
+}
+
+.nav__categories {
+  .oban-list-unstyled();
+  margin-bottom: 20px;
+}
+
+.nav__categories__item {
+  display: block;
+  border-bottom: 1px dotted #fff;
+  font-size: 14px;
+  line-height: 1.95;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+
+  &:first-child {
+    border-top: 1px dotted #fff;
+  }
+}
+
+.nav__sections {
+  .oban-list-unstyled();
+  margin-bottom: 20px;
+}
+
+.nav__sections__item {
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.nav__sections__item__link {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+
+  &:hover {
+    background: #fff;
+    color: #000;
+  }
+}
+
+.nav__copy {
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.nav__copy__link {
+  color: @colorOrange;
+  text-decoration: none;
+}
+
+@media screen and (min-width: @beginBigDesktop) {
+  .nav {
+    display: table;
+  }
+
+  .nav__row {
+    display: table-row;
+
+    &:last-child {
+      height: 0;
+    }
+  }
+}
+
+@media (max-width: @endMobile) {
+  .nav__row {
+
+    &_bottom {
+      display: none;
+    }
+  }
+
+  .nav__reducer {
+    padding: 0 26px;
+  }
+
+  .nav__logo__image {
+    display: none;
+
+    &_mobile {
+      display: inline-block;
+    }
+  }
+
+  .nav__phone {
+    display: none;
+  }
+
+  .nav__categories__item {
+    display: block;
+    margin: 0 auto 49px;
+    max-width: 100%;
+    font-size: 0;
+    border: 0;
+
+    &_manicure-kit {
+      .sprite(@i-manicure-kit);
+    }
+
+    &_scissors {
+      .sprite(@i-scissors);
+    }
+
+    &_nailfile {
+      .sprite(@i-nailfile);
+    }
+
+    &_nippers {
+      .sprite(@i-nippers);
+    }
+
+    &_tweezers {
+      .sprite(@i-tweezers);
+    }
+
+    &_pedicure-kit {
+      .sprite(@i-pedicure-kit);
+    }
+
+    &:first-child {
+      border: 0;
+    }
+  }
+}

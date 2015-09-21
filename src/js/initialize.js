@@ -4,5 +4,6 @@ import start from './start.js';
 
 // Components
 import Navigation from './components/navigation.js';
+import MiniCart from './components/mini-cart.js';
 
 $(start);

@@ -6,7 +6,7 @@ import PubSub from './pubsub.js';
 window.Handlebars = window.Handlebars || Handlebars;
 window.MM = window.MM || {};
 
-MM.templates = MM.templates || {};
+MM.templates = MM.templates || require('./templates.js');
 MM.modules = MM.modules || new Set();
 MM.pubsub = MM.pubsub || new PubSub();
 

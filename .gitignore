@@ -1,3 +1,4 @@
 
 .idea
 node_modules
+src/styles/sprite.less

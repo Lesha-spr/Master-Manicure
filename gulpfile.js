@@ -14,7 +14,28 @@ var handlebars = require('gulp-handlebars');
 var wrap = require('gulp-wrap');
 var declare = require('gulp-declare');
 var concat = require('gulp-concat');
+var gulpCopy = require('gulp-copy');
 var watch = require('gulp-watch');
+var merge = require('merge-stream');
+var spritesmith = require('gulp.spritesmith');
+var camelCase = require('camelcase');
+
+gulp.task('sprite', function () {
+    var spriteData = gulp.src('./src/styles/icons/**/*.png').pipe(spritesmith({
+        //retinaSrcFilter: ['./src/styles/icons/**/*@2x.png'],
+        //retinaImgName: 'sprite@2x.png',
+        imgName: 'sprite.png',
+        cssName: 'sprite.less'
+    }));
+
+    var imgStream = spriteData.img
+        .pipe(gulp.dest('./build/styles/'));
+
+    var cssStream = spriteData.css
+        .pipe(gulp.dest('./src/styles/'));
+
+    return merge(imgStream, cssStream);
+});
 
 gulp.task('handlebars', function(){
     gulp.src('src/js/templates/**/*.hbs')
@@ -23,11 +44,11 @@ gulp.task('handlebars', function(){
         }))
         .pipe(wrap('Handlebars.template(<%= contents %>)'))
         .pipe(declare({
-            namespace: 'MM.templates',
-            noRedeclare: true, // Avoid duplicate declarations
+            root: 'module.exports',
+            noRedeclare: true // Avoid duplicate declarations
         }))
         .pipe(concat('templates.js'))
-        .pipe(gulp.dest('build/js/'));
+        .pipe(gulp.dest('src/js/'));
 });
 
 gulp.task('templates', function() {
@@ -41,7 +62,12 @@ gulp.task('templates', function() {
         .pipe(gulp.dest('./build/templates/pages/'));
 });
 
-gulp.task('less', function() {
+gulp.task('copy', function() {
+    return gulp.src('./src/i/**/*')
+        .pipe(gulpCopy('./build/i', {prefix: 2}));
+});
+
+gulp.task('less', ['sprite'], function() {
     return gulp.src(['src/styles/styles.less'])
     /**
      * Dynamically injects @import statements into the main app.less file, allowing
@@ -60,7 +86,7 @@ gulp.task('less', function() {
         .pipe(gulp.dest('build/styles'));
 });
 
-gulp.task('compress', function() {
+gulp.task('compress', ['handlebars'], function() {
     var b = browserify({
         entries: 'src/js/initialize.js',
         debug: true,
@@ -80,11 +106,12 @@ gulp.task('compress', function() {
 });
 
 gulp.task('watch', function() {
-    gulp.watch('./src/js/**/*', ['compress']);
-    gulp.watch('./src/styles/**/*', ['less']);
-    gulp.watch('./src/templates/**/*', ['templates']);
-    gulp.watch('./src/js/templates/**/*', ['handlebars']);
+    gulp.watch('src/js/**/*', ['compress']);
+    gulp.watch('src/styles/icons/*.png', ['sprite', 'less']);
+    gulp.watch('src/styles/**/*.less', ['less']);
+    gulp.watch('src/templates/**/*', ['templates']);
+    gulp.watch('src/js/templates/**/*', ['handlebars']);
 });
 
-gulp.task('build', ['templates', 'handlebars', 'compress', 'less']);
-gulp.task('default', ['templates', 'handlebars', 'compress', 'less', 'watch']);
+gulp.task('build', ['templates', 'sprite', 'copy', 'handlebars', 'compress', 'less']);
+gulp.task('default', ['templates', 'sprite', 'copy', 'handlebars', 'compress', 'less', 'watch']);
