@@ -4,3 +4,4 @@ node_modules
 build
 
 src/styles/sprite.less
+src/js/templates.js
