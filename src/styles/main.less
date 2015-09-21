@@ -1,4 +1,5 @@
 @import "vars";
+@import "./mixins/custom-mixins";
 
 html,
 body {
@@ -7,6 +8,20 @@ body {
 
 body {
   font-family: @fontUbuntu;
+  font-size: @mainFontSize;
+  line-height: 1.2;
+}
+
+h1 {
+  .font-size(24);
+  margin: 0 0 2em;
+}
+
+p {
+  .font-size(16);
+  margin: 0 0 1.25em;
+  font-weight: lighter;
+  color: @colorGreyLight;
 }
 
 .main {
