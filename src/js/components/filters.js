@@ -57,6 +57,7 @@ class Filters {
         this.elems.$item.removeClass(DEFAULTS.CLASSES.ACTIVE_ITEM);
         $current.toggleClass(DEFAULTS.CLASSES.ACTIVE_ITEM, !isCurrentActive);
 
+        // TODO: check if last opened and don't push state
         if (!isCurrentActive) {
             state.pushState({
                 category: $current.data('category')
