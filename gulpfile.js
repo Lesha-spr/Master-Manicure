@@ -19,7 +19,6 @@ var gulpCopy = require('gulp-copy');
 var watch = require('gulp-watch');
 var merge = require('merge-stream');
 var spritesmith = require('gulp.spritesmith');
-var camelCase = require('camelcase');
 
 gulp.task('sprite', function () {
     var spriteData = gulp.src('./src/styles/icons/**/*.png').pipe(spritesmith({

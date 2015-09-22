@@ -1,5 +1,6 @@
 import app from './../app.js';
 import $ from 'jquery';
+import _ from 'lodash';
 import state from './../helpers/state.js';
 
 const DEFAULTS = {
@@ -10,6 +11,7 @@ const DEFAULTS = {
     },
     CLASSES: {
         ACTIVE_ITEM: 'filters__item_state_active',
+        LAST_ACTIVE_ITEM: 'filters__item_state_last-active',
         ACTIVE_SIDE: 'filters__side_state_active',
         FILTER_EXPANDED: 'g-filter-expanded'
     }
@@ -35,8 +37,8 @@ class Filters {
 
     bindEvents() {
         this.elems.$window.on('statechange popstate', this.getFilter.bind(this));
-        this.elems.$root.on('change', DEFAULTS.SELECTORS.CONTROL, this.resolveQuery.bind(this));
         this.elems.$item.on('click', this.chooseCategory.bind(this));
+        this.elems.$root.on('change', DEFAULTS.SELECTORS.CONTROL, this.resolveQuery.bind(this));
     }
 
     resolveQuery(event) {
@@ -52,15 +54,18 @@ class Filters {
 
         event.preventDefault();
 
-        this.elems.$side.toggleClass(DEFAULTS.CLASSES.ACTIVE_SIDE, !isCurrentActive);
         this.elems.$html.toggleClass(DEFAULTS.CLASSES.FILTER_EXPANDED, !isCurrentActive);
         this.elems.$item.removeClass(DEFAULTS.CLASSES.ACTIVE_ITEM);
         $current.toggleClass(DEFAULTS.CLASSES.ACTIVE_ITEM, !isCurrentActive);
 
-        if (!isCurrentActive) {
+        // TODO: check if last opened and don't push state
+        if (!isCurrentActive && !$current.hasClass(DEFAULTS.CLASSES.LAST_ACTIVE_ITEM)) {
             state.pushState({
                 category: $current.data('category')
             });
+
+            this.elems.$item.removeClass(DEFAULTS.CLASSES.LAST_ACTIVE_ITEM);
+            $current.addClass(DEFAULTS.CLASSES.LAST_ACTIVE_ITEM);
         }
     }
 
