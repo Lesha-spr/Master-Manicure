@@ -1,4 +1,14 @@
 @import "vars";
+@import "./mixins/oban";
+@import "./mixins/custom-mixins";
+
+html {
+  .oban-box-sizing(border-box);
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
 
 html,
 body {
@@ -7,6 +17,24 @@ body {
 
 body {
   font-family: @fontUbuntu;
+  font-size: @mainFontSize;
+  line-height: 1.2;
+}
+
+h1 {
+  .font-size(24);
+  margin: 0 0 2em;
+}
+
+p {
+  .font-size(16);
+  margin: 0 0 1.25em;
+  font-weight: lighter;
+  color: @colorGreyDark;
+}
+
+a, a:hover, a:active, a:focus {
+  outline: none;
 }
 
 .main {

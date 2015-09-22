@@ -1,0 +1,21 @@
+{{> phone}}
+
+<form class="filters__form">
+    {{! NOTE: duplicate category to prevent unexpected data flow }}
+    <input type="hidden" name="category" value={{category}} />
+    <div class="filters__title">{{title}}</div>
+    {{#each filters as |filter|}}
+        <div class="filters__set">
+            <div class="filters__set__title">{{title}}</div>
+            {{#each entries}}
+                <div class="filters__set__item">
+                    <label>
+                        <input class="ui-checkbox filters__control" value={{value}} name={{filter.name}} type="checkbox" {{#if active}}checked{{/if}} />
+                        <span class="ui-label">{{title}}</span>
+                        <span class="ui-label_hint">({{available}})</span>
+                    </label>
+                </div>
+            {{/each}}
+        </div>
+    {{/each}}
+</form>

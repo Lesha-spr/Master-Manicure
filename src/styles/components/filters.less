@@ -1,0 +1,103 @@
+@import "./../mixins/oban";
+@import "./../mixins/custom-mixins";
+@import "./../sprite";
+@import "./../vars";
+
+.filters {
+  .oban-list-unstyled();
+  margin-bottom: 20px;
+}
+
+.filters__item {
+  display: block;
+  border-bottom: 1px dotted #fff;
+  .font-size(14);
+  line-height: 1.95;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+
+  &_state {
+    &_active {
+      background: @colorGreyLight;
+    }
+  }
+
+  &:first-child {
+    border-top: 1px dotted #fff;
+  }
+}
+
+.filters__title {
+  .font-size(16);
+  text-align: center;
+  color: #000;
+}
+
+.filters__side {
+  width: 190px;
+  display: none;
+  padding: 13px 21px;
+  position: absolute;
+  overflow-y: auto;
+  background: @colorGreyLight;
+  top: 0;
+  bottom: 0;
+  left: 100%;
+  color: @colorGreyDarker;
+
+  &_state {
+    &_active {
+      display: block;
+    }
+  }
+}
+
+.filters__set {}
+
+.filters__set__title {
+  .font-size(14);
+}
+
+.filters__set__item {
+  .font-size(13);
+}
+
+@media (max-width: @endMobile) {
+
+  .filters__item {
+    display: block;
+    margin: 0 auto 49px;
+    max-width: 100%;
+    font-size: 0;
+    border: 0;
+
+    &_manicure-kit {
+      .sprite(@i-manicure-kit);
+    }
+
+    &_scissors {
+      .sprite(@i-scissors);
+    }
+
+    &_nailfile {
+      .sprite(@i-nailfile);
+    }
+
+    &_nippers {
+      .sprite(@i-nippers);
+    }
+
+    &_tweezers {
+      .sprite(@i-tweezers);
+    }
+
+    &_pedicure-kit {
+      .sprite(@i-pedicure-kit);
+    }
+
+    &:first-child {
+      border: 0;
+    }
+  }
+}

@@ -4,3 +4,4 @@ node_modules
 
 src/styles/sprite.less
 src/js/templates.js
+src/js/partials.js

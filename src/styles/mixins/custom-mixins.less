@@ -16,3 +16,10 @@
     }
   }
 }
+
+.font-size(@sizeValue) {
+  @remValue: unit(@sizeValue / @mainFontSize);
+  @pxValue: @sizeValue;
+  font-size: ~"@{pxValue}px";
+  font-size: ~"@{remValue}rem";
+}

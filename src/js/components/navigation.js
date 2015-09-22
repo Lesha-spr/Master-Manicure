@@ -25,6 +25,4 @@ class Navigation {
     }
 }
 
-app.Navigation = Navigation;
-
 export default Navigation;
