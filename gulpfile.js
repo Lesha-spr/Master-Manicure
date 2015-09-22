@@ -1,3 +1,4 @@
+var path = require('path');
 var gulp = require('gulp');
 var jade = require('gulp-jade');
 var minifyCSS = require('gulp-minify-css');
@@ -38,7 +39,7 @@ gulp.task('sprite', function () {
 });
 
 gulp.task('handlebars', function(){
-    gulp.src('src/js/templates/**/*.hbs')
+    gulp.src('src/js/templates/*.hbs')
         .pipe(handlebars({
             handlebars: require('handlebars')
         }))
@@ -48,6 +49,30 @@ gulp.task('handlebars', function(){
             noRedeclare: true // Avoid duplicate declarations
         }))
         .pipe(concat('templates.js'))
+        .pipe(gulp.dest('src/js/'));
+});
+
+gulp.task('partials', function() {
+    // Assume all partials start with an underscore
+    // You could also put them in a folder such as source/templates/partials/*.hbs
+    gulp.src(['src/js/templates/partials/_*.hbs'])
+        .pipe(handlebars({
+            handlebars: require('handlebars')
+        }))
+        .pipe(wrap('Handlebars.registerPartial(<%= processPartialName(file.relative) %>, Handlebars.template(<%= contents %>));', {}, {
+            imports: {
+                processPartialName: function(fileName) {
+                    // Strip the extension and the underscore
+                    // Escape the output with JSON.stringify
+                    return JSON.stringify(path.basename(fileName, '.js').substr(1));
+                }
+            }
+        }))
+        .pipe(declare({
+            root: 'module.exports',
+            noRedeclare: true // Avoid duplicate declarations
+        }))
+        .pipe(concat('partials.js'))
         .pipe(gulp.dest('src/js/'));
 });
 
@@ -86,7 +111,7 @@ gulp.task('less', ['sprite'], function() {
         .pipe(gulp.dest('build/styles'));
 });
 
-gulp.task('compress', ['handlebars'], function() {
+gulp.task('compress', function() {
     var b = browserify({
         entries: 'src/js/initialize.js',
         debug: true,
@@ -106,12 +131,12 @@ gulp.task('compress', ['handlebars'], function() {
 });
 
 gulp.task('watch', function() {
-    gulp.watch('src/js/**/*', ['compress']);
+    gulp.watch('src/js/**/*.js', ['compress']);
+    gulp.watch('src/js/**/*.hbs', ['partials', 'handlebars', 'compress']);
     gulp.watch('src/styles/icons/*.png', ['sprite', 'less']);
     gulp.watch('src/styles/**/*.less', ['less']);
-    gulp.watch('src/templates/**/*', ['templates']);
-    gulp.watch('src/js/templates/**/*', ['handlebars']);
+    gulp.watch('src/templates/**/*.jade', ['templates']);
 });
 
-gulp.task('build', ['templates', 'sprite', 'copy', 'handlebars', 'compress', 'less']);
-gulp.task('default', ['templates', 'sprite', 'copy', 'handlebars', 'compress', 'less', 'watch']);
+gulp.task('build', ['templates', 'sprite', 'copy', 'partials', 'handlebars', 'compress', 'less']);
+gulp.task('default', ['templates', 'sprite', 'copy', 'partials', 'handlebars', 'compress', 'less', 'watch']);

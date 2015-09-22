@@ -8,12 +8,16 @@
   top: 0;
   left: 0;
   height: 100%;
-  overflow-y: auto;
-  padding: 13px 0;
   background: #000;
-  text-align: center;
   font-weight: lighter;
   color: #fff;
+}
+
+.nav__wrapper {
+  max-height: 100%;
+  padding: 13px 0;
+  overflow-y: auto;
+  text-align: center;
 }
 
 .nav__row {
@@ -43,39 +47,9 @@
   }
 }
 
-.nav__phone__item {
+.phone__item {
   .font-size(17);
   line-height: 1.4;
-}
-
-.nav__phone__link {
-  display: inline-block;
-  padding: 0 10px;
-  color: @colorGrey;
-  text-decoration: none;
-
-  .nav__phone__item:first-child & {
-    border-bottom: 1px solid @colorGrey;
-  }
-}
-
-.nav__categories {
-  .oban-list-unstyled();
-  margin-bottom: 20px;
-}
-
-.nav__categories__item {
-  display: block;
-  border-bottom: 1px dotted #fff;
-  .font-size(14);
-  line-height: 1.95;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: #fff;
-
-  &:first-child {
-    border-top: 1px dotted #fff;
-  }
 }
 
 .nav__sections {
@@ -110,8 +84,9 @@
 }
 
 @media screen and (min-width: @beginBigDesktop) {
-  .nav {
+  .nav__wrapper {
     display: table;
+    height: 100%;
   }
 
   .nav__row {
@@ -143,43 +118,7 @@
     }
   }
 
-  .nav__phone {
+  .phone {
     display: none;
-  }
-
-  .nav__categories__item {
-    display: block;
-    margin: 0 auto 49px;
-    max-width: 100%;
-    font-size: 0;
-    border: 0;
-
-    &_manicure-kit {
-      .sprite(@i-manicure-kit);
-    }
-
-    &_scissors {
-      .sprite(@i-scissors);
-    }
-
-    &_nailfile {
-      .sprite(@i-nailfile);
-    }
-
-    &_nippers {
-      .sprite(@i-nippers);
-    }
-
-    &_tweezers {
-      .sprite(@i-tweezers);
-    }
-
-    &_pedicure-kit {
-      .sprite(@i-pedicure-kit);
-    }
-
-    &:first-child {
-      border: 0;
-    }
   }
 }

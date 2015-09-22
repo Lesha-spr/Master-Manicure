@@ -37,8 +37,10 @@
     "gulp.spritesmith": "^4.1.0",
     "handlebars": "^4.0.2",
     "jquery": "^2.1.4",
+    "jquery-bbq": "0.0.1",
     "lodash": "^3.10.1",
     "merge-stream": "^1.0.0",
+    "querystring": "^0.2.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   }

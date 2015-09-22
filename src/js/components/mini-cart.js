@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import app from './../app.js';
+import AjaxError from './../errors/base.js';
 
 const DEFAULTS = {
     ENTRIES: 0
@@ -18,22 +19,32 @@ class MiniCart {
     }
 
     initialize() {
-        this.render({
-            entries: DEFAULTS.ENTRIES
+        $.ajax({
+            url: app.SERVICES.IN_YOUR_CART,
+            dataType: 'json',
+            success: data => {
+                this.render(data);
+            },
+            error: (jqXhr, textStatus, errorThrown) => {
+                // TODO: here should be proper error handling
+                this.render({
+                    entries: DEFAULTS.ENTRIES
+                });
+
+                new AjaxError(...arguments);
+            }
         });
     }
 
     bindEvents() {
-
+        app.pubsub.subscribe(app.EVENTS.IN_YOUR_CART, this.render);
     }
 
     render(data) {
-        var template = app.templates['mini-cart'](data);
+        let template = app.templates['mini-cart'](data);
 
         this.elems.$root.html(template);
     }
 }
-
-app.MiniCart = MiniCart;
 
 export default MiniCart;

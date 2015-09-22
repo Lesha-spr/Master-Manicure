@@ -1,0 +1,111 @@
+{
+  "title": "Маникюрные наборы",
+  "category": "manicure-kit",
+  "filters": [
+    {
+      "title": "Бренд",
+      "name": "brand",
+      "entries": [
+        {
+          "title": "Hans Kniebes",
+          "value": 0,
+          "available": 3,
+          "active": true
+        },
+        {
+          "title": "Viper",
+          "value": 1,
+          "available": 1
+        },
+        {
+          "title": "Zauber",
+          "value": 2,
+          "available": 40
+        },
+        {
+          "title": "Zinger",
+          "value": 3,
+          "available": 40
+        }
+      ]
+    },
+    {
+      "title": "Пол",
+      "name": "sex",
+      "entries": [
+        {
+          "title": "для женщин",
+          "value": 0,
+          "available": 74
+        },
+        {
+          "title": "для мужчин",
+          "value": 1,
+          "available": 11
+        },
+        {
+          "title": "универсально",
+          "value": 2,
+          "available": 13
+        }
+      ]
+    },
+    {
+      "title": "Кол-во предметов",
+      "name": "count",
+      "entries": [
+        {
+          "title": "2-3",
+          "value": 0,
+          "available": 12
+        },
+        {
+          "title": "4-6",
+          "value": 1,
+          "available": 31
+        },
+        {
+          "title": "7-9",
+          "value": 2,
+          "available": 34
+        },
+        {
+          "title": "10+",
+          "value": 3,
+          "available": 21
+        }
+      ]
+    },
+    {
+      "title": "Цена",
+      "name": "price",
+      "entries": [
+        {
+          "title": "100-300 грн",
+          "value": 0,
+          "available": 31
+        },
+        {
+          "title": "300-500 грн",
+          "value": 1,
+          "available": 34
+        },
+        {
+          "title": "500-700 грн",
+          "value": 2,
+          "available": 21
+        },
+        {
+          "title": "700-1000 грн",
+          "value": 3,
+          "available": 21
+        },
+        {
+          "title": "от 1000 грн",
+          "value": 4,
+          "available": 21
+        }
+      ]
+    }
+  ]
+}
