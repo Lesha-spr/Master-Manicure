@@ -3,26 +3,30 @@ nav.nav(data-module='Navigation Filters')
         .nav__row.nav__row_top
             .nav__reducer
                 a.nav__logo(href='/')
-                    img.nav__logo__image(src='./../../i/logo.png')
-                    img.nav__logo__image.nav__logo__image_mobile(src='./../../i/logo_mobile.png')
                 include ./phone
         .nav__row.nav__row_middle
             .nav__reducer
                 include ./filters
         .nav__row.nav__row_bottom
-            ul.nav__sections
-                li.nav__sections__item
-                    a.nav__sections__item__link(href='#') О нас
-                li.nav__sections__item
-                    a.nav__sections__item__link(href='#') Сертификаты
-                li.nav__sections__item
-                    a.nav__sections__item__link(href='#') Статьи
-                li.nav__sections__item
-                    a.nav__sections__item__link(href='#') Оплата и доставка
-                li.nav__sections__item
-                    a.nav__sections__item__link(href='#') Контакты
-            .nav__copy © 2014 Все права защищены
-                br
-                |Сделано в&nbsp;
-                a.nav__copy__link(href='#') YellowPoint
+            .nav__cell
+                ul.nav__sections
+                    li.nav__sections__item
+                        a.nav__sections__item__link(href='#') О нас
+                    li.nav__sections__item
+                        a.nav__sections__item__link(href='#') Сертификаты
+                    li.nav__sections__item
+                        a.nav__sections__item__link(href='#') Статьи
+                    li.nav__sections__item
+                        a.nav__sections__item__link(href='#') Оплата и доставка
+                    li.nav__sections__item
+                        a.nav__sections__item__link(href='#') Контакты
+                .nav__copy © 2014 Все права защищены
+                    br
+                    |Сделано в&nbsp;
+                    a.nav__copy__link(href='#') YellowPoint
+                .nav__menu-hint Оплата и
+                    br
+                    |доставка
+                a.nav__menu(href='#')
+                    span.nav__menu__link(href='#')
     .filters__side

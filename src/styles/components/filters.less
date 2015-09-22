@@ -5,10 +5,23 @@
 
 .filters {
   .oban-list-unstyled();
-  margin-bottom: 20px;
 }
 
 .filters__item {
+  cursor: pointer;
+
+  &_state {
+    &_active {
+      background: @colorGreyLight;
+    }
+  }
+
+  .g-filter-expanded & {
+    padding: 19px 15px;
+  }
+}
+
+.filters__item__link {
   display: block;
   border-bottom: 1px dotted #fff;
   .font-size(14);
@@ -17,19 +30,76 @@
   text-decoration: none;
   color: #fff;
 
-  &_state {
-    &_active {
-      background: @colorGreyLight;
+  &:first-child {
+    border-top: 1px dotted #fff;
+  }
+
+  .g-filter-expanded & {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    font-size: 0;
+    border: 0;
+
+    &_manicure-kit {
+      .sprite(@i-manicure-kit);
+    }
+
+    &_scissors {
+      .sprite(@i-scissors);
+    }
+
+    &_nailfile {
+      .sprite(@i-nailfile);
+    }
+
+    &_nippers {
+      .sprite(@i-nippers);
+    }
+
+    &_tweezers {
+      .sprite(@i-tweezers);
+    }
+
+    &_pedicure-kit {
+      .sprite(@i-pedicure-kit);
+    }
+
+    &:first-child {
+      border: 0;
     }
   }
 
-  &:first-child {
-    border-top: 1px dotted #fff;
+  .filters__item_state_active & {
+    &_manicure-kit {
+      .sprite(@i-manicure-kit-active);
+    }
+
+    &_scissors {
+      .sprite(@i-scissors-active);
+    }
+
+    &_nailfile {
+      .sprite(@i-nailfile-active);
+    }
+
+    &_nippers {
+      .sprite(@i-nippers-active);
+    }
+
+    &_tweezers {
+      .sprite(@i-tweezers-active);
+    }
+
+    &_pedicure-kit {
+      .sprite(@i-pedicure-kit-active);
+    }
   }
 }
 
 .filters__title {
   .font-size(16);
+  margin-bottom: 2em;
   text-align: center;
   color: #000;
 }
@@ -46,17 +116,18 @@
   left: 100%;
   color: @colorGreyDarker;
 
-  &_state {
-    &_active {
-      display: block;
-    }
+  .g-filter-expanded & {
+    display: block;
   }
 }
 
-.filters__set {}
+.filters__set {
+  margin-bottom: 20px;
+}
 
 .filters__set__title {
   .font-size(14);
+  margin-bottom: 1em;
 }
 
 .filters__set__item {
@@ -65,9 +136,36 @@
 
 @media (max-width: @endMobile) {
 
+  .filters__side {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 0;
+    padding-left: 70px;
+  }
+
   .filters__item {
+    position: relative;
+    padding: 19px 15px;
+
+    &_state {
+      &_active {
+
+//        &:before {
+//          .after();
+//          .sprite(@i-close);
+//          top: 50%;
+//          left: 100%;
+//          margin-top: -@i-close-height / 2;
+//        }
+      }
+    }
+  }
+
+  .filters__item__link {
     display: block;
-    margin: 0 auto 49px;
+    margin: 0 auto;
     max-width: 100%;
     font-size: 0;
     border: 0;
