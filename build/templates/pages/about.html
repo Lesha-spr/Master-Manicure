@@ -10,30 +10,33 @@
     <![endif]-->
   </head>
   <body>
-    <nav data-module="Navigation" class="nav">
-      <div class="nav__row nav__row_top">
-        <div class="nav__reducer"><a href="/" class="nav__logo"><img src="./../../i/logo.png" class="nav__logo__image"><img src="./../../i/logo_mobile.png" class="nav__logo__image nav__logo__image_mobile"></a>
-          <div class="nav__phone">
-            <div class="nav__phone__item"><a href="tel:0444573355" class="nav__phone__link">044 457 33 55</a></div>
-            <div class="nav__phone__item"><a href="tel:0800500277" class="nav__phone__link">0 800 500 277</a></div>
+    <nav data-module="Navigation Filters" class="nav">
+      <div class="nav__wrapper">
+        <div class="nav__row nav__row_top">
+          <div class="nav__reducer"><a href="/" class="nav__logo"><img src="./../../i/logo.png" class="nav__logo__image"><img src="./../../i/logo_mobile.png" class="nav__logo__image nav__logo__image_mobile"></a>
+            <div class="phone">
+              <div class="phone__item"><a href="tel:0444573355" class="phone__link">044 457 33 55</a></div>
+              <div class="phone__item"><a href="tel:0800500277" class="phone__link">0 800 500 277</a></div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="nav__row nav__row_middle">
-        <div class="nav__reducer">
-          <div class="nav__categories"><a href="#" class="nav__categories__item nav__categories__item_manicure-kit">Маникюрные наборы</a><a href="#" class="nav__categories__item nav__categories__item_scissors">Ножницы</a><a href="#" class="nav__categories__item nav__categories__item_nailfile">Пилочки</a><a href="#" class="nav__categories__item nav__categories__item_nippers">Кусачки</a><a href="#" class="nav__categories__item nav__categories__item_tweezers">Пинцеты</a><a href="#" class="nav__categories__item nav__categories__item_pedicure-kit">Наборы для педикюра</a></div>
+        <div class="nav__row nav__row_middle">
+          <div class="nav__reducer">
+            <div class="filters"><a href="#" data-category="manicure-kit" class="filters__item filters__item_manicure-kit">Маникюрные наборы</a><a href="#" data-category="scissors" class="filters__item filters__item_scissors">Ножницы</a><a href="#" data-category="nailfile" class="filters__item filters__item_nailfile">Пилочки</a><a href="#" data-category="nippers" class="filters__item filters__item_nippers">Кусачки</a><a href="#" data-category="tweezers" class="filters__item filters__item_tweezers">Пинцеты</a><a href="#" data-category="pedicure-kit" class="filters__item filters__item_pedicure-kit">Наборы для педикюра</a></div>
+          </div>
+        </div>
+        <div class="nav__row nav__row_bottom">
+          <ul class="nav__sections">
+            <li class="nav__sections__item"><a href="#" class="nav__sections__item__link">О нас</a></li>
+            <li class="nav__sections__item"><a href="#" class="nav__sections__item__link">Сертификаты</a></li>
+            <li class="nav__sections__item"><a href="#" class="nav__sections__item__link">Статьи</a></li>
+            <li class="nav__sections__item"><a href="#" class="nav__sections__item__link">Оплата и доставка</a></li>
+            <li class="nav__sections__item"><a href="#" class="nav__sections__item__link">Контакты</a></li>
+          </ul>
+          <div class="nav__copy">© 2014 Все права защищены<br>Сделано в&nbsp;<a href="#" class="nav__copy__link">YellowPoint</a></div>
         </div>
       </div>
-      <div class="nav__row nav__row_bottom">
-        <ul class="nav__sections">
-          <li class="nav__sections__item"><a href="#" class="nav__sections__item__link">О нас</a></li>
-          <li class="nav__sections__item"><a href="#" class="nav__sections__item__link">Сертификаты</a></li>
-          <li class="nav__sections__item"><a href="#" class="nav__sections__item__link">Статьи</a></li>
-          <li class="nav__sections__item"><a href="#" class="nav__sections__item__link">Оплата и доставка</a></li>
-          <li class="nav__sections__item"><a href="#" class="nav__sections__item__link">Контакты</a></li>
-        </ul>
-        <div class="nav__copy">© 2014 Все права защищены<br>Сделано в&nbsp;<a href="#" class="nav__copy__link">YellowPoint</a></div>
-      </div>
+      <div class="filters__side"></div>
     </nav>
     <main class="main"><a href="#" data-module="MiniCart" class="mini-cart"></a>
     </main>
