@@ -1,4 +1,5 @@
 @import "vars";
+@import "mixins/custom-mixins";
 
 .ui-checkbox {
   vertical-align: middle;
@@ -11,4 +12,17 @@
 .ui-label_hint {
   vertical-align: middle;
   color: @colorGreyMedium;
+}
+
+.ui-button {
+  display: inline-block;
+  border: 1px solid rgba(179, 106, 34, 0.5);
+  outline: 0;
+  padding: 8px 35px;
+  background: #b40000;
+  .font-size(17);
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: .05em;
+  color: #fff;
 }
