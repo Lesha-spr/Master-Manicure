@@ -7,5 +7,6 @@ import start from './start.js';
 import Navigation from './components/navigation.js'; app.Navigation = Navigation;
 import MiniCart from './components/mini-cart.js'; app.MiniCart = MiniCart;
 import Filters from './components/filters.js'; app.Filters = Filters;
+import Carousel from './components/carousel.js'; app.Carousel = Carousel;
 
 $(start);

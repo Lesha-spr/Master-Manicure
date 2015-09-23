@@ -1,0 +1,127 @@
+@import "./../sprite";
+@import "./../mixins/oban";
+@import "./../mixins/custom-mixins";
+
+.carousel {
+  height: 100vh;
+
+  &_state {
+    &_loading {
+      background: rgba(0, 0, 0, 0.7);
+    }
+  }
+}
+
+.slick-list,
+.slick-track,
+.carousel__item {
+  height: 100%;
+}
+
+.carousel__item {
+  position: relative;
+  text-align: right;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.carousel__item__image {
+  visibility: hidden;
+}
+
+.carousel__control {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+
+  &_prev {
+    .sprite(@i-carousel-prev);
+    left: 10px;
+    margin-top: -@i-carousel-prev-height / 2;
+  }
+
+  &_next {
+    .sprite(@i-carousel-next);
+    right: 10px;
+    margin-top: -@i-carousel-next-height / 2;
+  }
+}
+
+.slick-dots {
+  .oban-list-unstyled();
+  position: absolute;
+  right: 0;
+  bottom: 18px;
+  left: 0;
+  z-index: 1;
+  text-align: center;
+
+  [role='presentation'] {
+    display: inline-block;
+    padding: 5px;
+    font-size: 0;
+    cursor: pointer;
+
+    &.slick-active {
+      [role='button'] {
+        height: 4px;
+        background: #b40000;
+      }
+    }
+  }
+
+  [role='button'] {
+    border: 0;
+    outline: 0;
+    padding: 0;
+    width: 50px;
+    height: 2px;
+    background: #a9acaf;
+  }
+}
+
+.carousel__item__inner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  &:before {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 100%;
+    vertical-align: middle;
+  }
+}
+
+.carousel__item__info {
+  display: inline-block;
+  margin-right: 90px;
+  width: 25%;
+  vertical-align: middle;
+  font-weight: lighter;
+  text-align: left;
+  color: #fff;
+}
+
+.carousel__item__info__category {
+  .font-size(18);
+  margin-bottom: .5em;
+}
+
+.carousel__item__info__title {
+  .font-size(22);
+  margin-bottom: 2em;
+}
+
+.carousel__item__info__price {
+  .font-size(32);
+  margin-bottom: .8em;
+}
+
+.carousel__item__info__value {
+  .font-size(24);
+}
