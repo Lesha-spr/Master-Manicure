@@ -40,10 +40,14 @@ a, a:hover, a:active, a:focus {
 .main {
   position: relative;
   padding-left: 249px;
+
+  .g-filter-expanded & {
+    padding-left: 277px;
+  }
 }
 
-@media all and (max-width: 1023px) {
+@media all and (max-width: @endMobile) {
   .main {
-    padding-left: 150px;
+    padding-left: 70px;
   }
 }

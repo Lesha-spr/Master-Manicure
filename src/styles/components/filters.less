@@ -105,15 +105,11 @@
 }
 
 .filters__side {
-  width: 190px;
+  height: 100%;
   display: none;
   padding: 13px 21px;
-  position: absolute;
   overflow-y: auto;
   background: @colorGreyLight;
-  top: 0;
-  bottom: 0;
-  left: 100%;
   color: @colorGreyDarker;
 
   .g-filter-expanded & {
@@ -137,11 +133,6 @@
 @media (max-width: @endMobile) {
 
   .filters__side {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 0;
     padding-left: 70px;
   }
 
