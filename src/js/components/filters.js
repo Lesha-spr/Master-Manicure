@@ -37,7 +37,7 @@ class Filters {
 
     bindEvents() {
         this.elems.$window.on('statechange popstate', this.getFilter.bind(this));
-        this.elems.$item.on('click', this.chooseCategory.bind(this));
+        this.elems.$root.on('click', DEFAULTS.SELECTORS.ITEM, this.chooseCategory.bind(this));
         this.elems.$root.on('change', DEFAULTS.SELECTORS.CONTROL, this.resolveQuery.bind(this));
     }
 
@@ -58,7 +58,6 @@ class Filters {
         this.elems.$item.removeClass(DEFAULTS.CLASSES.ACTIVE_ITEM);
         $current.toggleClass(DEFAULTS.CLASSES.ACTIVE_ITEM, !isCurrentActive);
 
-        // TODO: check if last opened and don't push state
         if (!isCurrentActive && !$current.hasClass(DEFAULTS.CLASSES.LAST_ACTIVE_ITEM)) {
             state.pushState({
                 category: $current.data('category')
