@@ -10,10 +10,8 @@
 .filters__item {
   cursor: pointer;
 
-  &_state {
-    &_active {
-      background: @colorGreyLight;
-    }
+  &_state_active {
+    background: @colorGreyLight;
   }
 
   .g-filter-expanded & {
@@ -140,17 +138,15 @@
     position: relative;
     padding: 19px 15px;
 
-    &_state {
-      &_active {
+    &_state_active {
 
-//        &:before {
-//          .after();
-//          .sprite(@i-close);
-//          top: 50%;
-//          left: 100%;
-//          margin-top: -@i-close-height / 2;
-//        }
-      }
+//      &:before {
+//        .after();
+//        .sprite(@i-close);
+//        top: 50%;
+//        left: 100%;
+//        margin-top: -@i-close-height / 2;
+//      }
     }
   }
 
