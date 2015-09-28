@@ -1,4 +1,7 @@
-nav.nav(data-module='Navigation Filters')
+block vars
+    - var extraModules = '';
+
+nav.nav(data-module='Navigation #{extraModules}')
     .nav__wrapper
         .nav__row.nav__row_top
             .nav__reducer
@@ -29,4 +32,4 @@ nav.nav(data-module='Navigation Filters')
                     |доставка
                 a.nav__menu(href='#')
                     span.nav__menu__link(href='#')
-    .filters__side
+    block side
