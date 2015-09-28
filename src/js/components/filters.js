@@ -1,7 +1,7 @@
 import app from './../app.js';
 import $ from 'jquery';
 import _ from 'lodash';
-import state from './../helpers/state.js';
+import state from './../helpers/bbq.js';
 
 const DEFAULTS = {
     SELECTORS: {
@@ -36,12 +36,14 @@ class Filters {
     initialize() {}
 
     bindEvents() {
+        // TODO: migrate to bbq
         this.elems.$window.on('statechange popstate', this.getFilter.bind(this));
         this.elems.$root.on('click', DEFAULTS.SELECTORS.ITEM, this.chooseCategory.bind(this));
         this.elems.$root.on('change', DEFAULTS.SELECTORS.CONTROL, this.resolveQuery.bind(this));
     }
 
     resolveQuery(event) {
+        // TODO: migrate to bbq
         let $form = $(event.currentTarget.form);
         let param = $form.serializeArray();
 
@@ -69,9 +71,10 @@ class Filters {
     }
 
     getFilter() {
+        // TODO: migrate to bbq
         $.ajax({
             url: app.SERVICES.FILTERS,
-            data: state.getState(),
+            data: {},
             dataType: 'json',
             success: data => {
                 this.render(data);

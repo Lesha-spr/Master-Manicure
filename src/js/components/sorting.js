@@ -16,7 +16,7 @@ class Sorting {
     }
 
     initialize() {
-
+        console.log($.bbq.getState());
     }
 
     bindEvents() {
