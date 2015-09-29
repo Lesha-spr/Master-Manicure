@@ -1,7 +1,6 @@
 import app from './../app.js';
 import $ from 'jquery';
 import _ from 'lodash';
-import state from './../helpers/bbq.js';
 
 const DEFAULTS = {
     SELECTORS: {
@@ -33,21 +32,22 @@ class Filters {
         this.bindEvents();
     }
 
-    initialize() {}
-
-    bindEvents() {
-        // TODO: migrate to bbq
-        this.elems.$window.on('statechange popstate', this.getFilter.bind(this));
-        this.elems.$root.on('click', DEFAULTS.SELECTORS.ITEM, this.chooseCategory.bind(this));
-        this.elems.$root.on('change', DEFAULTS.SELECTORS.CONTROL, this.resolveQuery.bind(this));
+    initialize() {
+        //this.getFilter();
     }
 
-    resolveQuery(event) {
-        // TODO: migrate to bbq
-        let $form = $(event.currentTarget.form);
-        let param = $form.serializeArray();
+    bindEvents() {
+        this.elems.$root.on('click', DEFAULTS.SELECTORS.ITEM, this.chooseCategory.bind(this));
+        this.elems.$root.on('change', DEFAULTS.SELECTORS.CONTROL, this.pushState.bind(this));
+    }
 
-        state.pushState(param);
+    pushState(event) {
+        let $form = $(event.currentTarget.form);
+        let state = $.deparam($form.serialize());
+
+        $.bbq.pushState(state);
+
+        this.getFilter();
     }
 
     chooseCategory(event) {
@@ -61,25 +61,30 @@ class Filters {
         $current.toggleClass(DEFAULTS.CLASSES.ACTIVE_ITEM, !isCurrentActive);
 
         if (!isCurrentActive && !$current.hasClass(DEFAULTS.CLASSES.LAST_ACTIVE_ITEM)) {
-            state.pushState({
+            $.bbq.pushState({
                 category: $current.data('category')
             });
 
             this.elems.$item.removeClass(DEFAULTS.CLASSES.LAST_ACTIVE_ITEM);
             $current.addClass(DEFAULTS.CLASSES.LAST_ACTIVE_ITEM);
+
+            this.getFilter();
         }
     }
 
     getFilter() {
-        // TODO: migrate to bbq
-        $.ajax({
-            url: app.SERVICES.FILTERS,
-            data: {},
-            dataType: 'json',
-            success: data => {
-                this.render(data);
-            }
-        });
+        let data = $.bbq.getState();
+
+        if (data.category) {
+            $.ajax({
+                url: app.SERVICES.FILTERS,
+                data: data,
+                dataType: 'json',
+                success: data => {
+                    this.render(data);
+                }
+            });
+        }
     }
 
     render(data = {}) {

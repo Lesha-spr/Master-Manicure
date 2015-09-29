@@ -1,6 +1,9 @@
-.sorting(data-module='Sorting')
+form.sorting(data-module='Sorting')
     .sorting__inner
         span Выводить:
-        a(href='#' data-sorting='rating').sorting__item По рейтингу
-        a(href='#').sorting__item Цена
-        a(href='#').sorting__item Цена
+        label По рейтингу
+            input.sorting__item(name='sorting' type='radio' value='rating')
+        label Цена
+            input.sorting__item(name='sorting' type='radio' value='price')
+        label Цена
+            input.sorting__item(name='sorting' type='radio' value='price1')

@@ -1,14 +1,20 @@
 import $ from 'jquery';
 import app from './../app.js';
 
+const DEFAULTS = {
+    SELECTORS: {
+        INPUT: '.sorting__item'
+    },
+    SORTING: 'rating'
+};
+
 class Sorting {
     constructor(element) {
         let $root = $(element);
 
         this.elems = {
             $root: $root,
-            $window: $(window),
-            $body: $(document.body)
+            $input: $root.find(DEFAULTS.SELECTORS.INPUT)
         };
 
         this.initialize();
@@ -16,11 +22,21 @@ class Sorting {
     }
 
     initialize() {
-        console.log($.bbq.getState());
+        let sorting = $.bbq.getState().sorting || DEFAULTS.SORTING;
+
+        this.elems.$input.filter((index, input) => {
+            return input.value === sorting;
+        }).prop('checked', true);
     }
 
     bindEvents() {
+        this.elems.$root.on('change', DEFAULTS.SELECTORS.INPUT, this.pushState.bind(this));
+    }
 
+    pushState() {
+        let data = $.deparam(this.elems.$root.serialize());
+
+        $.bbq.pushState(data);
     }
 }
 
