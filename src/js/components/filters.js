@@ -1,6 +1,5 @@
 import app from './../app.js';
 import $ from 'jquery';
-import _ from 'lodash';
 
 const DEFAULTS = {
     SELECTORS: {
@@ -24,8 +23,7 @@ class Filters {
             $root: $root,
             $item: $root.find(DEFAULTS.SELECTORS.ITEM),
             $side: $root.find(DEFAULTS.SELECTORS.SIDE),
-            $html: $(document.documentElement),
-            $window: $(window)
+            $html: $(document.documentElement)
         };
 
         this.initialize();
