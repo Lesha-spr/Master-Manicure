@@ -9,6 +9,7 @@ const DEFAULTS = {
     },
     CLASSES: {
         ACTIVE_ITEM: 'filters__item_state_active',
+        CURRENT_ITEM: 'filters__item_state_current',
         LAST_ACTIVE_ITEM: 'filters__item_state_last-active',
         ACTIVE_SIDE: 'filters__side_state_active',
         FILTER_EXPANDED: 'g-filter-expanded'
@@ -31,7 +32,15 @@ class Filters {
     }
 
     initialize() {
-        //this.getFilter();
+        this.getActive();
+    }
+
+    getActive() {
+        let category = $.bbq.getState().category;
+
+        this.elems.$item.removeClass(DEFAULTS.CLASSES.CURRENT_ITEM).filter((index, item) => {
+            return $(item).data('category') === category;
+        }).addClass(DEFAULTS.CLASSES.CURRENT_ITEM);
     }
 
     bindEvents() {
@@ -66,6 +75,7 @@ class Filters {
             this.elems.$item.removeClass(DEFAULTS.CLASSES.LAST_ACTIVE_ITEM);
             $current.addClass(DEFAULTS.CLASSES.LAST_ACTIVE_ITEM);
 
+            this.getActive();
             this.getFilter();
         }
     }

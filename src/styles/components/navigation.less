@@ -17,6 +17,7 @@
   float: left;
   display: table;
   min-width: 70px;
+  width: 250px;
   max-height: 100%;
   height: 100%;
   padding: 13px 0;
@@ -25,6 +26,10 @@
   color: #fff;
   background: #000;
   text-align: center;
+
+  .g-filter-expanded & {
+    width: 70px;
+  }
 }
 
 .nav__cell {
@@ -131,6 +136,10 @@
     .g-filter-expanded & {
       width: 100%;
     }
+  }
+
+  .nav__wrapper {
+    width: 70px;
   }
 
   .nav__logo {

@@ -1,9 +1,12 @@
 form.sorting(data-module='Sorting')
     .sorting__inner
         span Выводить:
-        label По рейтингу
-            input.sorting__item(name='sorting' type='radio' value='rating')
-        label Цена
-            input.sorting__item(name='sorting' type='radio' value='price')
-        label Цена
-            input.sorting__item(name='sorting' type='radio' value='price1')
+        label
+            input.sorting__input(name='sorting' type='radio' value='rating')
+            span.sorting__label по рейтингу
+        label
+            input.sorting__input(name='sorting' type='radio' value='price')
+            span.sorting__label.sorting__label_price-up цена
+        label
+            input.sorting__input(name='sorting' type='radio' value='price1')
+            span.sorting__label.sorting__label_price-down цена
