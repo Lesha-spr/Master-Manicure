@@ -1,5 +1,6 @@
 import app from './../app.js';
 import $ from 'jquery';
+import AjaxError from './../errors/base.js';
 
 const DEFAULTS = {
     SELECTORS: {
@@ -90,6 +91,9 @@ class Filters {
                 dataType: 'json',
                 success: data => {
                     this.render(data);
+                },
+                error: (jqXhr, textStatus, errorThrown) => {
+                    new AjaxError(...arguments);
                 }
             });
         }

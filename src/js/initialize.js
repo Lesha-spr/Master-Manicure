@@ -9,5 +9,6 @@ import MiniCart from './components/mini-cart.js'; app.MiniCart = MiniCart;
 import Filters from './components/filters.js'; app.Filters = Filters;
 import Carousel from './components/carousel.js'; app.Carousel = Carousel;
 import Sorting from './components/sorting.js'; app.Sorting = Sorting;
+import ProductList from './components/product-list.js'; app.ProductList = ProductList;
 
 $(start);

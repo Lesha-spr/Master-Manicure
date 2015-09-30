@@ -1,0 +1,24 @@
+<ul class="product-list">
+    {{#each entries}}
+        <li class="column1">
+            <div class="product-list__item">
+                <div class="product-list__item__table">
+                    <div class="product-list__item__table__cell">
+                        <img class="product-list__item__img" src="{{src}}"/>
+                    </div>
+                </div>
+                <div class="product-list__item__category">{{category}}</div>
+                <div class="product-list__item__title">{{title}}</div>
+                <div class="product-list__item__article">Арт.{{article}}</div>
+                <div class="product-list__item__rating">{{rating}} ({{ratingCount}})</div>
+                <div class="product-list__item__actions">
+                    <div class="column1">
+                        <span class="product-list__item__price">{{price}}</span> <span class="product-list__item__format">{{priceFormat}}</span></div>
+                    <div class="column1 product-list__item__actions__buy">
+                        <button class="ui-button ui-button_small">Купить</button>
+                    </div>
+                </div>
+            </div>
+        </li>
+    {{/each}}
+</ul>
