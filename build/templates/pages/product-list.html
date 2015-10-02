@@ -48,7 +48,21 @@
       </div>
       <div class="filters__side"></div>
     </nav>
-    <main class="main"><a href="#" data-module="MiniCart" class="mini-cart"></a>
+    <main class="main">
+      <form data-module="Sorting" class="sorting">
+        <div class="sorting__inner"><span>Выводить:</span>
+          <label>
+            <input name="sorting" type="radio" value="rating" class="sorting__input"><span class="sorting__label">по рейтингу</span>
+          </label>
+          <label>
+            <input name="sorting" type="radio" value="price" class="sorting__input"><span class="sorting__label sorting__label_price-up">цена</span>
+          </label>
+          <label>
+            <input name="sorting" type="radio" value="price1" class="sorting__input"><span class="sorting__label sorting__label_price-down">цена</span>
+          </label>
+        </div>
+      </form><a href="#" data-module="MiniCart" class="mini-cart"></a>
+      <div data-module="ProductList" class="product-list__wrapper"></div>
     </main>
     <script src="../../js/app.js"></script>
   </body>
