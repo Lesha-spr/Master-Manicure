@@ -14,6 +14,19 @@
 
 .product-list__item {
   padding: 4px;
+  transform-origin: center 0;
+  transform: rotateX(0deg);
+  transition: transform, .5s, ease;
+  backface-visibility: hidden;
+
+  &_state_loading {
+    transform: rotateX(90deg);
+  }
+}
+
+.product-list__item__perspective {
+  perspective: 2000px;
+  perspective-origin: 50% 20%;
 }
 
 .product-list__item__table {
