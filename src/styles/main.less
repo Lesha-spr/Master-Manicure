@@ -19,10 +19,6 @@ body {
   font-family: @fontUbuntu;
   font-size: @mainFontSize;
   line-height: 1.2;
-
-  .g-filter-expanded & {
-    overflow: hidden;
-  }
 }
 
 h1 {
@@ -53,5 +49,11 @@ a, a:hover, a:active, a:focus {
 @media all and (max-width: @endMobile) {
   .main {
     padding-left: 70px;
+  }
+
+  body {
+    .g-filter-expanded & {
+      overflow: hidden;
+    }
   }
 }
