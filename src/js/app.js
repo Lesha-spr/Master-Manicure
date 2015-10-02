@@ -8,6 +8,8 @@ import {SERVICES} from './defaults.js'
 window.Handlebars = window.Handlebars || Handlebars;
 window.MM = window.MM || {};
 
+require('./helpers/bbq.js')(require('jquery'), window);
+
 MM.templates = MM.templates || require('./templates.js');
 MM.partials = MM.partials || require('./partials.js');
 MM.modules = MM.modules || new Set();

@@ -1,7 +1,6 @@
 import app from './../app.js';
 import $ from 'jquery';
-import _ from 'lodash';
-import state from './../helpers/state.js';
+import AjaxError from './../errors/base.js';
 
 const DEFAULTS = {
     SELECTORS: {
@@ -11,6 +10,7 @@ const DEFAULTS = {
     },
     CLASSES: {
         ACTIVE_ITEM: 'filters__item_state_active',
+        CURRENT_ITEM: 'filters__item_state_current',
         LAST_ACTIVE_ITEM: 'filters__item_state_last-active',
         ACTIVE_SIDE: 'filters__side_state_active',
         FILTER_EXPANDED: 'g-filter-expanded'
@@ -25,27 +25,37 @@ class Filters {
             $root: $root,
             $item: $root.find(DEFAULTS.SELECTORS.ITEM),
             $side: $root.find(DEFAULTS.SELECTORS.SIDE),
-            $html: $(document.documentElement),
-            $window: $(window)
+            $html: $(document.documentElement)
         };
 
         this.initialize();
         this.bindEvents();
     }
 
-    initialize() {}
-
-    bindEvents() {
-        this.elems.$window.on('statechange popstate', this.getFilter.bind(this));
-        this.elems.$root.on('click', DEFAULTS.SELECTORS.ITEM, this.chooseCategory.bind(this));
-        this.elems.$root.on('change', DEFAULTS.SELECTORS.CONTROL, this.resolveQuery.bind(this));
+    initialize() {
+        this.getActive();
     }
 
-    resolveQuery(event) {
-        let $form = $(event.currentTarget.form);
-        let param = $form.serializeArray();
+    getActive() {
+        let category = $.bbq.getState().category;
 
-        state.pushState(param);
+        this.elems.$item.removeClass(DEFAULTS.CLASSES.CURRENT_ITEM).filter((index, item) => {
+            return $(item).data('category') === category;
+        }).addClass(DEFAULTS.CLASSES.CURRENT_ITEM);
+    }
+
+    bindEvents() {
+        this.elems.$root.on('click', DEFAULTS.SELECTORS.ITEM, this.chooseCategory.bind(this));
+        this.elems.$root.on('change', DEFAULTS.SELECTORS.CONTROL, this.pushState.bind(this));
+    }
+
+    pushState(event) {
+        let $form = $(event.currentTarget.form);
+        let state = $.deparam($form.serialize());
+
+        $.bbq.pushState(state);
+
+        this.getFilter();
     }
 
     chooseCategory(event) {
@@ -59,24 +69,34 @@ class Filters {
         $current.toggleClass(DEFAULTS.CLASSES.ACTIVE_ITEM, !isCurrentActive);
 
         if (!isCurrentActive && !$current.hasClass(DEFAULTS.CLASSES.LAST_ACTIVE_ITEM)) {
-            state.pushState({
+            $.bbq.pushState({
                 category: $current.data('category')
             });
 
             this.elems.$item.removeClass(DEFAULTS.CLASSES.LAST_ACTIVE_ITEM);
             $current.addClass(DEFAULTS.CLASSES.LAST_ACTIVE_ITEM);
+
+            this.getActive();
+            this.getFilter();
         }
     }
 
     getFilter() {
-        $.ajax({
-            url: app.SERVICES.FILTERS,
-            data: state.getState(),
-            dataType: 'json',
-            success: data => {
-                this.render(data);
-            }
-        });
+        let data = $.bbq.getState();
+
+        if (data.category) {
+            $.ajax({
+                url: app.SERVICES.FILTERS,
+                data: data,
+                dataType: 'json',
+                success: data => {
+                    this.render(data);
+                },
+                error: (jqXhr, textStatus, errorThrown) => {
+                    new AjaxError(...arguments);
+                }
+            });
+        }
     }
 
     render(data = {}) {
