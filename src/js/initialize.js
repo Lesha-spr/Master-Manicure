@@ -11,4 +11,7 @@ import Carousel from './components/carousel.js'; app.Carousel = Carousel;
 import Sorting from './components/sorting.js'; app.Sorting = Sorting;
 import ProductList from './components/product-list.js'; app.ProductList = ProductList;
 
+// Template
+import Template from './components/template.js'; app.Template = Template;
+
 $(start);
