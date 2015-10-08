@@ -5,7 +5,7 @@ import slick from 'slick-carousel';
 let DEFAULTS = {
     SELECTORS: {
         ITEM: '.carousel__item',
-        IMAGE: '.carousel__item__image'
+        IMAGE: '.carousel__image'
     },
     CLASSES: {
         LOADING: 'carousel_state_loading'

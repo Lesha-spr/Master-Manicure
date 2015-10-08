@@ -1,6 +1,7 @@
-@import "./../sprite";
 @import "./../mixins/oban";
 @import "./../mixins/custom-mixins";
+@import "./../sprite";
+@import "./../vars";
 
 .carousel {
   height: 100vh;
@@ -25,7 +26,7 @@
   background-position: center;
 }
 
-.carousel__item__image {
+.carousel__image {
   visibility: hidden;
 }
 
@@ -51,7 +52,8 @@
   .oban-list-unstyled();
   position: absolute;
   right: 0;
-  bottom: 18px;
+  bottom: 0;
+  margin-bottom: 18px;
   left: 0;
   z-index: 1;
   text-align: center;
@@ -80,7 +82,7 @@
   }
 }
 
-.carousel__item__inner {
+.carousel__inner {
   position: absolute;
   top: 0;
   right: 0;
@@ -96,7 +98,7 @@
   }
 }
 
-.carousel__item__info {
+.carousel__info {
   display: inline-block;
   margin-right: 90px;
   width: 25%;
@@ -106,21 +108,75 @@
   color: #fff;
 }
 
-.carousel__item__info__category {
+.carousel__category {
   .font-size(18);
   margin-bottom: .5em;
 }
 
-.carousel__item__info__title {
+.carousel__title {
   .font-size(22);
   margin-bottom: 2em;
 }
 
-.carousel__item__info__price {
+.carousel__price {
   .font-size(32);
   margin-bottom: .8em;
 }
 
-.carousel__item__info__value {
+.carousel__value {
   .font-size(24);
+}
+
+@media (max-width: @endMobile) {
+  .carousel__item {
+    height: 65vh;
+    text-align: left;
+  }
+
+  .carousel__inner {
+    top: 100%;
+    bottom: auto;
+    height: 35vh;
+    padding: 20px;
+    font-size: 0;
+  }
+
+  .carousel__info {
+    width: 100%;
+    margin-right: 0;
+    color: #000;
+  }
+
+  // TODO: check margins
+  .carousel__category {
+    margin-bottom: 0;
+  }
+
+  .carousel__title {
+    margin-bottom: 0;
+  }
+
+  .carousel__price {
+    margin-bottom: 0;
+  }
+
+  .slick-dots {
+    display: none !important;
+  }
+
+  .carousel__control {
+    top: auto;
+    bottom: 35vh;
+    margin-bottom: 18px;
+
+    &_prev {
+      left: 50%;
+      margin-left: -((@i-carousel-prev-width / 2) + 30px);
+    }
+
+    &_next {
+      right: 50%;
+      margin-right: -((@i-carousel-next-width / 2) + 30px);
+    }
+  }
 }
