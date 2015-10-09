@@ -39,16 +39,13 @@ class ProductList {
 
     getProducts() {
         let data = $.bbq.getState();
-        let shouldAppend = this.category === data.category;
-
-        this.category = data.category;
 
         $.ajax({
             url: app.SERVICES.PRODUCTS,
             dataType: 'json',
             data: data,
             success: data => {
-                this.render(data, shouldAppend);
+                this.render(data);
             },
             error: (jqXhr, textStatus, errorThrown) => {
                 new AjaxError(...arguments);
