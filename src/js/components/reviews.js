@@ -1,4 +1,3 @@
-// Template
 import app from './../app.js';
 import $ from 'jquery';
 
@@ -8,7 +7,7 @@ const DEFAULTS = {
         GET_MORE: '.reviews__get-more',
         REPLY: '.review__reply'
     },
-    STEP: 5
+    STEP: 1
 };
 
 class Reviews {
@@ -57,6 +56,7 @@ class Reviews {
             let template = app.templates['reviews'](data);
 
             this.elems.$list.append(template);
+            app.start();
         } else {
             this.elems.$getMore.remove();
         }
