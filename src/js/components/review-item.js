@@ -23,8 +23,7 @@ class ReviewItem {
     }
 
     initialize() {
-        // Initialize logic
-        // this.render(); Example
+
     }
 
     bindEvents() {
@@ -32,9 +31,7 @@ class ReviewItem {
     }
 
     render(data = {}) {
-        //let template = app.templates['template'](data);
-        //
-        //this.elems.$formHolder.html(template);
+
     }
 }
 

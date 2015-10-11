@@ -61,15 +61,20 @@
     }
 
     &_icon {
-      padding: 10px 24px 6px;
+      padding: 10px 15px 6px;
 
       &:before {
         content: '';
         display: inline-block;
       }
 
-      &_facebook:before {
-        .sprite(@i-social-facebook);
+      &_facebook {
+        padding-left: 19px;
+        padding-right: 19px;
+
+        &:before {
+          .sprite(@i-social-facebook);
+        }
       }
 
       &_twitter:before {
