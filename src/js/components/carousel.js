@@ -4,8 +4,7 @@ import slick from 'slick-carousel';
 
 let DEFAULTS = {
     SELECTORS: {
-        ITEM: '.carousel__item',
-        IMAGE: '.carousel__image'
+        ITEM: '.carousel__item'
     },
     CLASSES: {
         LOADING: 'carousel_state_loading'
@@ -26,8 +25,6 @@ class Carousel {
 
         this.elems = {
             $root: $root,
-            $item: $root.find(DEFAULTS.SELECTORS.ITEM),
-            $image: $root.find(DEFAULTS.SELECTORS.IMAGE),
             $window: $(window)
         };
 
@@ -35,15 +32,6 @@ class Carousel {
     }
 
     initialize() {
-        for (let item of Array.from(this.elems.$item)) {
-            let $item = $(item);
-            let background = `url('${$item.find(DEFAULTS.SELECTORS.IMAGE).attr('src')}')`;
-
-            $item.css({
-                backgroundImage: background
-            });
-        }
-
         this.elems.$root.slick(this.slickOptions);
 
         this.elems.$root.removeClass(DEFAULTS.CLASSES.LOADING);

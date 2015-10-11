@@ -39,12 +39,20 @@
     .sprite(@i-carousel-prev);
     left: 10px;
     margin-top: -@i-carousel-prev-height / 2;
+
+    .certificates & {
+      .sprite(@i-carousel-prev-alt);
+    }
   }
 
   &_next {
     .sprite(@i-carousel-next);
     right: 10px;
     margin-top: -@i-carousel-next-height / 2;
+
+    .certificates & {
+      .sprite(@i-carousel-next-alt);
+    }
   }
 }
 
@@ -164,19 +172,21 @@
     display: none !important;
   }
 
-  .carousel__control {
-    top: auto;
-    bottom: 35vh;
-    margin-bottom: 18px;
+  .carousel_main & {
+    .carousel__control {
+      top: auto;
+      bottom: 35vh;
+      margin-bottom: 18px;
 
-    &_prev {
-      left: 50%;
-      margin-left: -((@i-carousel-prev-width / 2) + 30px);
-    }
+      &_prev {
+        left: 50%;
+        margin-left: -((@i-carousel-prev-width / 2) + 30px);
+      }
 
-    &_next {
-      right: 50%;
-      margin-right: -((@i-carousel-next-width / 2) + 30px);
+      &_next {
+        right: 50%;
+        margin-right: -((@i-carousel-next-width / 2) + 30px);
+      }
     }
   }
 }
