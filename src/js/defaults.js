@@ -6,7 +6,8 @@ export const SERVICES = {
     IN_YOUR_CART: '/Master-Manicure/fakebackend/in-your-cart.json',
     FILTERS: '/Master-Manicure/fakebackend/filters/default.json',
     PRODUCTS: '/Master-Manicure/fakebackend/products.json',
-    REVIEWS: '/Master-Manicure/fakebackend/reviews.json'
+    REVIEWS: '/Master-Manicure/fakebackend/reviews.json',
+    ARTICLES: '/Master-Manicure/fakebackend/articles.json'
 };
 
 export default EVENTS;

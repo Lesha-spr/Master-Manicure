@@ -43,7 +43,7 @@ class Reviews {
             url: app.SERVICES.REVIEWS,
             dataType: 'json',
             data: data,
-            success: (data) => {
+            success: data => {
                 this.step += DEFAULTS.STEP;
 
                 this.render(data);

@@ -14,6 +14,7 @@ import ProductList from './components/product-list.js'; app.ProductList = Produc
 import Reviews from './components/reviews.js'; app.Reviews = Reviews;
 import ReviewItem from './components/review-item.js'; app.ReviewItem = ReviewItem;
 import Certificates from './components/certificates.js'; app.Certificates = Certificates;
+import Articles from './components/articles.js'; app.Articles = Articles;
 
 // Template
 import Template from './components/template.js'; app.Template = Template;

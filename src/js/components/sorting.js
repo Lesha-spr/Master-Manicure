@@ -4,8 +4,7 @@ import app from './../app.js';
 const DEFAULTS = {
     SELECTORS: {
         INPUT: '.sorting__input'
-    },
-    SORTING: 'rating'
+    }
 };
 
 class Sorting {
@@ -26,7 +25,7 @@ class Sorting {
     }
 
     getActive() {
-        let sorting = $.bbq.getState().sorting || DEFAULTS.SORTING;
+        let sorting = $.bbq.getState().sorting || this.elems.$input.eq(0).val();
 
         this.elems.$input.filter((index, input) => {
             return input.value === sorting;
