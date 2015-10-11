@@ -23,12 +23,12 @@
         <div class="nav__row nav__row_middle">
           <div class="nav__reducer">
             <ul class="filters">
-              <li data-category="manicure-kit" class="filters__item"><a href="#" class="filters__item__link filters__item__link_manicure-kit">Маникюрные наборы</a></li>
-              <li data-category="scissors" class="filters__item"><a href="#" class="filters__item__link filters__item__link_scissors">Ножницы</a></li>
-              <li data-category="nailfile" class="filters__item"><a href="#" class="filters__item__link filters__item__link_nailfile">Пилочки</a></li>
-              <li data-category="nippers" class="filters__item"><a href="#" class="filters__item__link filters__item__link_nippers">Кусачки</a></li>
-              <li data-category="tweezers" class="filters__item"><a href="#" class="filters__item__link filters__item__link_tweezers">Пинцеты</a></li>
-              <li data-category="pedicure-kit" class="filters__item"><a href="#" class="filters__item__link filters__item__link_pedicure-kit">Наборы для педикюра</a></li>
+              <li data-category="manicure-kit" class="filters__item"><a href="#" class="filters__link filters__link_manicure-kit">Маникюрные наборы</a></li>
+              <li data-category="scissors" class="filters__item"><a href="#" class="filters__link filters__link_scissors">Ножницы</a></li>
+              <li data-category="nailfile" class="filters__item"><a href="#" class="filters__link filters__link_nailfile">Пилочки</a></li>
+              <li data-category="nippers" class="filters__item"><a href="#" class="filters__link filters__link_nippers">Кусачки</a></li>
+              <li data-category="tweezers" class="filters__item"><a href="#" class="filters__link filters__link_tweezers">Пинцеты</a></li>
+              <li data-category="pedicure-kit" class="filters__item"><a href="#" class="filters__link filters__link_pedicure-kit">Наборы для педикюра</a></li>
             </ul>
           </div>
         </div>
@@ -47,20 +47,21 @@
         </div>
       </div>
     </nav>
-    <main class="main">
-      <form data-module="Sorting" class="sorting">
-        <div class="sorting__inner"><span>Выводить:</span>
-          <label>
-            <input name="sorting" type="radio" value="rating" class="sorting__input"><span class="sorting__label">по рейтингу</span>
-          </label>
-          <label>
-            <input name="sorting" type="radio" value="price" class="sorting__input"><span class="sorting__label sorting__label_price-up">цена</span>
-          </label>
-          <label>
-            <input name="sorting" type="radio" value="price1" class="sorting__input"><span class="sorting__label sorting__label_price-down">цена</span>
-          </label>
+    <main class="main"><a href="#" data-module="MiniCart" class="mini-cart"></a>
+      <div class="certificates">
+        <div class="certificates__wrapper">
+          <div data-module="Certificates" data-slick-options='{"dots":false}' class="certificates__carousel carousel_state_loading">
+            <div class="certificates__item">
+              <div class="certificates__item-col column1"><img src="./../../i/certificate-1.jpg" alt="Certificate"></div>
+              <div class="certificates__item-col column1"><img src="./../../i/certificate-1_1.jpg" alt="Certificate"></div>
+            </div>
+            <div class="certificates__item">
+              <div class="certificates__item-col column1"><img src="./../../i/certificate-1.jpg" alt="Certificate"></div>
+              <div class="certificates__item-col column1"><img src="./../../i/certificate-1_1.jpg" alt="Certificate"></div>
+            </div>
+          </div>
         </div>
-      </form><a href="#" data-module="MiniCart" class="mini-cart"></a>
+      </div>
     </main>
     <script src="../../js/app.js"></script>
   </body>
