@@ -1,0 +1,78 @@
+@import "./../mixins/oban";
+@import "./../mixins/custom-mixins";
+@import "./../sprite";
+@import "./../vars";
+
+.reviews {
+  padding-top: 15px;
+  padding-bottom: 338px;
+  background: #f3f3f3;
+}
+
+.reviews__delimeter {
+  margin: 12px -30px;
+  padding: 0 40px;
+  border-top: 1px solid #aaa;
+  border-bottom: 1px solid #aaa;
+}
+
+.reviews__title {
+  .font-size(33);
+  font-weight: lighter;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.reviews__anchor {
+  margin-top: 41px;
+  margin-bottom: 82px;
+  text-align: center;
+}
+
+.reviews__list {
+  .oban-list-unstyled();
+  margin-bottom: 23px;
+  padding-bottom: 80px;
+}
+
+.reviews__list-item {
+  .oban-grid-fluid(9, 22px);
+  margin-top: 95px;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.reviews__author {
+  margin-bottom: .5em;
+  .font-size(18);
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.reviews__date {
+  .font-size(14);
+  font-weight: lighter;
+}
+
+.reviews__comment {
+  &:extend(p);
+  margin-top: 2px;
+  border-bottom: 1px solid #aaa;
+  padding-bottom: 15px;
+}
+
+.reviews__actions {
+  .oban-grid-fluid(2, 10px);
+}
+
+.reviews__actions-social {
+  text-align: right;
+  height: 35px;
+  line-height: 35px;
+}
+
+.reviews__more {
+  text-align: center;
+}

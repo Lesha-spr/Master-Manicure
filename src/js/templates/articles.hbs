@@ -1,0 +1,16 @@
+{{#each entries}}
+    <li class="articles__item reducer reducer_decorated">
+        <img src="{{src}}"/>
+        <div class="articles__item-title">{{title}}</div>
+        <p>{{description}}</p>
+        <div class="articles__item-actions">
+            <div class="articles__item-left-info">
+                {{#intl locales="ru-RU"}}
+                    <span class="articles__item-date">{{formatDate date day="numeric" month="long" year="numeric"}}</span>
+                {{/intl}}
+                <a class="articles__item-comments" href="{{href}}">{{comments}}</a>
+            </div>
+            <a class="ui-button ui-button_link" href="{{href}}">Читать</a>
+        </div>
+    </li>
+{{/each}}

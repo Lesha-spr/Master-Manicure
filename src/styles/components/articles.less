@@ -1,0 +1,52 @@
+@import "./../mixins/oban";
+@import "./../mixins/custom-mixins";
+@import "./../sprite";
+@import "./../vars";
+
+.articles {
+  .oban-list-unstyled();
+}
+
+.articles__item {
+  margin-bottom: 70px;
+}
+
+.articles__item-title {
+  &:extend(h1);
+  text-align: center;
+}
+
+.articles__item-actions {
+  margin: 42px 0 34px;
+  position: relative;
+  text-align: center;
+}
+
+.articles__item-left-info {
+  position: absolute;
+  top: 0;
+  left: 0;
+  line-height: 40px;
+}
+
+.articles__item-date {
+  .font-size(14);
+  font-weight: lighter;
+  color: #8d8d8d;
+  vertical-align: middle;
+}
+
+.articles__item-comments {
+  .font-size(14);
+  color: #000;
+  vertical-align: middle;
+
+  &:before {
+    opacity: .9;
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 8px;
+    .sprite(@i-comments);
+  }
+}

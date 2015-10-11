@@ -24,10 +24,6 @@ export default () => {
 
                     console.warn(...message);
                 }
-            } else {
-                let message = ['Attempt to initialize', Module, 'twice on', element];
-
-                console.warn(...message);
             }
         }
     }

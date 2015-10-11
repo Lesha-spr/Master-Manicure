@@ -5,6 +5,7 @@ import AjaxError from './../errors/base.js';
 
 const DEFAULTS = {
     SELECTORS: {
+        LIST: '.product-list',
         ITEM: '.product-list__item',
         IMAGE: '.product-list__item__img'
     },
@@ -18,7 +19,9 @@ class ProductList {
         let $root = $(element);
 
         this.elems = {
-            $root: $root
+            $root: $root,
+            $list: $root.find(DEFAULTS.SELECTORS.LIST),
+            $window: $(window)
         };
 
         this.initialize();
@@ -26,17 +29,21 @@ class ProductList {
     }
 
     initialize() {
+        this.category = $.bbq.getState().category;
         this.getProducts();
     }
 
     bindEvents() {
-
+        this.elems.$window.on('hashchange', this.getProducts.bind(this));
     }
 
     getProducts() {
+        let data = $.bbq.getState();
+
         $.ajax({
             url: app.SERVICES.PRODUCTS,
             dataType: 'json',
+            data: data,
             success: data => {
                 this.render(data);
             },
@@ -52,9 +59,10 @@ class ProductList {
         $current.parents(DEFAULTS.SELECTORS.ITEM).removeClass(DEFAULTS.CLASSES.ITEM_LOADING);
     }
 
-    render(data) {
+    render(data, shouldAppend) {
         let template = app.templates['product-list'](data);
-        this.elems.$root.html(template);
+
+        this.elems.$list[shouldAppend ? 'append' : 'html'](template);
 
         this.elems.$root.find(DEFAULTS.SELECTORS.IMAGE).one('load', this.rotateItem.bind(this));
     }

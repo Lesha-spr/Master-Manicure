@@ -1,0 +1,28 @@
+@import "./../mixins/oban";
+@import "./../mixins/custom-mixins";
+@import "./../sprite";
+@import "./../vars";
+
+.mini-nav {
+  .oban-grid-fluid(2, 10px);
+  padding: 39px 0;
+}
+
+.mini-nav__social {
+  white-space: nowrap;
+  text-align: right;
+}
+
+@media all and (max-width: @endMobile) {
+  .mini-nav {
+    .oban-grid-fluid(1, 0);
+  }
+
+  .mini-nav__return {
+    margin-bottom: 45px;
+  }
+
+  .mini-nav__social {
+    text-align: left;
+  }
+}

@@ -1,4 +1,14 @@
-extends ./../layouts/filtered
+extends ./../layouts/main
+include ./../components/sorting
+
+block sorting
+    - var sorting = [{value: 'rating', title: 'по рейтингу'}, {value: 'price', title: 'цена', mod: 'sorting__label_price-up'}, {value: 'price1', title: 'цена', mod: 'sorting__label_price-down'}]
+
+    +sorting(sorting)
+
+block navigation
+    include ./../components/navigation_filtered
 
 block content
-    include ./../components/product-list
+    .main-content
+        include ./../components/product-list

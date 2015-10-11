@@ -1,1 +1,11 @@
 extends ./../layouts/main
+include ./../components/sorting
+
+block sorting
+    - var sorting = [{value: 'new', title: 'новые'}, {value: 'top', title: 'популярные'}]
+
+    +sorting(sorting)
+
+block content
+    .main-content
+        ul.articles(data-module='Articles')
