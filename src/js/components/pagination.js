@@ -1,4 +1,3 @@
-// Template
 import app from './../app.js';
 import $ from 'jquery';
 
@@ -9,18 +8,16 @@ const DEFAULTS = {
     CLASSES: {
         ACTIVE_ITEM: 'block__item_state_active'
     },
-    PAGE: 1,
-    SORTING: ''
+    PAGE: 1
 };
 
-class Articles {
+class Pagination {
     constructor(element) {
         let $root = $(element);
 
         this.elems = {
             $root: $root,
-            $item: $root.find(DEFAULTS.SELECTORS.ITEM),
-            $window: $(window)
+            $item: $root.find(DEFAULTS.SELECTORS.ITEM)
         };
 
         this.initialize();
@@ -28,22 +25,20 @@ class Articles {
     }
 
     initialize() {
-        this.getArticles(DEFAULTS.PAGE);
+        this.getPagination();
     }
 
     bindEvents() {
-        this.elems.$window.on('hashchange', this.getArticles.bind(this));
+        this.elems.$root.on('click', DEFAULTS.SELECTORS.ITEM, this.render.bind(this));
     }
 
-    getArticles() {
-        let state = $.bbq.getState();
+    getPagination() {
         let data = {
-            page: state.page || DEFAULTS.PAGE,
-            sorting: state.sorting || DEFAULTS.SORTING
+            page: $.bbq.getState().page || DEFAULTS.PAGE
         };
 
         $.ajax({
-            url: app.SERVICES.ARTICLES,
+            url: app.SERVICES.PAGINATION,
             dataType: 'json',
             data: data,
             success: data => {
@@ -53,10 +48,10 @@ class Articles {
     }
 
     render(data = {}) {
-        let template = app.templates['articles'](data);
+        let template = app.templates['pagination'](data);
 
         this.elems.$root.html(template);
     }
 }
 
-export default Articles;
+export default Pagination;
