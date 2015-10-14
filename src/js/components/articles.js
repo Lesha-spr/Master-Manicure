@@ -9,7 +9,8 @@ const DEFAULTS = {
     CLASSES: {
         ACTIVE_ITEM: 'block__item_state_active'
     },
-    PAGE: 1
+    PAGE: 1,
+    SORTING: ''
 };
 
 class Articles {
@@ -18,7 +19,8 @@ class Articles {
 
         this.elems = {
             $root: $root,
-            $item: $root.find(DEFAULTS.SELECTORS.ITEM)
+            $item: $root.find(DEFAULTS.SELECTORS.ITEM),
+            $window: $(window)
         };
 
         this.initialize();
@@ -30,12 +32,14 @@ class Articles {
     }
 
     bindEvents() {
-
+        this.elems.$window.on('hashchange', this.getArticles.bind(this));
     }
 
-    getArticles(page) {
+    getArticles() {
+        let state = $.bbq.getState();
         let data = {
-            page: page
+            page: state.page || DEFAULTS.PAGE,
+            sorting: state.sorting || DEFAULTS.SORTING
         };
 
         $.ajax({

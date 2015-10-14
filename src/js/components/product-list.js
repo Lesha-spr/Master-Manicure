@@ -29,7 +29,6 @@ class ProductList {
     }
 
     initialize() {
-        this.category = $.bbq.getState().category;
         this.getProducts();
     }
 

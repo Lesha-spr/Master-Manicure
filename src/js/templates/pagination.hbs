@@ -1,0 +1,15 @@
+{{#paginate pagination type="previous"}}
+    <li data-page="{{n}}" class="pagination__item pagination__item_prev {{#if disabled}}pagination__item_state_disabled{{/if}}">Prev</li>
+{{/paginate}}
+{{#paginate pagination type="first"}}
+    <li data-page="{{n}}" class="pagination__item pagination__item_first {{#if disabled}}pagination__item_state_disabled{{/if}}">First</li>
+{{/paginate}}
+{{#paginate pagination type="middle" limit="7"}}
+    <li data-page="{{n}}" class="pagination__item {{#if active}}pagination__item_state_active{{/if}}">{{n}}</li>
+{{/paginate}}
+{{#paginate pagination type="last"}}
+    <li data-page="{{n}}" class="pagination__item pagination__item_last {{#if disabled}}pagination__item_state_disabled{{/if}}">{{n}}</li>
+{{/paginate}}
+{{#paginate pagination type="next"}}
+    <li data-page="{{n}}" class="pagination__item pagination__item_next {{#if disabled}}pagination__item_state_disabled{{/if}}">Next</li>
+{{/paginate}}

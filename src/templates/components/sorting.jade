@@ -5,4 +5,5 @@ mixin sorting(sorting)
             each item in sorting
                 label
                     input.sorting__input(name='sorting', type='radio', value='#{item.value}')
-                    span(class='sorting__label #{item.mod}')!= item.title
+                    - var mod = item.mod || '';
+                    span(class='sorting__label #{mod}')!= item.title

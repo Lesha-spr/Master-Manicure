@@ -7,7 +7,8 @@ export const SERVICES = {
     FILTERS: '/Master-Manicure/fakebackend/filters/default.json',
     PRODUCTS: '/Master-Manicure/fakebackend/products.json',
     REVIEWS: '/Master-Manicure/fakebackend/reviews.json',
-    ARTICLES: '/Master-Manicure/fakebackend/articles.json'
+    ARTICLES: '/Master-Manicure/fakebackend/articles.json',
+    PAGINATION: '/Master-Manicure/fakebackend/pagination.json'
 };
 
 export default EVENTS;
