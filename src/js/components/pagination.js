@@ -3,10 +3,7 @@ import $ from 'jquery';
 
 const DEFAULTS = {
     SELECTORS: {
-        ITEM: '.block__item'
-    },
-    CLASSES: {
-        ACTIVE_ITEM: 'block__item_state_active'
+        ITEM: '.pagination__item'
     },
     PAGE: 1
 };
@@ -17,37 +14,59 @@ class Pagination {
 
         this.elems = {
             $root: $root,
-            $item: $root.find(DEFAULTS.SELECTORS.ITEM)
+            $item: $root.find(DEFAULTS.SELECTORS.ITEM),
+            $window: $(window)
         };
+
+        this.data = null;
+        this.sorting = $.bbq.getState().sorting;
 
         this.initialize();
         this.bindEvents();
     }
 
     initialize() {
-        this.getPagination();
+        this.getPagination(true);
     }
 
     bindEvents() {
-        this.elems.$root.on('click', DEFAULTS.SELECTORS.ITEM, this.render.bind(this));
+        this.elems.$window.on('hashchange', this.getPagination.bind(this));
+        this.elems.$root.on('click', DEFAULTS.SELECTORS.ITEM, this.goToPage.bind(this));
     }
 
-    getPagination() {
-        let data = {
-            page: $.bbq.getState().page || DEFAULTS.PAGE
-        };
+    goToPage(event) {
+        let page = $(event.currentTarget).data('page');
 
-        $.ajax({
-            url: app.SERVICES.PAGINATION,
-            dataType: 'json',
-            data: data,
-            success: data => {
-                this.render(data);
-            }
+        $.bbq.pushState({
+            page: page
         });
     }
 
+    getPagination(force = false) {
+        let sorting = $.bbq.getState().sorting;
+
+        if (force === true || sorting !== this.sorting) {
+            this.sorting = sorting;
+
+            $.ajax({
+                url: app.SERVICES.PAGINATION,
+                dataType: 'json',
+                data: {
+                    sorting: this.sorting
+                },
+                success: data => {
+                    this.data = data;
+                    this.render(this.data);
+                }
+            });
+        } else {
+            this.render(this.data);
+        }
+    }
+
     render(data = {}) {
+        data.pagination.page = $.bbq.getState().page || DEFAULTS.PAGE;
+
         let template = app.templates['pagination'](data);
 
         this.elems.$root.html(template);

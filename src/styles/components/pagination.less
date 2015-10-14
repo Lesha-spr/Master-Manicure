@@ -1,0 +1,36 @@
+@import "./../vars";
+@import "./../mixins/oban";
+@import "./../mixins/custom-mixins";
+@import "./../sprite";
+
+.pagination {
+  .oban-list-unstyled();
+  text-align: center;
+  font-size: 0;
+}
+
+.pagination__item {
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  display: inline-block;
+  margin: 0 5px;
+  border: 1px solid #000;
+  vertical-align: middle;
+  .font-size(18);
+  text-align: center;
+  cursor: pointer;
+
+  &_next {
+
+  }
+
+  &_state_active {
+    background: #000;
+    color: #fff;
+  }
+
+  &_state_disabled {
+    display: none;
+  }
+}
