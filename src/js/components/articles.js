@@ -10,7 +10,7 @@ const DEFAULTS = {
         ACTIVE_ITEM: 'block__item_state_active'
     },
     PAGE: 1,
-    SORTING: ''
+    SORTING: 'new'
 };
 
 class Articles {

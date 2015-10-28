@@ -110,7 +110,7 @@ gulp.task('less', ['sprite'], function() {
         .pipe(gulp.dest('build/styles'));
 });
 
-gulp.task('compress', function() {
+gulp.task('compress', ['partials', 'handlebars'], function() {
     var b = browserify({
         entries: 'src/js/initialize.js',
         debug: true,
@@ -131,10 +131,11 @@ gulp.task('compress', function() {
 
 gulp.task('watch', function() {
     gulp.watch('src/js/**/*.js', ['compress']);
-    gulp.watch('src/js/**/*.hbs', ['partials', 'handlebars', 'compress']);
+    gulp.watch('src/js/**/*.hbs', ['compress']);
     gulp.watch('src/styles/icons/*.png', ['sprite', 'less']);
     gulp.watch('src/styles/**/*.less', ['less']);
     gulp.watch('src/templates/**/*.jade', ['templates']);
+    gulp.watch('src/i/**/*', ['copy']);
 });
 
 gulp.task('build', ['templates', 'sprite', 'copy', 'partials', 'handlebars', 'compress', 'less']);

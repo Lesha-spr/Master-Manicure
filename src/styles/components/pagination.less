@@ -21,8 +21,26 @@
   text-align: center;
   cursor: pointer;
 
-  &_next {
+  &_prev, &_next {
+    position: relative;
 
+    &:before {
+      .after();
+      top: 50%;
+      left: 50%;
+    }
+  }
+
+  &_prev:before {
+    .sprite(@i-pagination-prev);
+    margin-top: -@i-pagination-prev-height / 2;
+    margin-left: -@i-pagination-prev-width / 2;
+  }
+
+  &_next:before {
+    .sprite(@i-pagination-next);
+    margin-top: -@i-pagination-next-height / 2;
+    margin-left: -@i-pagination-next-width / 2;
   }
 
   &_state_active {
