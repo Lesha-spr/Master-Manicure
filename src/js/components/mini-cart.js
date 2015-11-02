@@ -3,7 +3,10 @@ import app from './../app.js';
 import AjaxError from './../errors/base.js';
 
 const DEFAULTS = {
-    ENTRIES: 0
+    ENTRIES: 0,
+    SELECTORS: {
+        INNER: '.mini-cart__inner'
+    }
 };
 
 class MiniCart {
@@ -11,7 +14,8 @@ class MiniCart {
         let $root = $(element);
 
         this.elems = {
-            $root: $root
+            $root: $root,
+            $inner: $root.find(DEFAULTS.SELECTORS.INNER)
         };
 
         this.initialize();
@@ -43,7 +47,7 @@ class MiniCart {
     render(data) {
         let template = app.templates['mini-cart'](data);
 
-        this.elems.$root.html(template);
+        this.elems.$inner.html(template);
     }
 }
 

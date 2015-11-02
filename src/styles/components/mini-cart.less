@@ -6,7 +6,26 @@
   z-index: 1;
   top: 20px;
   right: 40px;
-  .sprite(@i-mini-cart);
+}
+
+.mini-cart__inner {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: block;
+  border: 2px solid #1b1c1f;
+  background: #fff;
+
+  &:before {
+    content: '';
+    position: absolute;
+    .sprite(@i-mini-cart);
+    top: 50%;
+    left: 50%;
+    margin-top: -@i-mini-cart-height / 2;
+    margin-left: (-@i-mini-cart-width / 2) + 3px; //
+  }
 }
 
 .mini-cart__entries {
