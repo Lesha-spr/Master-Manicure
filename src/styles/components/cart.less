@@ -1,0 +1,43 @@
+@import "./../mixins/oban";
+@import "./../mixins/custom-mixins";
+@import "./../sprite";
+@import "./../vars";
+
+.cart__list {
+  .oban-list-unstyled();
+}
+
+.cart__item {
+  .oban-clearfix();
+  position: relative;
+}
+
+.cart__item-thumbnail {
+  width: 100px;
+  float: left;
+}
+
+.cart__item-info {
+  margin-left: 100px;
+}
+
+.cart__item-cols {
+  .checkout & {
+    .oban-grid-fluid(2, 0px, cart);
+  }
+}
+
+.cart__item-qty {
+  width: 2.5em;
+  text-align: right;
+}
+
+.cart__item-remove {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.cart__item-price {
+  text-align: right;
+}

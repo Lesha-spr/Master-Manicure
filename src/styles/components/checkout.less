@@ -1,0 +1,21 @@
+@import "./../mixins/oban";
+@import "./../mixins/custom-mixins";
+@import "./../sprite";
+@import "./../vars";
+
+.checkout {
+  .oban-grid-fluid(10, 40px, checkout, offset);
+}
+
+.checkout__shipping {
+  max-width: 850px;
+}
+
+.checkout__shipping-inner {
+  border-right: 1px dotted #bbb;
+  padding-right: 40px;
+}
+
+.checkout__submit {
+  .oban-grid-fluid(2, 10px);
+}

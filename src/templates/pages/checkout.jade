@@ -1,1 +1,66 @@
 extends ./../layouts/main
+
+block content
+    .main-content
+        .reducer.reducer_wide
+            h1 МОЙ ЗАКАЗ
+            .checkout
+                .checkout__shipping.column.checkout7
+                    .checkout__shipping-inner
+                        form.ui-form
+                            ul.ui-form__rows
+                                li.ui-form__row
+                                    .ui-form__label
+                                        label(for='name' required) Имя получателя
+                                    .ui-form__input
+                                        input(type='text' name='name' required)#name.ui-input.ui-input_wide
+                                li.ui-form__row
+                                    .ui-form__label
+                                        label(for='phone') Телефон
+                                    .ui-form__input
+                                        input(type='tel' name='phone' required)#phone.ui-input.ui-input_wide
+                                li.ui-form__row
+                                    .ui-form__label
+                                        label(for='email') Электронная почта
+                                    .ui-form__input
+                                        input(type='email' name='email' required)#email.ui-input.ui-input_wide
+                                li.ui-form__row
+                                    .ui-form__label
+                                        label(for='shipping_address') Адрес доставки
+                                    .ui-form__input
+                                        input(type='text' name='shipping_address')#shipping_address.ui-input.ui-input_wide
+                                li.ui-form__row
+                                    .ui-form__label
+                                        label(for='shipping_method') Способ доставки
+                                    .ui-form__input
+                                        select(name='shipping_method')#shipping_method.ui-select.ui-select_wide
+                                            option(value='0') Самовывоз (Киев)
+                                            option(value='1') Курьер (Киев)
+                                            option(value='2') Новая почта
+                                li.ui-form__row
+                                    .ui-form__label
+                                        label Оплата
+                                    .ui-form__input
+                                        label
+                                            input(type='radio' name='payment_method')
+                                            |Наличными - оплата при получении
+                                        br
+                                        label
+                                            input(type='radio' name='payment_method')
+                                            |Безналичный расчет
+                                li.ui-form__row
+                                    .ui-form__label
+                                        label(for='comment') Пожелания к заказу
+                                    .ui-form__input
+                                        textarea(name='comment' rows=8 resize=0)#comment.ui-textarea.ui-textarea_wide
+                                li.ui-form__row
+                                    .ui-form__label
+                                    .ui-form__input
+                                        .checkout__submit
+                                            .column1
+                                                button(type='submit').ui-button.ui-button_accent Заказ подтверждаю
+                                            .column1
+                                                span.ui-hint Оформляя заказ, вы соглашаетесь с&nbsp;
+                                                    span.ui-pseudo Политикой конфиденциальности
+                .checkout__cart.column.checkout3
+                    include ../components/cart

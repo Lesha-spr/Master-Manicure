@@ -1,0 +1,39 @@
+{
+  "entries": [
+    {
+      "src": "./../../i/product-1.jpg",
+      "category": "Маникюрный набор",
+      "title": "Zinger MSFE-804-G",
+      "article": 29811,
+      "price": 433,
+      "qty": 1,
+      "priceFormat": "грн"
+    },
+    {
+      "src": "./../../i/product-2.jpg",
+      "category": "Маникюрный набор",
+      "title": "Zinger MSFE-804-G",
+      "article": 29811,
+      "price": 433,
+      "qty": 1,
+      "priceFormat": "грн"
+    },
+    {
+      "src": "./../../i/product-3.jpg",
+      "category": "Маникюрный набор",
+      "title": "Zinger MSFE-804-G",
+      "article": 29811,
+      "price": 433,
+      "qty": 1,
+      "priceFormat": "грн"
+    }
+  ],
+  "shipping": {
+    "price": 0,
+    "priceFormat": "грн"
+  },
+  "total": {
+    "price": 950,
+    "priceFormat": "грн"
+  }
+}

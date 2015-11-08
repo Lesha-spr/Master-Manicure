@@ -3,6 +3,46 @@
 @import "mixins/custom-mixins";
 @import "sprite";
 
+.ui-form__rows {
+  .oban-list-unstyled();
+}
+
+.ui-form__row {
+  .oban-clearfix();
+  margin-bottom: 10px;
+}
+
+.ui-form__label {
+  width: 200px;
+  float: left;
+}
+
+.ui-form__input {
+  margin-left: 200px;
+}
+
+.ui-input {
+
+  &_wide {
+    width: 100%;
+  }
+}
+
+.ui-select {
+
+  &_wide {
+    width: 100%;
+  }
+}
+
+.ui-textarea {
+  resize: vertical;
+
+  &_wide {
+    width: 100%;
+  }
+}
+
 .ui-checkbox {
   vertical-align: middle;
 }
@@ -101,6 +141,12 @@
       }
     }
   }
+}
+
+.ui-pseudo {
+  &:extend(a);
+  cursor: pointer;
+  border-bottom: 1px dashed @colorRed;
 }
 
 .ui-button-set {

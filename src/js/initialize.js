@@ -16,6 +16,7 @@ import ReviewItem from './components/review-item.js'; app.ReviewItem = ReviewIte
 import Certificates from './components/certificates.js'; app.Certificates = Certificates;
 import Articles from './components/articles.js'; app.Articles = Articles;
 import Pagination from './components/pagination.js'; app.Pagination = Pagination;
+import Cart from './components/cart.js'; app.Cart = Cart;
 
 // Template
 import Template from './components/template.js'; app.Template = Template;
