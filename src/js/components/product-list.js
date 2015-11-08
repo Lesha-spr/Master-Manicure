@@ -24,6 +24,9 @@ class ProductList {
             $window: $(window)
         };
 
+        this.page = 1;
+        this.isLoading = false;
+        this.shouldAppend = false;
         this.initialize();
         this.bindEvents();
     }
@@ -34,28 +37,47 @@ class ProductList {
 
     bindEvents() {
         this.elems.$window.on('hashchange', this.getProducts.bind(this));
+        this.elems.$window.on('scroll', _.throttle(this.lazyLoad.bind(this), 200));
     }
 
     getProducts() {
         let data = $.bbq.getState();
+        let shouldAppend = this.shouldAppend === true;
 
         $.ajax({
             url: app.SERVICES.PRODUCTS,
             dataType: 'json',
             data: data,
             success: data => {
-                this.render(data);
+                this.render(data, shouldAppend);
             },
             error: (jqXhr, textStatus, errorThrown) => {
                 new AjaxError(...arguments);
             },
             beforeSend: () => {
+                this.shouldAppend = false;
+                this.isLoading = true;
                 app.Spinner.show(this.elems.$root);
             },
             complete: () => {
+                this.isLoading = false;
                 app.Spinner.hide(this.elems.$root);
             }
         });
+    }
+
+    lazyLoad() {
+        let page = $.bbq.getState().page || 1;
+        let scrollTop = this.elems.$window.scrollTop() + this.elems.$window.height();
+        let bottomEdge = this.elems.$list.find(DEFAULTS.SELECTORS.ITEM).last().offset().top;
+
+        this.shouldAppend = true;
+
+        if (scrollTop >= bottomEdge && !this.isLoading) {
+            $.bbq.pushState({
+                page: ++page
+            });
+        }
     }
 
     rotateItem(event) {

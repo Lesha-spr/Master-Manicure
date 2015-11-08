@@ -3,33 +3,36 @@ block vars
 
 nav.nav(data-module='Navigation #{extraModules}')
     .nav__wrapper
-        .nav__row.nav__row_top
-            .nav__reducer
-                a.nav__logo(href='/')
-                include ./phone
-        .nav__row.nav__row_middle
-            .nav__reducer
-                include ./filters
-        .nav__row.nav__row_bottom
-            .nav__cell
-                ul.nav__sections
-                    li.nav__sections__item
-                        a.nav__sections__item__link(href='#') О нас
-                    li.nav__sections__item
-                        a.nav__sections__item__link(href='#') Сертификаты
-                    li.nav__sections__item
-                        a.nav__sections__item__link(href='#') Статьи
-                    li.nav__sections__item
-                        a.nav__sections__item__link(href='#') Оплата и доставка
-                    li.nav__sections__item
-                        a.nav__sections__item__link(href='#') Контакты
-                .nav__copy © 2014 Все права защищены
-                    br
-                    |Сделано в&nbsp;
-                    a.nav__copy__link(href='#') YellowPoint
-                .nav__menu-hint Оплата и
-                    br
-                    |доставка
-                a.nav__menu(href='#')
-                    span.nav__menu__link(href='#')
+        .nav__mobile
+            a.nav__logo(href='/')
+            a.nav__menu(href='#')
+                span.nav__menu__link(href='#')
+        .nav__main
+            .nav__row.nav__row_top
+                .nav__reducer
+                    a.nav__logo(href='/')
+                    include ./phone
+            .nav__row.nav__row_middle
+                .nav__reducer
+                    include ./filters
+            .nav__row.nav__row_bottom
+                .nav__cell
+                    ul.nav__sections
+                        li.nav__sections__item
+                            a.nav__sections__item__link(href='#') О нас
+                        li.nav__sections__item
+                            a.nav__sections__item__link(href='#') Сертификаты
+                        li.nav__sections__item
+                            a.nav__sections__item__link(href='#') Статьи
+                        li.nav__sections__item
+                            a.nav__sections__item__link(href='#') Оплата и доставка
+                        li.nav__sections__item
+                            a.nav__sections__item__link(href='#') Контакты
+                    .nav__copy © 2014 Все права защищены
+                        br
+                        |Сделано в&nbsp;
+                        a.nav__copy__link(href='#') YellowPoint
+                    .nav__menu-hint Оплата и
+                        br
+                        |доставка
     block side
