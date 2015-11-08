@@ -4,6 +4,7 @@ import app from './app.js';
 import start from './start.js';
 
 // Components
+import Spinner from './components/spinner.js'; app.Spinner = new Spinner();
 import Navigation from './components/navigation.js'; app.Navigation = Navigation;
 import MiniCart from './components/mini-cart.js'; app.MiniCart = MiniCart;
 import Filters from './components/filters.js'; app.Filters = Filters;

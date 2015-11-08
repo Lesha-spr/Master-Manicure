@@ -45,6 +45,12 @@ class Cart {
             },
             error: (jqXhr, textStatus, errorThrown) => {
                 new AjaxError(...arguments);
+            },
+            beforeSend: () => {
+                app.Spinner.show(this.elems.$root);
+            },
+            complete: () => {
+                app.Spinner.hide(this.elems.$root);
             }
         });
     }

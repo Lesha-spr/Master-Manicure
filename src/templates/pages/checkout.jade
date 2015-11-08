@@ -1,4 +1,7 @@
-extends ./../layouts/main
+extends ./../layouts/base
+
+block navigation
+    include ./../components/navigation
 
 block content
     .main-content
@@ -42,7 +45,7 @@ block content
                                         label Оплата
                                     .ui-form__input
                                         label
-                                            input(type='radio' name='payment_method')
+                                            input(type='radio' name='payment_method' checked)
                                             |Наличными - оплата при получении
                                         br
                                         label

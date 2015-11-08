@@ -1,11 +1,7 @@
-// Template
 import app from './../app.js';
 import $ from 'jquery';
 
 const DEFAULTS = {
-    SELECTORS: {
-        ITEM: '.block__item'
-    },
     CLASSES: {
         ACTIVE_ITEM: 'block__item_state_active'
     },
@@ -19,7 +15,6 @@ class Articles {
 
         this.elems = {
             $root: $root,
-            $item: $root.find(DEFAULTS.SELECTORS.ITEM),
             $window: $(window)
         };
 
@@ -48,6 +43,12 @@ class Articles {
             data: data,
             success: data => {
                 this.render(data);
+            },
+            beforeSend: () => {
+                app.Spinner.show(this.elems.$root);
+            },
+            complete: () => {
+                app.Spinner.hide(this.elems.$root);
             }
         });
     }
