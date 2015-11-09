@@ -4,11 +4,9 @@
 @import "./../vars";
 
 .carousel {
+  position: relative;
   height: 100vh;
-
-  &_state_loading {
-    background: rgba(0, 0, 0, 0.7);
-  }
+  overflow-y: hidden;
 }
 
 .slick-list,
@@ -24,6 +22,10 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+
+  .carousel_state_loading & {
+    visibility: hidden;
+  }
 }
 
 .carousel__image {

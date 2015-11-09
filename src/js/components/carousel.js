@@ -28,10 +28,12 @@ class Carousel {
             $window: $(window)
         };
 
+        app.Spinner.show(this.elems.$root);
         this.bindEvents();
     }
 
     initialize() {
+        app.Spinner.hide(this.elems.$root);
         this.elems.$root.slick(this.slickOptions);
 
         this.elems.$root.removeClass(DEFAULTS.CLASSES.LOADING);
