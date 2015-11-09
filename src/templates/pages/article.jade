@@ -2,7 +2,7 @@ extends ./../layouts/main
 
 block content
     .main-content
-        .reducer.reducer_decorated
+        .reducer.reducer_supressed.reducer_decorated
             img(src='./../../i/article-1.jpg' alt='article-1')
             h1 Интересные факты о маникюре
             section.article__section
@@ -25,6 +25,6 @@ block content
                 .article__pub-title Автор
                 .article__pub-author Валентина Литвицкая
                 .article__pub-date 08 августа 2015
-        .reducer
+        .reducer.reducer_supressed
             include ./../components/mini-nav
         include ../components/reviews

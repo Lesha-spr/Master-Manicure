@@ -4,20 +4,33 @@ block content
     .main-content
         .content
             .product
-                .column2
+                include ./../components/product-fixed
+                .column5.product__thumbnail
                     img(src='./../../i/product.jpg' alt='Product')
-                .column3
-                    h2 Маникюрный набор
-                    h1 Zauber MS-508
-                    .a Артикул 29811
-                    .rating.rating_product
-                        .rating__stars
-                            .rating__stars_all
-                            .rating__stars_active
-                            |4.7 (69 голосов)
+                .column6.product__info
+                    h2.product__category Маникюрный набор
+                    h1.product__title Zauber MS-508
+                    .product__article Артикул 29811
+                    .product__rows
+                        .product__row
+                            .rating.rating_product
+                                .rating__stars
+                                    .rating__stars_all
+                                    .rating__stars_active
+                            span.product__votes 4.7 (69 голосов)
                             span.ui-pseudo_style1.product__reviews-counter 15 отзывов
-                    .product__row
-                        span.product__price 480
-                        span.product__format грн
-                        button.ui-button.ui-button_accent Купить
-                        button.ui-button.ui-button_simple Купить в 1 клик
+                        .product__row.product__row_extended
+                            .product__price-box
+                                span.product__price 480
+                                span.product__format грн
+                            .product__actions.ui-buttons
+                                button.ui-button.ui-button_accent Купить
+                                button.ui-button.ui-button_simple Купить в 1 клик
+                        .product__row
+                            span.ui-pseudo.product__delivery-promo Бесплатная доставка по Украине
+                            br
+                            .product__share.ui-button-set
+                                .ui-button.ui-button_link Поделиться
+                                a(href='#').ui-button.ui-button_link.ui-button_link_icon.ui-button_link_icon_facebook
+                                a(href='#').ui-button.ui-button_link.ui-button_link_icon.ui-button_link_icon_twitter
+                                a(href='#').ui-button.ui-button_link.ui-button_link_icon.ui-button_link_icon_google

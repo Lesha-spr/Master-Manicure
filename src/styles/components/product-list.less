@@ -4,7 +4,7 @@
 @import "./../vars";
 
 .product-list__wrapper {
-  padding: 0 106px 0 30px;
+  padding: 0 30px;
   position: relative;
   min-height: 400px;
 }
@@ -92,25 +92,16 @@
 }
 
 @media (max-width: (@endMobile + 1)) {
-  .product-list__wrapper {
-    padding: 0 140px 0 68px;
-  }
-
   .product-list {
     .oban-list-unstyled();
     .oban-grid-fluid(2, 96px);
   }
+}
 
-  .product-list__item__category {
-    .font-size(11);
-  }
-
-  .product-list__item__title {
-    .font-size(16);
-  }
-
-  .product-list__item__article {
-    .font-size(10);
+@media (max-width: 768px) {
+  .product-list {
+    .oban-list-unstyled();
+    .oban-grid-fluid(1, 96px);
   }
 }
 

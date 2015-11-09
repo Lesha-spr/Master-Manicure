@@ -80,7 +80,7 @@
 
   &_simple {
     border-color: #b40000;
-    background: #fff;
+    background: none;
     color: #b40000;
     .font-size(17);
 
@@ -108,7 +108,7 @@
     text-transform: uppercase;
 
     &:hover {
-      background: #b4b4b4;
+      background: #000;
       color: #fff;
     }
 
@@ -168,6 +168,7 @@
 
 .ui-pseudo {
   &:extend(a);
+  cursor: pointer;
   border-bottom: 1px dashed @colorRed;
 }
 
@@ -179,6 +180,17 @@
 
 .ui-button-set {
   display: inline-block;
+}
+
+.ui-buttons {
+
+  .ui-button {
+    margin-right: 5px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
 }
 
 .ui-social {

@@ -4,6 +4,7 @@
 
 html {
   .oban-box-sizing(border-box);
+  font-size: @mainFontSize;
 }
 
 *, *:before, *:after {
@@ -17,9 +18,21 @@ body {
 
 body {
   font-family: @fontUbuntu;
-  font-size: @mainFontSize;
+  font-size: 1rem;
   line-height: 1.2;
 }
+
+//@media screen and (max-width: 1240px) {
+//  html {
+//    font-size: 11px;
+//  }
+//}
+//
+//@media screen and (min-width: 1241px) and (max-width: 1365px) {
+//  html {
+//    font-size: 12px;
+//  }
+//}
 
 h1 {
   .font-size(24);
@@ -74,9 +87,9 @@ img {
 }
 
 .content {
-  max-width: 1008px;
+  max-width: 1440px;
   margin: auto;
-  padding: 0 40px;
+  padding: 0 20px;
 
   ul {
     .oban-list-unstyled();
@@ -113,6 +126,10 @@ img {
 
   &_wide {
     max-width: 100%;
+  }
+
+  &_supressed {
+    max-width: 830px;
   }
 }
 
