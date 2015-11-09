@@ -1,1 +1,23 @@
 extends ./../layouts/main
+
+block content
+    .main-content
+        .content
+            .product
+                .column2
+                    img(src='./../../i/product.jpg' alt='Product')
+                .column3
+                    h2 Маникюрный набор
+                    h1 Zauber MS-508
+                    .a Артикул 29811
+                    .rating.rating_product
+                        .rating__stars
+                            .rating__stars_all
+                            .rating__stars_active
+                            |4.7 (69 голосов)
+                            span.ui-pseudo_style1.product__reviews-counter 15 отзывов
+                    .product__row
+                        span.product__price 480
+                        span.product__format грн
+                        button.ui-button.ui-button_accent Купить
+                        button.ui-button.ui-button_simple Купить в 1 клик

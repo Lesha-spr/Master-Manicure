@@ -1,0 +1,22 @@
+@import "./../mixins/oban";
+@import "./../mixins/custom-mixins";
+@import "./../sprite";
+@import "./../vars";
+
+.product {
+  .oban-grid-fluid(5, 20px);
+}
+
+.product__price,
+.product__format {
+  vertical-align: middle;
+  color: #b40000;
+}
+
+.product__price {
+  .font-size(23);
+}
+
+.product__format {
+  .font-size(14);
+}
