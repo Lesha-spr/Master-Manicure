@@ -7,6 +7,7 @@ const DEFAULTS = {
         ITEM: '.filters__item',
         SIDE: '.filters__side',
         CONTROL: '.filters__control',
+        CLOSE: '.filters__close',
         NAV_WRAPPER: '.nav__wrapper',
         NAV_MENU: '.nav__menu',
         NAV: '.nav__main'
@@ -31,7 +32,8 @@ class Filters {
             $side: $root.find(DEFAULTS.SELECTORS.SIDE),
             $navWrapper: $root.find(DEFAULTS.SELECTORS.NAV_WRAPPER),
             $nav: $root.find(DEFAULTS.SELECTORS.NAV),
-            $html: $(document.documentElement)
+            $html: $(document.documentElement),
+            $window: $(window)
         };
 
         this.initialize();
@@ -53,7 +55,14 @@ class Filters {
     bindEvents() {
         this.elems.$root.on('click', DEFAULTS.SELECTORS.ITEM, this.chooseCategory.bind(this));
         this.elems.$root.on('click', DEFAULTS.SELECTORS.NAV_MENU, this.toggleMenu.bind(this));
+        this.elems.$root.on('click', DEFAULTS.SELECTORS.CLOSE, this.closeFilters.bind(this));
         this.elems.$root.on('change', DEFAULTS.SELECTORS.CONTROL, this.pushState.bind(this));
+    }
+
+    closeFilters(event) {
+        event.preventDefault();
+
+        this.elems.$html.removeClass(DEFAULTS.CLASSES.FILTER_EXPANDED);
     }
 
     toggleMenu(event) {
@@ -67,6 +76,7 @@ class Filters {
         let $form = $(event.currentTarget.form);
         let state = $.deparam($form.serialize());
 
+        this.elems.$window.scrollTop(0);
         state.page = 1;
 
         $.bbq.pushState(state);
@@ -86,6 +96,7 @@ class Filters {
         $current.toggleClass(DEFAULTS.CLASSES.ACTIVE_ITEM, !isCurrentActive);
 
         if (!isCurrentActive && !$current.hasClass(DEFAULTS.CLASSES.LAST_ACTIVE_ITEM)) {
+            this.elems.$window.scrollTop(0);
             $.bbq.pushState({
                 category: $current.data('category'),
                 page: 1

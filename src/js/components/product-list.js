@@ -24,7 +24,6 @@ class ProductList {
             $window: $(window)
         };
 
-        this.page = 1;
         this.isLoading = false;
         this.shouldAppend = false;
         this.initialize();
@@ -71,9 +70,8 @@ class ProductList {
         let scrollTop = this.elems.$window.scrollTop() + this.elems.$window.height();
         let bottomEdge = this.elems.$list.find(DEFAULTS.SELECTORS.ITEM).last().offset().top;
 
-        this.shouldAppend = true;
-
         if (scrollTop >= bottomEdge && !this.isLoading) {
+            this.shouldAppend = true;
             $.bbq.pushState({
                 page: ++page
             });

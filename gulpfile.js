@@ -37,7 +37,7 @@ gulp.task('sprite', function () {
     return merge(imgStream, cssStream);
 });
 
-gulp.task('handlebars', function(){
+gulp.task('handlebars', ['partials'], function(){
     gulp.src('src/js/templates/*.hbs')
         .pipe(handlebars({
             handlebars: require('handlebars')
@@ -110,7 +110,7 @@ gulp.task('less', ['sprite'], function() {
         .pipe(gulp.dest('build/styles'));
 });
 
-gulp.task('compress', ['partials', 'handlebars'], function() {
+gulp.task('compress', ['handlebars'], function() {
     var b = browserify({
         entries: 'src/js/initialize.js',
         debug: true,
@@ -130,7 +130,7 @@ gulp.task('compress', ['partials', 'handlebars'], function() {
 });
 
 gulp.task('watch', function() {
-    gulp.watch('src/js/**/*.js', ['compress']);
+    gulp.watch(['src/js/**/*.js', '!src/js/partials.js', '!src/js/templates.js'], ['compress']);
     gulp.watch('src/js/**/*.hbs', ['compress']);
     gulp.watch('src/styles/icons/*.png', ['sprite', 'less']);
     gulp.watch('src/styles/**/*.less', ['less']);
@@ -138,5 +138,5 @@ gulp.task('watch', function() {
     gulp.watch('src/i/**/*', ['copy']);
 });
 
-gulp.task('build', ['templates', 'sprite', 'copy', 'partials', 'handlebars', 'compress', 'less']);
-gulp.task('default', ['templates', 'sprite', 'copy', 'partials', 'handlebars', 'compress', 'less', 'watch']);
+gulp.task('build', ['templates', 'sprite', 'copy', 'handlebars', 'compress', 'less']);
+gulp.task('default', ['templates', 'sprite', 'copy', 'handlebars', 'compress', 'less', 'watch']);
