@@ -76,3 +76,11 @@
 .reviews__more {
   text-align: center;
 }
+
+@media screen and (max-width: @endMobile) {
+  .reviews__list-item {
+    [class*=column] {
+      width: 100%;
+    }
+  }
+}

@@ -22,11 +22,17 @@ body {
   line-height: 1.2;
 }
 
-//@media screen and (max-width: 1240px) {
-//  html {
-//    font-size: 11px;
-//  }
-//}
+@media screen and (max-width: 1365px) {
+  html {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: @endMobile) {
+  html {
+    font-size: 11px;
+  }
+}
 //
 //@media screen and (min-width: 1241px) and (max-width: 1365px) {
 //  html {
@@ -157,7 +163,7 @@ img {
 
 @media all and (max-width: (@endMobile + 1)) {
   .reducer {
-    padding: 0 55px;
+    padding: 0 20px;
 
     &_decorated {
       padding-bottom: 32px;

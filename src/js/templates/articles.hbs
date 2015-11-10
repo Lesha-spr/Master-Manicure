@@ -1,5 +1,5 @@
 {{#each entries}}
-    <li class="articles__item reducer reducer_decorated">
+    <li class="articles__item reducer reducer_decorated reducer_supressed">
         <img src="{{src}}"/>
         <div class="articles__item-title">{{title}}</div>
         <p>{{description}}</p>
@@ -10,7 +10,9 @@
                 {{/intl}}
                 <a class="articles__item-comments" href="{{href}}">{{comments}}</a>
             </div>
-            <a class="ui-button ui-button_link" href="{{href}}">Читать</a>
+            <div class="articles__item-right-info">
+                <a class="ui-button ui-button_link" href="{{href}}">Читать</a>
+            </div>
         </div>
     </li>
 {{/each}}
