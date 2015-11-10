@@ -1,0 +1,140 @@
+@import "./../mixins/oban";
+@import "./../mixins/custom-mixins";
+@import "./../sprite";
+@import "./../vars";
+
+.product-menu {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 250px;
+  right: 0;
+  padding: 10px;
+  background: #fff;
+  box-shadow: 0 1px 14px rgba(0, 0, 0, 0.2);
+
+  .g-filter-expanded & {
+    left: 270px;
+  }
+
+  .oban-clearfix();
+}
+
+.product-menu__details {
+  overflow: hidden;
+  float: left;
+}
+
+.product-menu__details-thumbnail {
+  width: 105px;
+  float: left;
+}
+
+.product-menu__details-info {
+  margin-left: 115px;
+}
+
+.product-menu__details-title {
+  .font-size(20);
+}
+
+.product-menu__details-article {
+  .font-size(12);
+  color: #585858;
+}
+
+.product-menu__actions {
+  float: left;
+  overflow: hidden;
+  padding: 0 50px;
+}
+
+.product-menu__info {
+  float: left;
+  font-size: 0;
+}
+
+.product-menu__info-item {
+  display: inline-block;
+  vertical-align: middle;
+  border-left: 1px solid #b2b2b2;
+  padding: 0 15px;
+  .font-size(14);
+  font-weight: lighter;
+}
+
+.product-menu__nav {
+  text-align: justify;
+
+  &_center {
+    text-align: center;
+  }
+
+  &_empty {
+    .product-menu__nav-item {
+      visibility: hidden;
+    }
+  }
+
+  &:after {
+    content: '';
+    display: inline-block;
+    width: 100%;
+  }
+}
+
+.product-menu__nav-item {
+  display: inline-block;
+  padding: 10px;
+
+  &:before {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 6px;
+    border: 1px solid #999;
+  }
+
+  &_state_active {
+    border-color: #b40000;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .product-menu {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1366px) {
+  .product-menu {
+    .product__price-box,
+    .product__actions {
+      text-align: center;
+      float: none;
+    }
+
+    .product__price-box {
+      margin-bottom: 4px;
+    }
+
+    .product__button {
+      display: block;
+      width: 100%;
+      margin-right: 0;
+      .font-size(12);
+    }
+
+    .ui-button_accent {
+      margin-bottom: 4px;
+    }
+
+    .product__reviews-counter {
+      display: none;
+    }
+
+    .product-menu__details {
+      width: 340px;
+    }
+  }
+}

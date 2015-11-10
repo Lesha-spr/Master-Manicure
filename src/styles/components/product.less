@@ -52,7 +52,6 @@
 }
 
 .product__price-box {
-  line-height: 2.5rem;
   float: left;
 }
 
@@ -87,6 +86,35 @@
 
 .product__share {
   margin-top: 74px;
+}
+
+.product__description {
+  position: relative;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  &:before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 70%;
+    background: #f3f3f3;
+  }
+}
+
+.product__description-cols {
+  .oban-grid-fluid(2, 20px);
+  padding: 100px 0;
+}
+
+.product__description {
+  p {
+    .font-size(20);
+    font-weight: lighter;
+  }
 }
 
 @media screen and (max-width: @endMobile) {
