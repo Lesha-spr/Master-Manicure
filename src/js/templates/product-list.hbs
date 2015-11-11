@@ -1,7 +1,7 @@
 {{#each entries}}
     <li class="column1">
         <div class="product-list__item__perspective">
-            <div class="product-list__item product-list__item_state_loading">
+            <a href="/Master-Manicure/build/templates/pages/product-details.html" class="product-list__item">
                 <div class="product-list__item__table">
                     <div class="product-list__item__table__cell">
                         <img class="product-list__item__img" src="{{src}}"/>
@@ -9,20 +9,21 @@
                 </div>
                 <div class="product-list__item__info">
                     <div class="product-list__item__category">{{category}}</div>
-                    <div class="product-list__item__title">
-                        <a class="ui-link" href="/Master-Manicure/build/templates/pages/product-details.html">{{title}}</a>
-                    </div>
+                    <div class="product-list__item__title">{{title}}</div>
                     <div class="product-list__item__article">Арт.{{article}}</div>
                     {{> rating}}
                     <div class="product-list__item__actions">
                         <div class="column1">
                             <span class="product-list__item__price">{{price}}</span> <span class="product-list__item__format">{{priceFormat}}</span></div>
                         <div class="column1 product-list__item__actions__buy">
-                            <button class="ui-button ui-button_accent ui-button_small">Купить</button>
+                            <form data-module="AddToCart">
+                                <input type="hidden" name='product' value='product-000001'>
+                                <button type="submit" data-product-id='product-000001' class="ui-button ui-button_accent ui-button_small">Купить</button>
+                            </form>
                         </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
     </li>
 {{/each}}

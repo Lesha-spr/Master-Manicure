@@ -78,18 +78,11 @@ class ProductList {
         }
     }
 
-    rotateItem(event) {
-        let $current = $(event.currentTarget);
-
-        $current.parents(DEFAULTS.SELECTORS.ITEM).removeClass(DEFAULTS.CLASSES.ITEM_LOADING);
-    }
-
     render(data, shouldAppend) {
         let template = app.templates['product-list'](data);
 
         this.elems.$list[shouldAppend ? 'append' : 'html'](template);
-
-        this.elems.$root.find(DEFAULTS.SELECTORS.IMAGE).one('load', this.rotateItem.bind(this));
+        app.submodules(this.elems.$list, {});
     }
 }
 

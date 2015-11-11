@@ -3,7 +3,7 @@ import $ from 'jquery';
 
 const DEFAULTS = {
     SELECTORS: {
-        BUTTON: '.add-to-cart'
+        ONE_CLICK_BUY: '.one-click-buy'
     },
     CLASSES: {
         ACTIVE_BUTTON: 'ui-button_state_active'
@@ -17,17 +17,10 @@ class AddToCart {
         let $root = $(element);
 
         this.elems = {
-            $root: $root,
-            $button: $root.find(DEFAULTS.SELECTORS.BUTTON)
+            $root: $root
         };
 
-        this.initialize();
         this.bindEvents();
-    }
-
-    initialize() {
-        // Initialize logic
-        // this.render(); Example
     }
 
     bindEvents() {
@@ -38,6 +31,7 @@ class AddToCart {
         let data = $.deparam(this.elems.$root.serialize());
         let selector = `[data-product-id="${data.product}"]`;
 
+        event.stopPropagation();
         event.preventDefault();
 
         $.ajax({

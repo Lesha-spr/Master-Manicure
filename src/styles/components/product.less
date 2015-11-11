@@ -156,6 +156,24 @@
     .oban-grid-fluid(1, 0px);
   }
 
+  .product__description:before {
+    width: 100%;
+  }
+
+  .product__description-cols {
+    .oban-grid-fluid(1, 0px);
+  }
+
+  .product__button {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 1240px) {
+  .product__actions {
+    float: none;
+  }
+
   .product__price-box {
     margin-bottom: 10px;
     float: none;
@@ -163,16 +181,12 @@
   }
 
   .product__button {
-    width: 100%;
     margin-right: 0;
     margin-bottom: 10px;
-  }
 
-  .product__description:before {
-    width: 100%;
-  }
-
-  .product__description-cols {
-    .oban-grid-fluid(1, 0px);
+    &:after {
+      content: '';
+      display: block;
+    }
   }
 }

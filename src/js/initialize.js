@@ -2,9 +2,11 @@
 import $ from 'jquery';
 import app from './app.js';
 import start from './start.js';
+import submodules from './submodules.js';
 
 // Components
 import Spinner from './components/spinner.js'; app.Spinner = new Spinner();
+import Popup from './components/popup.js'; app.Popup = new Popup();
 import Navigation from './components/navigation.js'; app.Navigation = Navigation;
 import MiniCart from './components/mini-cart.js'; app.MiniCart = MiniCart;
 import Filters from './components/filters.js'; app.Filters = Filters;
@@ -21,10 +23,12 @@ import Cart from './components/cart.js'; app.Cart = Cart;
 import AddToCart from './components/add-to-cart.js'; app.AddToCart = AddToCart;
 import Checkout from './components/checkout.js'; app.Checkout = Checkout;
 import Recommendations from './components/recommendations.js'; app.Recommendations = Recommendations;
+import Delivery from './components/delivery.js'; app.Delivery = Delivery;
 
 // Template
 import Template from './components/template.js'; app.Template = Template;
 
+app.submodules = submodules;
 app.start = start;
 
 $(app.start);

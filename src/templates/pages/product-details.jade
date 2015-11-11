@@ -26,10 +26,10 @@ block content
                             form(data-module='AddToCart').product__actions.ui-buttons
                                 // NOTE: we need this double to make easier to find all such buttons on page/component
                                 input(type='hidden' name='product' value='product-000001')
-                                button(data-product-id='product-000001').ui-button.ui-button_accent.product__button Купить
-                                button.ui-button.ui-button_simple.product__button Купить в 1 клик
+                                button(data-product-id='product-000001' type='submit').ui-button.ui-button_accent.product__button Купить
+                                a(href='/Master-Manicure/build/templates/pages/checkout.html').ui-button.ui-button_simple.product__button Купить в 1 клик
                         .product__row
-                            span.ui-pseudo.product__delivery-promo Бесплатная доставка по Украине
+                            span(data-module='Delivery').ui-pseudo.product__delivery-promo Бесплатная доставка по Украине
                             br
                             .product__share.ui-button-set
                                 .ui-button.ui-button_link Поделиться
@@ -63,4 +63,5 @@ block content
                 button.ui-button.ui-button_simple Написать отзыв
         include ./../components/reviews
         .recommendations.product-list__wrapper(data-module='Recommendations')
+            h2.recommendations__title Также рекомендуем
             ul.product-list

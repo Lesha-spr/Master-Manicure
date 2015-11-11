@@ -41,6 +41,7 @@
     "jquery.inputmask": "^3.2.3",
     "jquery.roundabout": "^2.4.4",
     "lodash": "^3.10.1",
+    "magnific-popup": "^1.0.0",
     "merge-stream": "^1.0.0",
     "querystring": "^0.2.0",
     "slick-carousel": "^1.5.8",
