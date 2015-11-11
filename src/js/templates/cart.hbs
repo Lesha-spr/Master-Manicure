@@ -6,15 +6,18 @@
         </div>
         <div class="cart__item-info">
             <div class="cart__item__category">{{category}}</div>
-            <div class="cart__item__title">{{title}}</div>
-            <div class="cart__item-cols">
-                <div class="cart1 column">
+            <div class="cart__item__title">
+                <a class="ui-link" href="/Master-Manicure/build/templates/pages/product-details.html">{{title}}</a>
+            </div>
+            <div class="cart__item-summary">
+                <div class="cart__item-summary-cell">
                     <label>
                         <input class="cart__item-qty" name="qty" type="number" min="1" value="{{qty}}"/>
                     </label>
                     шт.
                 </div>
-                <div class="cart__item-price cart1 column">{{price}} {{priceFormat}}</div>
+                <div class="cart__item-price cart__item-summary-cell">
+                    <span class="product__price">{{price}}</span><span class="product__format">{{priceFormat}}</span></div>
             </div>
             <button class="cart__item-remove ui-close">remove</button>
         </div>
@@ -23,22 +26,24 @@
 
 {{#if entries.length}}
     <li class="cart__item">
-        <div class="cart__item-cols">
-            <div class="cart1 column">Доставка</div>
-            <div class="cart__item-price cart1 column">
-                {{#if shipping.price}}
-                    {{shipping.price}} {{shipping.priceFormat}}
-                {{else}}
-                    Бесплатно
-                {{/if}}
+        <div class="cart__item-summary">
+            <div class="cart__item-summary-cell">Доставка</div>
+            <div class="cart__item-price cart__item-summary-cell">
+                <span class="product__price">
+                    {{#if shipping.price}}
+                        {{shipping.price}} {{shipping.priceFormat}}
+                    {{else}}
+                        Бесплатно
+                    {{/if}}
+                </span>
             </div>
         </div>
     </li>
     <li class="cart__item">
-        <div class="cart__item-cols">
-            <div class="cart1 column">К оплате</div>
-            <div class="cart__item-price cart1 column">
-                {{total.price}} {{total.priceFormat}}
+        <div class="cart__item-summary">
+            <div class="cart__item-summary-cell">К оплате</div>
+            <div class="cart__item-price cart__item-summary-cell">
+                <span class="product__price">{{total.price}}</span><span class="product__format">{{total.priceFormat}}</span>
             </div>
         </div>
     </li>

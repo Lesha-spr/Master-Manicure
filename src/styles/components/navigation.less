@@ -31,6 +31,13 @@
   }
 }
 
+.nav__back {
+  display: none;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
 .nav__cell {
   display: table-cell;
   vertical-align: bottom;
@@ -90,7 +97,7 @@
 
 .nav__sections__item__link {
   display: block;
-  color: #fff;
+  color: #cbcbcb;
   text-decoration: none;
 
   &:hover {
@@ -102,10 +109,11 @@
 .nav__copy {
   .font-size(12);
   font-weight: normal;
+  color: #a3a3a3;
 }
 
 .nav__copy__link {
-  color: @colorOrange;
+  color: #a3a3a3;
   text-decoration: none;
 }
 
@@ -182,5 +190,16 @@
 
   .nav__menu {
     display: block;
+  }
+
+  .nav__sections__item,
+  .nav__copy {
+    .font-size(16);
+  }
+
+  .nav__back {
+    .nav__wrapper_expanded & {
+      display: block;
+    }
   }
 }

@@ -7,6 +7,10 @@
   .oban-list-unstyled();
 }
 
+.filters__close {
+  margin-bottom: 10px;
+}
+
 .filters__item {
   cursor: pointer;
 
@@ -112,10 +116,27 @@
 }
 
 @media (max-width: @endMobile) {
+  .filters__title {
+    .font-size(26);
+  }
+
+  .filters__set__title {
+    .font-size(20);
+  }
+
+  .filters__set__item {
+    .font-size(18);
+  }
+
+  .filters__link {
+    .font-size(18);
+    &, .filters__item:first-child & {
+      border: 0;
+    }
+  }
 
   .filters__side {
     width: auto;
-    padding-left: 70px;
   }
 }
 

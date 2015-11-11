@@ -18,7 +18,11 @@
   position: relative;
 
   &_all {
-    .sprite(@i-rating)
+    .sprite(@i-rating);
+
+    .rating_summary & {
+      .sprite(@i-rating-big);
+    }
   }
 
   &_active {
@@ -26,6 +30,10 @@
     top: 0;
     left: 0;
     .sprite(@i-rating-active);
+
+    .rating_summary & {
+      .sprite(@i-rating-big-active);
+    }
   }
 }
 

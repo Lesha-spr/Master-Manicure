@@ -6,6 +6,9 @@ const DEFAULTS = {
     ENTRIES: 0,
     SELECTORS: {
         INNER: '.mini-cart__inner'
+    },
+    CLASSES: {
+        TOGGLING: 'mini-cart__inner_state_toggling'
     }
 };
 
@@ -27,8 +30,16 @@ class MiniCart {
     }
 
     bindEvents() {
-        app.pubsub.subscribe(app.EVENTS.UPDATE_CART, this.getCart.bind(this));
+        this.elems.$inner.on('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', () => {
+            this.elems.$inner.removeClass(DEFAULTS.CLASSES.TOGGLING);
+        });
+        app.pubsub.subscribe(app.EVENTS.UPDATE_CART, this.onUpdateCart.bind(this));
         app.pubsub.subscribe(app.EVENTS.IN_YOUR_CART, this.render);
+    }
+
+    onUpdateCart() {
+        this.elems.$inner.addClass(DEFAULTS.CLASSES.TOGGLING);
+        this.getCart();
     }
 
     getCart() {

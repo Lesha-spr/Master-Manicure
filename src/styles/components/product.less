@@ -3,7 +3,7 @@
 @import "./../sprite";
 @import "./../vars";
 
-.product {
+.product__inner {
   .oban-grid-fluid(2, 30px);
   max-width: 1366px;
   padding-top: 60px;
@@ -117,8 +117,62 @@
   }
 }
 
+.product {
+  h2 {
+    .font-size(26);
+    font-weight: lighter;
+    text-transform: uppercase;
+  }
+}
+
+.product__params {
+  padding: 20px 0;
+}
+
+.product__params-thumbnail {
+  text-align: center;
+}
+
+.product__rating {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.product__rating-result {
+  .font-size(24);
+  font-weight: lighter;
+  color: #b40000;
+  margin: 10px 0;
+}
+
+.product__rating-resume {
+  .font-size(18);
+  font-weight: lighter;
+  margin-bottom: 10px;
+}
+
 @media screen and (max-width: @endMobile) {
-  .product {
+  .product__inner {
+    .oban-grid-fluid(1, 0px);
+  }
+
+  .product__price-box {
+    margin-bottom: 10px;
+    float: none;
+    text-align: center;
+  }
+
+  .product__button {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .product__description:before {
+    width: 100%;
+  }
+
+  .product__description-cols {
     .oban-grid-fluid(1, 0px);
   }
 }

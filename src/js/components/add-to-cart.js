@@ -31,29 +31,26 @@ class AddToCart {
     }
 
     bindEvents() {
-        this.elems.$root.on('submit', this.addToCart.bind(this));
+        this.elems.$root.one('submit', this.addToCart.bind(this));
     }
 
     addToCart(event) {
+        let data = $.deparam(this.elems.$root.serialize());
+        let selector = `[data-product-id="${data.product}"]`;
+
         event.preventDefault();
-
-        if (this.elems.$button.hasClass(DEFAULTS.CLASSES.ACTIVE_BUTTON)) {
-            return false;
-        }
-
-        let data = this.elems.$root.serialize();
 
         $.ajax({
             url: app.SERVICES.ADD_TO_CART,
             data: data,
             dataType: 'json',
             success: (data) => {
-                this.elems.$button.addClass(DEFAULTS.CLASSES.ACTIVE_BUTTON).text(DEFAULTS.TEXT);
+                $(selector).addClass(DEFAULTS.CLASSES.ACTIVE_BUTTON).text(DEFAULTS.TEXT);
 
                 app.pubsub.publish(app.EVENTS.UPDATE_CART);
                 console.log(data);
             }
-        })
+        });
     }
 }
 

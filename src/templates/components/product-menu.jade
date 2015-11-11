@@ -17,8 +17,9 @@
                 span.product__price 480
                 span.product__format грн
             form(data-module='AddToCart').product__actions.ui-buttons
-                input(type='hidden' value='product-000001')
-                button.ui-button.ui-button_accent.product__button.add-to-cart Купить
+                input(type='hidden' name='product' value='product-000001')
+                // NOTE: we need this double to make easier to find all such buttons on page/component
+                button(data-product-id='product-000001').ui-button.ui-button_accent.product__button.add-to-cart Купить
                 button.ui-button.ui-button_simple.product__button Купить в 1 клик
         .product-menu__info
             .product-menu__info-item

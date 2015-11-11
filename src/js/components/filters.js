@@ -8,9 +8,10 @@ const DEFAULTS = {
         SIDE: '.filters__side',
         CONTROL: '.filters__control',
         CLOSE: '.filters__close',
+        NAV: '.nav__main',
         NAV_WRAPPER: '.nav__wrapper',
         NAV_MENU: '.nav__menu',
-        NAV: '.nav__main'
+        NAV_BACK: '.nav__back'
     },
     CLASSES: {
         ACTIVE_ITEM: 'filters__item_state_active',
@@ -30,8 +31,9 @@ class Filters {
             $root: $root,
             $item: $root.find(DEFAULTS.SELECTORS.ITEM),
             $side: $root.find(DEFAULTS.SELECTORS.SIDE),
-            $navWrapper: $root.find(DEFAULTS.SELECTORS.NAV_WRAPPER),
             $nav: $root.find(DEFAULTS.SELECTORS.NAV),
+            $navWrapper: $root.find(DEFAULTS.SELECTORS.NAV_WRAPPER),
+            $navBack: $root.find(DEFAULTS.SELECTORS.NAV_BACK),
             $html: $(document.documentElement),
             $window: $(window)
         };
@@ -56,12 +58,14 @@ class Filters {
         this.elems.$root.on('click', DEFAULTS.SELECTORS.ITEM, this.chooseCategory.bind(this));
         this.elems.$root.on('click', DEFAULTS.SELECTORS.NAV_MENU, this.toggleMenu.bind(this));
         this.elems.$root.on('click', DEFAULTS.SELECTORS.CLOSE, this.closeFilters.bind(this));
+        this.elems.$navBack.on('click',this.closeNav.bind(this));
         this.elems.$root.on('change', DEFAULTS.SELECTORS.CONTROL, this.pushState.bind(this));
     }
 
     closeFilters(event) {
         event.preventDefault();
 
+        this.elems.$item.removeClass(DEFAULTS.CLASSES.ACTIVE_ITEM);
         this.elems.$html.removeClass(DEFAULTS.CLASSES.FILTER_EXPANDED);
     }
 
@@ -70,6 +74,12 @@ class Filters {
 
         this.elems.$navWrapper.addClass(DEFAULTS.CLASSES.NAV_EXPANDED);
         this.elems.$html.removeClass(DEFAULTS.CLASSES.FILTER_EXPANDED);
+    }
+
+    closeNav(event) {
+        event.preventDefault();
+
+        this.elems.$navWrapper.removeClass(DEFAULTS.CLASSES.NAV_EXPANDED);
     }
 
     pushState(event) {

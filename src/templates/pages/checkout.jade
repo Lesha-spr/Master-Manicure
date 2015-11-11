@@ -7,8 +7,10 @@ block content
     .main-content
         .reducer.reducer_wide
             h1 МОЙ ЗАКАЗ
-            .checkout
-                .checkout__shipping.column.checkout7
+            .checkout(data-module='Checkout')
+                .checkout__cart
+                    include ../components/cart
+                .checkout__shipping
                     .checkout__shipping-inner
                         form.ui-form
                             ul.ui-form__rows
@@ -36,20 +38,21 @@ block content
                                     .ui-form__label
                                         label(for='shipping_method') Способ доставки
                                     .ui-form__input
-                                        select(name='shipping_method')#shipping_method.ui-select.ui-select_wide
-                                            option(value='0') Самовывоз (Киев)
-                                            option(value='1') Курьер (Киев)
-                                            option(value='2') Новая почта
+                                        .ui-select.ui-select_wide
+                                            select(name='shipping_method')#shipping_method
+                                                option(value='0') Самовывоз (Киев)
+                                                option(value='1') Курьер (Киев)
+                                                option(value='2') Новая почта
                                 li.ui-form__row
                                     .ui-form__label
                                         label Оплата
                                     .ui-form__input
                                         label
-                                            input(type='radio' name='payment_method' checked)
+                                            input(type='radio' name='payment_method' checked).ui-radio
                                             |Наличными - оплата при получении
                                         br
                                         label
-                                            input(type='radio' name='payment_method')
+                                            input(type='radio' name='payment_method').ui-radio
                                             |Безналичный расчет
                                 li.ui-form__row
                                     .ui-form__label
@@ -60,10 +63,7 @@ block content
                                     .ui-form__label
                                     .ui-form__input
                                         .checkout__submit
-                                            .column1
-                                                button(type='submit').ui-button.ui-button_accent Заказ подтверждаю
-                                            .column1
+                                            .checkout__policy
                                                 span.ui-hint Оформляя заказ, вы соглашаетесь с&nbsp;
                                                     span.ui-pseudo Политикой конфиденциальности
-                .checkout__cart.column.checkout3
-                    include ../components/cart
+                                            button(type='submit').ui-button.ui-button_accent Заказ подтверждаю

@@ -4,11 +4,20 @@
 @import "./../vars";
 
 .checkout {
-  .oban-grid-fluid(10, 40px, checkout, offset);
+  .oban-clearfix();
+  max-width: 1200px;
 }
 
 .checkout__shipping {
+  width: 60%;
   max-width: 850px;
+  float: left;
+}
+
+.checkout__cart {
+  float: right;
+  width: 40%;
+  padding-left: 40px;
 }
 
 .checkout__shipping-inner {
@@ -16,6 +25,25 @@
   padding-right: 40px;
 }
 
-.checkout__submit {
-  .oban-grid-fluid(2, 10px);
+.checkout__policy {
+  margin-bottom: 10px;
+}
+
+@media (max-width: (@endMobile)) {
+  .checkout {
+    .checkout__shipping,
+    .checkout__cart {
+      width: 100%;
+      float: none;
+    }
+
+    .checkout__cart {
+      padding-left: 0;
+    }
+
+    .checkout__shipping-inner {
+      padding-right: 0;
+      border-right: 0;
+    }
+  }
 }
