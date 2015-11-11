@@ -41,6 +41,7 @@ class Cart {
             data: data,
             method: method,
             success: data => {
+                app.pubsub.publish(app.EVENTS.UPDATE_CART);
                 this.render(data);
             },
             error: (jqXhr, textStatus, errorThrown) => {

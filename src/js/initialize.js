@@ -18,6 +18,7 @@ import Certificates from './components/certificates.js'; app.Certificates = Cert
 import Articles from './components/articles.js'; app.Articles = Articles;
 import Pagination from './components/pagination.js'; app.Pagination = Pagination;
 import Cart from './components/cart.js'; app.Cart = Cart;
+import AddToCart from './components/add-to-cart.js'; app.AddToCart = AddToCart;
 
 // Template
 import Template from './components/template.js'; app.Template = Template;

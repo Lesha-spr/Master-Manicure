@@ -23,6 +23,15 @@ class MiniCart {
     }
 
     initialize() {
+        this.getCart();
+    }
+
+    bindEvents() {
+        app.pubsub.subscribe(app.EVENTS.UPDATE_CART, this.getCart.bind(this));
+        app.pubsub.subscribe(app.EVENTS.IN_YOUR_CART, this.render);
+    }
+
+    getCart() {
         $.ajax({
             url: app.SERVICES.IN_YOUR_CART,
             dataType: 'json',
@@ -38,10 +47,6 @@ class MiniCart {
                 new AjaxError(...arguments);
             }
         });
-    }
-
-    bindEvents() {
-        app.pubsub.subscribe(app.EVENTS.IN_YOUR_CART, this.render);
     }
 
     render(data) {
