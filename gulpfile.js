@@ -22,8 +22,8 @@ var spritesmith = require('gulp.spritesmith');
 
 gulp.task('sprite', function () {
     var spriteData = gulp.src('./src/styles/icons/**/*.png').pipe(spritesmith({
-        //retinaSrcFilter: ['./src/styles/icons/**/*@2x.png'],
-        //retinaImgName: 'sprite@2x.png',
+        retinaSrcFilter: ['./src/styles/icons/**/*@2x.png'],
+        retinaImgName: 'sprite@2x.png',
         imgName: 'sprite.png',
         cssName: 'sprite.less'
     }));

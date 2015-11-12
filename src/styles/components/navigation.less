@@ -67,16 +67,16 @@
 }
 
 .nav__logo {
-  .sprite(@i-logo);
+  .retina-sprite(@i-logo-group);
   display: inline-block;
   margin-bottom: 22px;
 
   .g-filter-expanded & {
-    .sprite(@i-logo-mobile);
+    .retina-sprite(@i-logo-mobile-group);
   }
 
   .nav__mobile & {
-    .sprite(@i-logo-mobile);
+    .retina-sprite(@i-logo-mobile-group);
   }
 }
 
@@ -138,7 +138,7 @@
 .nav__menu__link {
   display: block;
   margin: 0 auto;
-  .sprite(@i-menu);
+  .retina-sprite(@i-menu-group);
 }
 
 .nav__main {

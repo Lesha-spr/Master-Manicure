@@ -9,6 +9,7 @@
 
 .filters__close {
   margin-bottom: 10px;
+  display: none;
 }
 
 .filters__item {
@@ -48,27 +49,27 @@
     border: 0;
 
     &_manicure-kit {
-      .sprite(@i-manicure-kit);
+      .retina-sprite(@i-manicure-kit-group);
     }
 
     &_scissors {
-      .sprite(@i-scissors);
+      .retina-sprite(@i-scissors-group);
     }
 
     &_nailfile {
-      .sprite(@i-nailfile);
+      .retina-sprite(@i-nailfile-group);
     }
 
     &_nippers {
-      .sprite(@i-nippers);
+      .retina-sprite(@i-nippers-group);
     }
 
     &_tweezers {
-      .sprite(@i-tweezers);
+      .retina-sprite(@i-tweezers-group);
     }
 
     &_pedicure-kit {
-      .sprite(@i-pedicure-kit);
+      .retina-sprite(@i-pedicure-kit-group);
     }
 
     &:first-child {
@@ -140,31 +141,37 @@
   }
 }
 
+@media screen and (max-width: @endMobile) {
+  .filters__close {
+    display: block;
+  }
+}
+
 @media (min-width: @endMobile) {
   .filters__link {
     .filters__item_state_active & {
       &_manicure-kit {
-        .sprite(@i-manicure-kit-active);
+        .retina-sprite(@i-manicure-kit-active-group);
       }
 
       &_scissors {
-        .sprite(@i-scissors-active);
+        .retina-sprite(@i-scissors-active-group);
       }
 
       &_nailfile {
-        .sprite(@i-nailfile-active);
+        .retina-sprite(@i-nailfile-active-group);
       }
 
       &_nippers {
-        .sprite(@i-nippers-active);
+        .retina-sprite(@i-nippers-active-group);
       }
 
       &_tweezers {
-        .sprite(@i-tweezers-active);
+        .retina-sprite(@i-tweezers-active-group);
       }
 
       &_pedicure-kit {
-        .sprite(@i-pedicure-kit-active);
+        .retina-sprite(@i-pedicure-kit-active-group);
       }
     }
   }

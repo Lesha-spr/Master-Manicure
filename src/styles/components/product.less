@@ -82,6 +82,14 @@
 .product__delivery-promo {
   text-transform: uppercase;
   .font-size(14);
+
+  &:before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    .retina-sprite(@i-delivery-group);
+    margin-right: 5px;
+  }
 }
 
 .product__share {

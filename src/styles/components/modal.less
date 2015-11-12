@@ -12,6 +12,35 @@
   padding: 16px;
   background: #ECECEC;
   overflow-y: scroll;
+
+  h2,
+  h3 {
+    color: #000;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    margin-bottom: 1em;
+  }
+
+  h3 {
+    margin-bottom: 1em;
+  }
+
+  h4 {
+    margin-bottom: .5em;
+    .font-size(15);
+    font-weight: normal;
+  }
+
+  p {
+    .font-size(14);
+  }
+
+  a {
+    font-weight: bold;
+    color: #000;
+  }
 }
 
 .mfp-close {
@@ -26,7 +55,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    .sprite(@i-close);
+    .retina-sprite(@i-close-group);
     margin-top: -@i-close-height / 2;
     margin-left: -@i-close-width / 2;
   }

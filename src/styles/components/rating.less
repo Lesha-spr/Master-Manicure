@@ -18,10 +18,10 @@
   position: relative;
 
   &_all {
-    .sprite(@i-rating);
+    .retina-sprite(@i-rating-group);
 
     .rating_summary & {
-      .sprite(@i-rating-big);
+      .retina-sprite(@i-rating-big-group);
     }
   }
 
@@ -29,10 +29,10 @@
     position: absolute;
     top: 0;
     left: 0;
-    .sprite(@i-rating-active);
+    .retina-sprite(@i-rating-active-group);
 
     .rating_summary & {
-      .sprite(@i-rating-big-active);
+      .retina-sprite(@i-rating-big-active-group);
     }
   }
 }

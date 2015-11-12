@@ -11,7 +11,7 @@
 
 .product-list {
   .oban-list-unstyled();
-  .oban-grid-fluid(3, 96px);
+  .oban-grid-fluid(3, 40px);
 }
 
 .product-list__item {
@@ -22,6 +22,10 @@
 
   -webkit-animation: product-fadein .5s 1;
   animation: product-fadein .5s 1;
+
+  &:hover {
+    box-shadow: 0 0 9px rgba(0, 0, 0, 0.29);
+  }
 }
 
 .product-list__item__perspective {
