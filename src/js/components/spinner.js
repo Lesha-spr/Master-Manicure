@@ -4,21 +4,21 @@ import $ from 'jquery';
 const DEFAULTS = {
     SELECTORS: {
         SPINNER: '.spinner'
+    },
+    CLASSES: {
+        FIXED: 'spinner_fixed'
     }
 };
 
 class Spinner {
     constructor() {
-        this.template = null;
-        this.initialize();
+        this.spinner = null;
     }
 
-    initialize() {
-        this.template = app.templates['spinner']();
-    }
+    show($element, isFixed) {
+        this.spinner = app.templates['spinner']({isFixed: isFixed});
 
-    show($element) {
-        $element.append(this.template);
+        $element.append(this.spinner);
     }
 
     hide($element) {

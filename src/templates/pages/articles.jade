@@ -1,4 +1,10 @@
-extends ./../layouts/main
+extends ./../layouts/base
+
+block navigation
+    include ./../components/navigation
+block mini-cart
+    include ./../components/mini-cart
+
 include ./../components/sorting
 
 block sorting
