@@ -4,6 +4,7 @@
 @import "./../vars";
 
 .product-menu {
+  visibility: hidden;
   position: fixed;
   z-index: 1;
   top: 0;
@@ -15,6 +16,10 @@
 
   .g-filter-expanded & {
     left: 270px;
+  }
+
+  &_state_shown {
+    visibility: visible;
   }
 }
 
@@ -107,7 +112,10 @@
   }
 
   &_state_active {
-    border-color: #b40000;
+    &:before {
+      border-color: #b40000;
+      background: #b40000;
+    }
   }
 }
 

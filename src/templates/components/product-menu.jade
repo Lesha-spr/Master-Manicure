@@ -1,4 +1,4 @@
-.product-menu
+.product-menu(data-module='ProductMenu')
     .product-menu__inner
         .product-menu__details
             .product-menu__details-thumbnail
@@ -26,16 +26,16 @@
             .product-menu__info-item
                 |Описание товара
                 .product-menu__nav
-                    a(href='#a').product-menu__nav-item
+                    a(href='#' data-anchor-link='description-1').product-menu__nav-item
                     |&nbsp;
-                    a(href='#b').product-menu__nav-item
+                    a(href='#' data-anchor-link='description-2').product-menu__nav-item
                     |&nbsp;
-                    a(href='#c').product-menu__nav-item
+                    a(href='#' data-anchor-link='description-3').product-menu__nav-item
             .product-menu__info-item
                 |Отзывы (15)
                 .product-menu__nav.product-menu__nav_center
-                    a(href='#a').product-menu__nav-item
-            .product-menu__info-item
+                    a(href='#' data-anchor-link='reviews').product-menu__nav-item
+            .product-menu__info-item(data-module='Delivery')
                 |Оплата и доставка
                 .product-menu__nav.product-menu__nav_empty
                     .product-menu__nav-item

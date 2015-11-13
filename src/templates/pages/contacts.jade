@@ -1,1 +1,44 @@
 extends ./../layouts/main
+
+block content
+    .reducer
+        h2 Контактная информация
+        .contacts
+            ul.contacts__phone-numbers
+                li.contacts__phone-numbers__figure.contacts__phone-numbers__figure_margin-10
+                    .contacts__phone-numbers__figure__number 044 457 33  55
+                    .contacts__phone-numbers__figure__info многоканальный
+                li.contacts__phone-numbers__figure.contacts__phone-numbers__figure_margin-54
+                    .contacts__phone-numbers__figure__number 0 800 500 277
+                    .contacts__phone-numbers__figure__info бесплатно со всех
+                        br
+                        |стационарных телефонов
+                        br
+                        |на территории Украины
+                    .contacts__phone-numbers__figure__email
+                        a(href='#') sales@master-manicure.com.ua
+                li.contacts__phone-numbers__figure
+                    .contacts__phone-numbers__figure__number 044 238 28 94
+                    .contacts__phone-numbers__figure__info отдел по работе
+                        br
+                        |с поставщиками
+                    .contacts__phone-numbers__figure__email
+                        a(href='#') partner@master-manicure.com.ua
+
+            ul.contacts__additional-information
+                li.contacts__additional-information__figure.contacts__additional-information__figure_margin-25
+                    .contacts__additional-information__figure__headline Прием заказов по телефону
+                    .contacts__additional-information__figure__content Понедельник - пятница: с 9:00 до 19:00
+                li.contacts__additional-information__figure.contacts__additional-information__figure_margin-12
+                    .contacts__additional-information__figure__headline Прием заказов через корзину
+                    .contacts__additional-information__figure__content Заказы через корзину принимаются круглосуточно, без выходных.
+                        br
+                        |Для подтверждения заказа наш менеджер свяжется с Вами в ближайшее рабочее время. Мы работаем с понедельника по пятницу, с 9:00 до 19:00.
+                li.contacts__additional-information__figure
+                    .contacts__additional-information__figure__headline Адрес магазина
+                    .contacts__additional-information__figure__content Будем рады видеть вас по адресу:
+                        br
+                        |г. Киев, ул. Викентия Хвойки, 21, офис 191 (Бизнес центр "Веста", проходная №3)
+    .iframe-rwd
+        iframe(src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2538.5824082648264!2d30.4861153153483!3d50.48611739267577!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0000000000000000%3A0x0975356cf25f1584!2zQ09TTU9ISVQgLSDQmNC90YLQtdGA0L3QtdGCINC80LDQs9Cw0LfQuNC9INC60L7RgdC80LXRgtC40LrQuCDQuCDQv9Cw0YDRhNGO0LzQtdGA0LjQuCDQsiDQo9C60YDQsNC90LjQtQ!5e0!3m2!1sru!2sua!4v1447429261219" width="600" height="450" frameborder="0" style="border:0" allowfullscreen)
+
