@@ -7,6 +7,7 @@
 
   &_center {
     position: absolute;
+    z-index: 5;
     left: 0;
     right: 0;
     top: 0;
@@ -21,6 +22,12 @@
     .g-filter-expanded & {
       left: 270px;
     }
+  }
+}
+
+@media screen and (max-width: @endMobile) {
+  .spinner.spinner_center.spinner_fixed {
+    left: 70px;
   }
 }
 
