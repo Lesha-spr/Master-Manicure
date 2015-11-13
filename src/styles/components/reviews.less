@@ -4,8 +4,8 @@
 @import "./../vars";
 
 .reviews {
-  padding-top: 15px;
-  padding-bottom: 338px;
+  overflow: hidden;
+  padding: 15px 0 60px;
   background: #f3f3f3;
 }
 
@@ -75,4 +75,31 @@
 
 .reviews__more {
   text-align: center;
+}
+
+@media screen and (max-width: @endMobile) {
+  .reviews__list-item {
+    [class*=column] {
+      width: 100%;
+    }
+
+    .reviews__actions-button{
+      .ui-button{
+        width: 100%;
+        margin-bottom: 15px;
+      }
+    }
+    .reviews__actions-social{
+      text-align: center;
+
+      .ui-social{
+        display: inline-block;
+
+        &:first-child{
+          margin-left: 0;
+        }
+
+      }
+    }
+  }
 }

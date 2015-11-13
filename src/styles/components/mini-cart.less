@@ -1,11 +1,37 @@
+@import "./../mixins/oban";
+@import "./../mixins/custom-mixins";
 @import "./../vars";
 @import "./../sprite";
 
 .mini-cart {
   position: fixed;
+  z-index: 2;
   top: 20px;
   right: 40px;
-  .sprite(@i-mini-cart);
+}
+
+.mini-cart__inner {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: block;
+  border: 2px solid #1b1c1f;
+  transition: transform, .25s, ease;
+
+  &:hover, &_state_toggling {
+    transform: scale(1.2, 1.2);
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    .retina-sprite(@i-mini-cart-group);
+    top: 50%;
+    left: 50%;
+    margin-top: -@i-mini-cart-height / 2;
+    margin-left: (-@i-mini-cart-width / 2) + 3px; //
+  }
 }
 
 .mini-cart__entries {
@@ -20,6 +46,6 @@
   background: @colorRed;
 
   color: #fff;
-  font-size: 16px;
+  .font-size(15);
   overflow: hidden;
 }

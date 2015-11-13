@@ -47,6 +47,12 @@ class Reviews {
                 this.step += DEFAULTS.STEP;
 
                 this.render(data);
+            },
+            beforeSend: () => {
+                app.Spinner.show(this.elems.$root);
+            },
+            complete: () => {
+                app.Spinner.hide(this.elems.$root);
             }
         });
     }

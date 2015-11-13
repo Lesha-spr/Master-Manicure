@@ -4,11 +4,9 @@
 @import "./../vars";
 
 .carousel {
+  position: relative;
   height: 100vh;
-
-  &_state_loading {
-    background: rgba(0, 0, 0, 0.7);
-  }
+  overflow-y: hidden;
 }
 
 .slick-list,
@@ -24,6 +22,10 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+
+  .carousel_state_loading & {
+    visibility: hidden;
+  }
 }
 
 .carousel__image {
@@ -36,22 +38,22 @@
   top: 50%;
 
   &_prev {
-    .sprite(@i-carousel-prev);
+    .retina-sprite(@i-carousel-prev-group);
     left: 10px;
     margin-top: -@i-carousel-prev-height / 2;
 
     .certificates & {
-      .sprite(@i-carousel-prev-alt);
+      .retina-sprite(@i-carousel-prev-alt-group);
     }
   }
 
   &_next {
-    .sprite(@i-carousel-next);
+    .retina-sprite(@i-carousel-next-group);
     right: 10px;
     margin-top: -@i-carousel-next-height / 2;
 
     .certificates & {
-      .sprite(@i-carousel-next-alt);
+      .retina-sprite(@i-carousel-next-alt-group);
     }
   }
 }
@@ -156,16 +158,10 @@
   }
 
   // TODO: check margins
-  .carousel__category {
-    margin-bottom: 0;
-  }
-
-  .carousel__title {
-    margin-bottom: 0;
-  }
-
+  .carousel__category,
+  .carousel__title,
   .carousel__price {
-    margin-bottom: 0;
+    margin-bottom: 10px;
   }
 
   .slick-dots {

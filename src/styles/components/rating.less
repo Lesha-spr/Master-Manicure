@@ -3,18 +3,42 @@
 @import "./../sprite";
 @import "./../vars";
 
+.rating {
+
+  &_product {
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+}
+
 .rating__stars {
+  line-height: 18px;
   display: inline-block;
   position: relative;
 
   &_all {
-    .sprite(@i-rating)
+    .retina-sprite(@i-rating-group);
+
+    .rating_summary & {
+      .retina-sprite(@i-rating-big-group);
+    }
   }
 
   &_active {
     position: absolute;
     top: 0;
     left: 0;
-    .sprite(@i-rating-active);
+    .retina-sprite(@i-rating-active-group);
+
+    .rating_summary & {
+      .retina-sprite(@i-rating-big-active-group);
+    }
+  }
+}
+
+@media (max-width: (@endMobile)) {
+  .rating {
+    margin-bottom: 15px;
   }
 }

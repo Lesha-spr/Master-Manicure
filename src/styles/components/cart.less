@@ -1,0 +1,94 @@
+@import "./../mixins/oban";
+@import "./../mixins/custom-mixins";
+@import "./../sprite";
+@import "./../vars";
+
+.cart {
+  position: relative;
+  min-height: 400px;
+}
+
+.cart__list {
+  .oban-list-unstyled();
+}
+
+.cart__item {
+  .oban-clearfix();
+  position: relative;
+  padding: 25px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.cart__item__category {
+  .font-size(16);
+  margin-bottom: 10px;
+  font-weight: lighter;
+}
+
+.cart__item__title {
+  .font-size(20);
+  margin-bottom: 10px;
+}
+
+.cart__item-thumbnail {
+  width: 100px;
+  float: left;
+}
+
+.cart__item-info {
+  margin-left: 120px;
+}
+
+.cart__item-cols {
+  .checkout & {
+    .oban-grid-fluid(2, 0px, cart);
+  }
+}
+
+.cart__item-qty {
+  width: 2.5em;
+  text-align: right;
+}
+
+.cart__item-remove {
+  position: absolute;
+  top: 25px;
+  right: 5px;
+}
+
+.cart__item-price {
+  text-align: right;
+}
+
+.cart__item-summary {
+  display: table;
+  width: 100%;
+}
+
+.cart__item-summary-cell {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.cart {
+  .product__price {
+    .font-size(28);
+    font-weight: normal;
+  }
+
+  .product__format {
+    .font-size(17);
+    font-weight: normal;
+  }
+}
+
+@media screen and (max-width: @endMobile) {
+  .cart__item-thumbnail {
+    width: 100%;
+    float: none;
+  }
+
+  .cart__item-info {
+    margin-left: 0;
+  }
+}

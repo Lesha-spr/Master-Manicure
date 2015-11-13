@@ -1,8 +1,11 @@
-extends ./../layouts/main
+extends ./../layouts/base
+
+block navigation
+    include ./../components/navigation
 
 block content
     .main-content
-        .content
+        .content.reducer.reducer_supressed
             .logo-wrapper
                 img(src='./../../i/logo.png')
             p Интернет-магазин MASTER MANICURE создан в 2014 году с целью предоставления нашим клиентам качественной и оригинальной продукции ведущих мировых брендов маникюрных наборов и инструментов, качественного сервиса и приятного процесса приобретения товаров.

@@ -4,6 +4,7 @@
 
 html {
   .oban-box-sizing(border-box);
+  font-size: @mainFontSize;
 }
 
 *, *:before, *:after {
@@ -17,9 +18,27 @@ body {
 
 body {
   font-family: @fontUbuntu;
-  font-size: @mainFontSize;
+  font-size: 1rem;
   line-height: 1.2;
 }
+
+//@media screen and (max-width: 1365px) {
+//  html {
+//    font-size: 12px;
+//  }
+//}
+
+@media screen and (max-width: @endMobile) {
+  html {
+    font-size: 14px;
+  }
+}
+//
+//@media screen and (min-width: 1241px) and (max-width: 1365px) {
+//  html {
+//    font-size: 12px;
+//  }
+//}
 
 h1 {
   .font-size(24);
@@ -74,9 +93,9 @@ img {
 }
 
 .content {
-  max-width: 1008px;
+  max-width: 1440px;
   margin: auto;
-  padding: 0 129px;
+  padding: 0 20px;
 
   ul {
     .oban-list-unstyled();
@@ -110,6 +129,14 @@ img {
     padding-bottom: 37px;
     background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAABCAYAAAD5PA/NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABRJREFUeNpiZGBg+A8EjAxQABBgAC39A/88BF01AAAAAElFTkSuQmCC') 0 100% repeat-x;
   }
+
+  &_wide {
+    max-width: 100%;
+  }
+
+  &_supressed {
+    max-width: 830px;
+  }
 }
 
 .sign {
@@ -136,7 +163,7 @@ img {
 
 @media all and (max-width: (@endMobile + 1)) {
   .reducer {
-    padding: 0 55px;
+    padding: 0 20px;
 
     &_decorated {
       padding-bottom: 32px;

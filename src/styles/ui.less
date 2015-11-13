@@ -3,12 +3,123 @@
 @import "mixins/custom-mixins";
 @import "sprite";
 
+.ui-form__rows {
+  .oban-list-unstyled();
+}
+
+.ui-form__row {
+  .oban-clearfix();
+  margin-bottom: 10px;
+}
+
+.ui-form__label {
+  width: 170px;
+  padding-right: 10px;
+  line-height: 46px;
+  float: left;
+}
+
+.ui-form__input {
+  margin-left: 170px;
+}
+
+.ui-input {
+  border: 1px solid #c7c5c4;
+  padding: 13px 10px;
+
+  &_wide {
+    width: 100%;
+  }
+}
+
+.ui-select {
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    .retina-sprite(@i-dropdown-group);
+    top: 50%;
+    right: 15px;
+    margin-top: -(@i-dropdown-height / 2);
+  }
+
+  select {
+    border: 1px solid #c7c5c4;
+    border-radius: 0;
+    padding: 13px 40px 13px 10px;
+    background: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  &_wide {
+    select {
+      width: 100%;
+    }
+  }
+}
+
+.ui-back-button {
+  width: 40px;
+  height: 40px;
+  background: none;
+  padding: 0;
+  border: 0;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    .retina-sprite(@i-back-group);
+    margin-top: -@i-back-height / 2;
+    margin-left: -@i-back-width / 2;
+  }
+}
+
+.ui-radio {
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+.ui-textarea {
+  border: 1px solid #c7c5c4;
+  padding: 13px 10px;
+  resize: vertical;
+
+  &_wide {
+    width: 100%;
+  }
+}
+
 .ui-checkbox {
   vertical-align: middle;
 }
 
+.ui-close {
+  background: none;
+  .retina-sprite(@i-close-small-group);
+  font-size: 0;
+  padding: 0;
+  border: 0;
+
+  &_big {
+    .retina-sprite(@i-close-group);
+  }
+}
+
 .ui-label {
   vertical-align: middle;
+}
+
+.ui-link {
+  color: #000;
+
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 .ui-label_hint {
@@ -23,14 +134,40 @@
   padding: 8px 35px;
   text-transform: uppercase;
   text-decoration: none;
-  background: transparent;
+  white-space: nowrap;
+  text-align: center;
+  background: none;
 
   &_accent {
     letter-spacing: .05em;
-    border-color: rgba(179, 106, 34, 0.5);
+    border-color: #b40000;
     background: #b40000;
-    .font-size(17);
     color: #fff;
+    font-weight: bold;
+    .font-size(17);
+
+    &:hover {
+      color: #b40000;
+      background: #fff;
+    }
+  }
+
+  &_state_active {
+    color: #b40000;
+    background: none;
+  }
+
+  &_simple {
+    border-color: #b40000;
+    background: none;
+    color: #b40000;
+    .font-size(17);
+
+    &:hover {
+      border-color: #b40000;
+      color: #fff;
+      background: #b40000;
+    }
   }
 
   &_small {
@@ -48,6 +185,11 @@
     font-weight: lighter;
     color: #000;
     text-transform: uppercase;
+
+    &:hover {
+      background: #000;
+      color: #fff;
+    }
 
     &_accent {
       border: 2px solid #000;
@@ -73,16 +215,32 @@
         padding-right: 19px;
 
         &:before {
-          .sprite(@i-social-facebook);
+          .retina-sprite(@i-social-facebook-group);
+        }
+
+        &:hover:before {
+          .retina-sprite(@i-social-fb-white-group);
         }
       }
 
-      &_twitter:before {
-        .sprite(@i-social-twitter);
+      &_twitter {
+        &:before {
+          .retina-sprite(@i-social-twitter-group);
+        }
+
+        &:hover:before {
+          .retina-sprite(@i-social-twitter-white-group);
+        }
       }
 
-      &_google:before {
-        .sprite(@i-social-google);
+      &_google {
+        &:before {
+          .retina-sprite(@i-social-google-group);
+        }
+
+        &:hover:before {
+          .retina-sprite(@i-social-google-white-group);
+        }
       }
     }
 
@@ -103,8 +261,31 @@
   }
 }
 
+.ui-pseudo {
+  &:extend(a);
+  cursor: pointer;
+  border-bottom: 1px dashed @colorRed;
+}
+
+.ui-pseudo_style1 {
+  cursor: pointer;
+  color: #3d3d3d;
+  border-bottom: 1px dashed #3d3d3d;
+}
+
 .ui-button-set {
   display: inline-block;
+}
+
+.ui-buttons {
+
+  .ui-button {
+    margin-right: 5px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
 }
 
 .ui-social {
@@ -113,18 +294,34 @@
   margin-left: 32px;
 
   &_facebook {
-    .sprite(@i-social-facebook-link);
+    .retina-sprite(@i-social-facebook-group);
   }
 
   &_twitter {
-    .sprite(@i-social-twitter-link);
+    .retina-sprite(@i-social-twitter-group);
   }
 
   &_google {
-    .sprite(@i-social-google-link);
+    .retina-sprite(@i-social-google-group);
   }
 }
 
-@media (max-width: (@endMobile + 1)) {
+@media (max-width: (@endMobile)) {
+  .ui-button {
+    padding: 10px 15px 9px;
 
+  }
+  .ui-button-set .ui-button_link{
+      border: 0;
+  }
+
+  .ui-form__label {
+    width: 100%;
+    padding-right: 0;
+    float: none;
+  }
+
+  .ui-form__input {
+    margin-left: 0;
+  }
 }

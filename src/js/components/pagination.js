@@ -1,5 +1,6 @@
 import app from './../app.js';
 import $ from 'jquery';
+import _ from 'lodash';
 
 const DEFAULTS = {
     SELECTORS: {
@@ -64,10 +65,29 @@ class Pagination {
         }
     }
 
-    render(data = {}) {
-        data.pagination.page = $.bbq.getState().page || DEFAULTS.PAGE;
+    prepareData(data) {
+        // Magic, don't touch!
+        let edge = Math.round(data.pagination.show / 2);
 
-        let template = app.templates['pagination'](data);
+        data.pagination.page = Number($.bbq.getState().page) || DEFAULTS.PAGE;
+        data.showFirst = data.pagination.page > edge;
+        data.preEllipsis = data.pagination.page > edge + 1;
+        data.showLast = data.pagination.page < data.pagination.pageCount - Math.floor(data.pagination.show / 2);
+        data.postEllipsis = data.pagination.page < data.pagination.pageCount - edge;
+
+        if (data.preEllipsis) {
+            data.preEllipsis = data.pagination.page - edge;
+        }
+
+        if (data.postEllipsis) {
+            data.postEllipsis = data.pagination.page + edge;
+        }
+
+        return data;
+    }
+
+    render(data = {}) {
+        let template = app.templates['pagination'](this.prepareData(data));
 
         this.elems.$root.html(template);
     }

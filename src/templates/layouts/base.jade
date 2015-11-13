@@ -11,8 +11,9 @@ html
         <![endif]-->
     body
         block navigation
+        include ./../components/top-button
         main.main
             block sorting
-            include ./../components/mini-cart
+            block mini-cart
             block content
         script(src='../../js/app.js')

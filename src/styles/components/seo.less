@@ -1,0 +1,47 @@
+@import "./../mixins/oban";
+@import "./../mixins/custom-mixins";
+@import "./../sprite";
+@import "./../vars";
+
+.seo {
+  overflow: hidden;
+
+  h1 {
+    position: relative;
+    display: inline-block;
+    padding: 0 10px;
+    text-transform: uppercase;
+
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 10000px;
+      height: 1px;
+      background: #000;
+    }
+
+    &:before {
+      right: 100%;
+    }
+
+    &:after {
+      left: 100%;
+    }
+  }
+}
+
+.seo__title {
+  text-align: center;
+}
+
+.seo__cols {
+  .oban-grid-fluid(2, 20px);
+}
+
+@media screen and (max-width: @endMobile) {
+  .seo__cols {
+    .oban-grid-fluid(1, 0px);
+  }
+}

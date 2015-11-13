@@ -5,6 +5,8 @@
 
 .articles {
   .oban-list-unstyled();
+  position: relative;
+  min-height: 400px;
 }
 
 .articles__item {
@@ -20,6 +22,7 @@
   margin: 42px 0 34px;
   position: relative;
   text-align: center;
+  .oban-clearfix();
 }
 
 .articles__item-left-info {
@@ -47,6 +50,18 @@
     display: inline-block;
     vertical-align: middle;
     margin: 0 8px;
-    .sprite(@i-comments);
+    .retina-sprite(@i-comments-group);
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .articles__item-left-info {
+    position: relative;
+  }
+}
+
+@media screen and (min-width: 321px) and (max-width: @endMobile) {
+  .articles__item-right-info {
+    float: right;
   }
 }

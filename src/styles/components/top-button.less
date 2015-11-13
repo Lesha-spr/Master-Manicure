@@ -1,0 +1,28 @@
+@import "./../mixins/oban";
+@import "./../mixins/custom-mixins";
+@import "./../sprite";
+@import "./../vars";
+
+.top-button {
+  background: none;
+  position: fixed;
+  z-index: 4;
+  right: 40px;
+  bottom: 70px;
+  display: none;
+  border: 0;
+  padding: 0;
+
+  &_state_shown {
+    display: block;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 100%;
+    .retina-sprite(@i-top-group);
+    margin-left: -@i-top-width / 2;
+  }
+}

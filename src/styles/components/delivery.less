@@ -1,0 +1,21 @@
+@import "./../mixins/oban";
+@import "./../mixins/custom-mixins";
+@import "./../sprite";
+@import "./../vars";
+
+.delivery__cols {
+  .oban-grid-fluid(12, 5%);
+}
+
+@media screen and (max-width: @endMobile) {
+  .delivery__cols {
+    margin-left: 0;
+
+    .delivery__col {
+      width: 100%;
+      padding-left: 0;
+      float: none;
+    }
+  }
+}
+

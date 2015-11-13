@@ -1,6 +1,7 @@
 {
   "pagination": {
     "page": 1,
-    "pageCount": 19
+    "pageCount": 19,
+    "show": 3
   }
 }

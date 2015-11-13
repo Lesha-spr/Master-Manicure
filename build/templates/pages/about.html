@@ -12,44 +12,49 @@
   <body>
     <nav data-module="Navigation " class="nav">
       <div class="nav__wrapper">
-        <div class="nav__row nav__row_top">
-          <div class="nav__reducer"><a href="/" class="nav__logo"></a>
-            <div class="phone phone_nav">
-              <div class="phone__item"><a href="tel:0444573355" class="phone__link">044 457 33 55</a></div>
-              <div class="phone__item"><a href="tel:0800500277" class="phone__link">0 800 500 277</a></div>
+        <button class="ui-back-button nav__back"></button>
+        <div class="nav__mobile"><a href="/Master-Manicure/build/templates/pages/homepage.html" class="nav__logo"></a><a href="#" class="nav__menu"><span class="nav__menu__link"></span></a></div>
+        <div class="nav__main">
+          <div class="nav__row nav__row_top">
+            <div class="nav__reducer"><a href="/Master-Manicure/build/templates/pages/homepage.html" class="nav__logo"></a>
+              <div class="phone phone_nav">
+                <div class="phone__item"><a href="tel:0444573355" class="phone__link">044 457 33 55</a></div>
+                <div class="phone__item"><a href="tel:0800500277" class="phone__link">0 800 500 277</a></div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="nav__row nav__row_middle">
-          <div class="nav__reducer">
-            <ul class="filters">
-              <li data-category="manicure-kit" class="filters__item"><a href="#" class="filters__link filters__link_manicure-kit">Маникюрные наборы</a></li>
-              <li data-category="scissors" class="filters__item"><a href="#" class="filters__link filters__link_scissors">Ножницы</a></li>
-              <li data-category="nailfile" class="filters__item"><a href="#" class="filters__link filters__link_nailfile">Пилочки</a></li>
-              <li data-category="nippers" class="filters__item"><a href="#" class="filters__link filters__link_nippers">Кусачки</a></li>
-              <li data-category="tweezers" class="filters__item"><a href="#" class="filters__link filters__link_tweezers">Пинцеты</a></li>
-              <li data-category="pedicure-kit" class="filters__item"><a href="#" class="filters__link filters__link_pedicure-kit">Наборы для педикюра</a></li>
-            </ul>
+          <div class="nav__row nav__row_middle">
+            <div class="nav__reducer">
+              <ul class="filters">
+                <li data-category="manicure-kit" class="filters__item"><a href="/Master-Manicure/build/templates/pages/product-list.html#category=manicure-kit&amp;page=1" class="filters__link filters__link_manicure-kit">Маникюрные наборы</a></li>
+                <li data-category="scissors" class="filters__item"><a href="/Master-Manicure/build/templates/pages/product-list.html#category=scissprs&amp;page=1" class="filters__link filters__link_scissors">Ножницы</a></li>
+                <li data-category="nailfile" class="filters__item"><a href="/Master-Manicure/build/templates/pages/product-list.html#category=nailfile&amp;page=1" class="filters__link filters__link_nailfile">Пилочки</a></li>
+                <li data-category="nippers" class="filters__item"><a href="/Master-Manicure/build/templates/pages/product-list.html#category=nippers&amp;page=1" class="filters__link filters__link_nippers">Кусачки</a></li>
+                <li data-category="tweezers" class="filters__item"><a href="/Master-Manicure/build/templates/pages/product-list.html#category=tweezers&amp;page=1" class="filters__link filters__link_tweezers">Пинцеты</a></li>
+                <li data-category="pedicure-kit" class="filters__item"><a href="/Master-Manicure/build/templates/pages/product-list.html#category=pedicure-kit&amp;page=1" class="filters__link filters__link_pedicure-kit">Наборы для педикюра</a></li>
+              </ul>
+            </div>
           </div>
-        </div>
-        <div class="nav__row nav__row_bottom">
-          <div class="nav__cell">
-            <ul class="nav__sections">
-              <li class="nav__sections__item"><a href="#" class="nav__sections__item__link">О нас</a></li>
-              <li class="nav__sections__item"><a href="#" class="nav__sections__item__link">Сертификаты</a></li>
-              <li class="nav__sections__item"><a href="#" class="nav__sections__item__link">Статьи</a></li>
-              <li class="nav__sections__item"><a href="#" class="nav__sections__item__link">Оплата и доставка</a></li>
-              <li class="nav__sections__item"><a href="#" class="nav__sections__item__link">Контакты</a></li>
-            </ul>
-            <div class="nav__copy">© 2014 Все права защищены<br>Сделано в&nbsp;<a href="#" class="nav__copy__link">YellowPoint</a></div>
-            <div class="nav__menu-hint">Оплата и<br>доставка</div><a href="#" class="nav__menu"><span href="#" class="nav__menu__link"></span></a>
+          <div class="nav__row nav__row_bottom">
+            <div class="nav__cell">
+              <ul class="nav__sections">
+                <li class="nav__sections__item"><a href="/Master-Manicure/build/templates/pages/about.html" class="nav__sections__item__link">О нас</a></li>
+                <li class="nav__sections__item"><a href="/Master-Manicure/build/templates/pages/certificates.html" class="nav__sections__item__link">Сертификаты</a></li>
+                <li class="nav__sections__item"><a href="/Master-Manicure/build/templates/pages/articles.html" class="nav__sections__item__link">Статьи</a></li>
+                <li class="nav__sections__item"><a href="#" data-module="Delivery" class="nav__sections__item__link">Оплата и доставка</a></li>
+                <li class="nav__sections__item"><a href="/Master-Manicure/build/templates/pages/contacts.html" class="nav__sections__item__link">Контакты</a></li>
+              </ul>
+              <div class="nav__copy">© 2014 Все права защищены<br>Сделано в&nbsp;<a href="#" class="nav__copy__link">Сделано в Conceptor</a></div>
+              <div class="nav__menu-hint">Оплата и<br>доставка</div>
+            </div>
           </div>
         </div>
       </div>
     </nav>
-    <main class="main"><a href="#" data-module="MiniCart" class="mini-cart"></a>
+    <button data-module="TopButton" class="top-button">наверх</button>
+    <main class="main">
       <div class="main-content">
-        <div class="content">
+        <div class="content reducer reducer_supressed">
           <div class="logo-wrapper"><img src="./../../i/logo.png"></div>
           <p>Интернет-магазин MASTER MANICURE создан в 2014 году с целью предоставления нашим клиентам качественной и оригинальной продукции ведущих мировых брендов маникюрных наборов и инструментов, качественного сервиса и приятного процесса приобретения товаров.<br>Качество продукции и обслуживания является основополагающим элементом нашей стратегии.</p>
           <h3><a href="#">Маникюрные наботы</a></h3>

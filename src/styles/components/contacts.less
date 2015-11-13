@@ -1,0 +1,112 @@
+@import "./../mixins/oban";
+@import "./../mixins/custom-mixins";
+@import "./../sprite";
+@import "./../vars";
+
+.contacts {
+  .oban-clearfix();
+  margin-bottom: 40px;
+  font-weight: lighter;
+  color: @colorGreyDark;
+}
+
+.contacts__phone-numbers {
+  .oban-list-unstyled();
+  float: left;
+  width: 40%;
+  padding-right: 40px;
+}
+
+.contacts__phone-numbers__figure {
+  position: relative;
+  padding-left: 20px;
+
+  &_margin-10 {
+    margin-bottom: 10px;
+  }
+
+  &_margin-54 {
+    margin-bottom: 54px;
+  }
+
+  &:before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    .retina-sprite(@i-phone-group);
+    top: 7px;
+    left: 0;
+  }
+}
+
+.contacts__phone-numbers__figure__number {
+  .font-size(20);
+  font-weight: lighter;
+  line-height: 1.2;
+}
+
+.contacts__phone-numbers__figure__info {
+  .font-size(12);
+  margin-bottom: 0.5em;
+}
+
+.contacts__phone-numbers__figure__email {
+  .font-size(14);
+}
+
+.contacts__additional-information {
+  .oban-list-unstyled();
+  width: 60%;
+  float: left;
+}
+
+.contacts__additional-information__figure {
+  &_margin-25 {
+    margin-bottom: 25px;
+  }
+
+  &_margin-12 {
+    margin-bottom: 12px;
+  }
+}
+
+.contacts__additional-information__figure__headline {
+  .font-size(16);
+  color: #000000;
+  font-weight: normal;
+  margin-bottom: 0.4em;
+}
+
+.contacts__additional-information__figure__content {
+  .font-size(14);
+  line-height: 1.25;
+}
+
+.contacts__map {
+  width: 100%;
+  height: 500px
+}
+
+.iframe-rwd  {
+  position: relative;
+  padding-bottom: 65.25%;
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
+}
+.iframe-rwd iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (max-width: @endMobile) {
+  .contacts__phone-numbers,
+  .contacts__additional-information {
+    width: 100%;
+    float: none;
+    padding-right: 0;
+  }
+}

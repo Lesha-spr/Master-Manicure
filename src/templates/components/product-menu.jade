@@ -1,0 +1,41 @@
+.product-menu(data-module='ProductMenu')
+    .product-menu__inner
+        .product-menu__details
+            .product-menu__details-thumbnail
+                img(src='./../../i/product.jpg' alt='Product')
+            .product-menu__details-info
+                .product-menu__details-title Маникюрный набор Zauber MS-508
+                .product-menu__details-article Артикул 29811
+                .rating.rating_product
+                    .rating__stars
+                        .rating__stars_all
+                        .rating__stars_active
+                span.product__votes 4.7 (69 голосов)
+                span.ui-pseudo_style1.product__reviews-counter 15 отзывов
+        .product-menu__actions
+            .product-menu__actions__inner
+                .product__price-box
+                    span.product__price 480
+                    span.product__format грн
+                form(data-module='AddToCart').product__actions.ui-buttons
+                    input(type='hidden' name='product' value='product-000001')
+                    // NOTE: we need this double to make easier to find all such buttons on page/component
+                    button(data-product-id='product-000001' type='submit').ui-button.ui-button_accent.product__button.add-to-cart Купить
+                    a(href='/Master-Manicure/build/templates/pages/checkout.html').ui-button.ui-button_simple.product__button Купить в 1 клик
+        .product-menu__info
+            .product-menu__info-item
+                |Описание товара
+                .product-menu__nav
+                    a(href='#' data-anchor-link='description-1').product-menu__nav-item
+                    |&nbsp;
+                    a(href='#' data-anchor-link='description-2').product-menu__nav-item
+                    |&nbsp;
+                    a(href='#' data-anchor-link='description-3').product-menu__nav-item
+            .product-menu__info-item
+                |Отзывы (15)
+                .product-menu__nav.product-menu__nav_center
+                    a(href='#' data-anchor-link='reviews').product-menu__nav-item
+            .product-menu__info-item(data-module='Delivery')
+                |Оплата и доставка
+                .product-menu__nav.product-menu__nav_empty
+                    .product-menu__nav-item

@@ -7,6 +7,11 @@
   .oban-list-unstyled();
 }
 
+.filters__close {
+  margin-bottom: 10px;
+  display: none;
+}
+
 .filters__item {
   cursor: pointer;
 
@@ -44,27 +49,27 @@
     border: 0;
 
     &_manicure-kit {
-      .sprite(@i-manicure-kit);
+      .retina-sprite(@i-manicure-kit-group);
     }
 
     &_scissors {
-      .sprite(@i-scissors);
+      .retina-sprite(@i-scissors-group);
     }
 
     &_nailfile {
-      .sprite(@i-nailfile);
+      .retina-sprite(@i-nailfile-group);
     }
 
     &_nippers {
-      .sprite(@i-nippers);
+      .retina-sprite(@i-nippers-group);
     }
 
     &_tweezers {
-      .sprite(@i-tweezers);
+      .retina-sprite(@i-tweezers-group);
     }
 
     &_pedicure-kit {
-      .sprite(@i-pedicure-kit);
+      .retina-sprite(@i-pedicure-kit-group);
     }
 
     &:first-child {
@@ -74,32 +79,6 @@
 
   .filters__item_state_current & {
     color: #000;
-  }
-
-  .filters__item_state_active & {
-    &_manicure-kit {
-      .sprite(@i-manicure-kit-active);
-    }
-
-    &_scissors {
-      .sprite(@i-scissors-active);
-    }
-
-    &_nailfile {
-      .sprite(@i-nailfile-active);
-    }
-
-    &_nippers {
-      .sprite(@i-nippers-active);
-    }
-
-    &_tweezers {
-      .sprite(@i-tweezers-active);
-    }
-
-    &_pedicure-kit {
-      .sprite(@i-pedicure-kit-active);
-    }
   }
 }
 
@@ -138,61 +117,62 @@
 }
 
 @media (max-width: @endMobile) {
-
-  .filters__side {
-    width: auto;
-    padding-left: 70px;
+  .filters__title {
+    .font-size(26);
   }
 
-  .filters__item {
-    position: relative;
-    padding: 19px 15px;
+  .filters__set__title {
+    .font-size(20);
+  }
 
-    &_state_active {
-
-//      &:before {
-//        .after();
-//        .sprite(@i-close);
-//        top: 50%;
-//        left: 100%;
-//        margin-top: -@i-close-height / 2;
-//      }
-    }
+  .filters__set__item {
+    .font-size(18);
   }
 
   .filters__link {
-    display: block;
-    margin: 0 auto;
-    max-width: 100%;
-    font-size: 0;
-    border: 0;
-
-    &_manicure-kit {
-      .sprite(@i-manicure-kit);
-    }
-
-    &_scissors {
-      .sprite(@i-scissors);
-    }
-
-    &_nailfile {
-      .sprite(@i-nailfile);
-    }
-
-    &_nippers {
-      .sprite(@i-nippers);
-    }
-
-    &_tweezers {
-      .sprite(@i-tweezers);
-    }
-
-    &_pedicure-kit {
-      .sprite(@i-pedicure-kit);
-    }
-
-    .filters__item:first-child & {
+    .font-size(18);
+    &, .filters__item:first-child & {
       border: 0;
+    }
+  }
+
+  .filters__side {
+    width: auto;
+  }
+}
+
+@media screen and (max-width: @endMobile) {
+  .filters__close {
+    display: block;
+  }
+}
+
+@media (min-width: @endMobile) {
+  .filters__link {
+    .filters__item_state_active & {
+      &_manicure-kit {
+        .retina-sprite(@i-manicure-kit-active-group);
+      }
+
+      &_scissors {
+        .retina-sprite(@i-scissors-active-group);
+      }
+
+      &_nailfile {
+        .retina-sprite(@i-nailfile-active-group);
+      }
+
+      &_nippers {
+        .retina-sprite(@i-nippers-active-group);
+      }
+
+      &_tweezers {
+        .retina-sprite(@i-tweezers-active-group);
+      }
+
+      &_pedicure-kit {
+        .retina-sprite(@i-pedicure-kit-active-group);
+      }
     }
   }
 }
