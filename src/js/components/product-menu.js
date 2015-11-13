@@ -10,7 +10,8 @@ const DEFAULTS = {
     CLASSES: {
         MENU_SHOWN: 'product-menu_state_shown',
         NAV_ITEM_ACTIVE: 'product-menu__nav-item_state_active'
-    }
+    },
+    ANIMATION_SPEED: 1000
 };
 
 class ProductMenu {
@@ -66,7 +67,7 @@ class ProductMenu {
 
         this.elems.$html.animate({
             scrollTop: $(`[data-anchor="${anchor}"]`).offset().top - this.elems.$root.outerHeight(true)
-        }, 1000);
+        }, DEFAULTS.ANIMATION_SPEED);
     }
 }
 

@@ -8,6 +8,7 @@ import submodules from './submodules.js';
 import Spinner from './components/spinner.js'; app.Spinner = new Spinner();
 import Popup from './components/popup.js'; app.Popup = new Popup();
 import Navigation from './components/navigation.js'; app.Navigation = Navigation;
+import TopButton from './components/top-button.js'; app.TopButton = TopButton;
 import MiniCart from './components/mini-cart.js'; app.MiniCart = MiniCart;
 import Filters from './components/filters.js'; app.Filters = Filters;
 import Carousel from './components/carousel.js'; app.Carousel = Carousel;
