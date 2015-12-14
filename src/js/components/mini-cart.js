@@ -12,7 +12,8 @@ const DEFAULTS = {
     },
     CLASSES: {
         TOGGLING: 'mini-cart__icon_state_toggling',
-        SIDE_ACTIVE: 'mini-cart__side_state_active'
+        SIDE_ACTIVE: 'mini-cart__side_state_active',
+        GLOBAL_SIDE_ACTIVE: 'g-side-active'
     }
 };
 
@@ -23,7 +24,8 @@ class MiniCart {
         this.elems = {
             $root: $root,
             $inner: $root.find(DEFAULTS.SELECTORS.INNER),
-            $sideCart: $('')
+            $sideCart: $(''),
+            $html: $('html')
         };
 
         this.initialize();
@@ -47,6 +49,7 @@ class MiniCart {
         event.preventDefault();
         event.stopPropagation();
 
+        this.elems.$html.toggleClass(DEFAULTS.CLASSES.GLOBAL_SIDE_ACTIVE);
         this.elems.$sideCart.toggleClass(DEFAULTS.CLASSES.SIDE_ACTIVE);
     }
 

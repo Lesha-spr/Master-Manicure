@@ -86,6 +86,20 @@ img {
   .g-filter-expanded & {
     padding-left: 270px;
   }
+
+  .g-side-active & {
+    &:before {
+      content: '';
+      position: fixed;
+      z-index: 4;
+      top: 0;
+      left: 270px;
+      right: 0;
+      bottom: 0;
+      background: #0b0b0b;
+      opacity: .8;
+    }
+  }
 }
 
 .main-content {
@@ -152,10 +166,17 @@ img {
 @media all and (max-width: @endMobile) {
   .main {
     padding-left: 70px;
+
+    .g-side-active & {
+      &:before {
+        left: 70px;
+      }
+    }
   }
 
   body {
-    .g-filter-expanded & {
+    .g-filter-expanded &,
+    .g-side-active & {
       overflow: hidden;
     }
   }
