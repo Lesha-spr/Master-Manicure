@@ -1,0 +1,48 @@
+.one-click-show {
+  position: relative;
+}
+
+.one-click {
+  cursor: default;
+  position: absolute;
+  margin-bottom: 20px;
+  padding: 12px 30px 12px 12px;
+  border: 1px solid #b40000;
+  background: #fff;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-transform: none;
+  color: #000;
+  text-align: left;
+  display: none;
+
+  .one-click-show & {
+    display: block;
+  }
+}
+
+.one-click__form-label {
+  width: 70px;
+  float: left;
+  line-height: 34px;
+}
+
+.one-click__forw-input {
+  margin-left: 70px + 10px;
+}
+
+.one-click__hint {
+  margin-bottom: 20px;
+}
+
+.one-click__form-close{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  border: 0;
+  padding: 0;
+  background: none;
+
+  .retina-sprite(@i-close-small-group);
+}

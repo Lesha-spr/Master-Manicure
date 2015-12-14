@@ -1,8 +1,8 @@
 ul.filters
-    li.filters__item(data-category='manicure-kit')
+    li(class='filters__item #{current || ""}' data-category='manicure-kit')
         a(href='/Master-Manicure/build/templates/pages/product-list.html#category=manicure-kit&page=1').filters__link.filters__link_manicure-kit Маникюрные наборы
     li.filters__item(data-category='scissors')
-        a(href='/Master-Manicure/build/templates/pages/product-list.html#category=scissprs&page=1').filters__link.filters__link_scissors Ножницы
+        a(href='/Master-Manicure/build/templates/pages/product-list.html#category=scissors&page=1').filters__link.filters__link_scissors Ножницы
     li.filters__item(data-category='nailfile')
         a(href='/Master-Manicure/build/templates/pages/product-list.html#category=nailfile&page=1').filters__link.filters__link_nailfile Пилочки
     li.filters__item(data-category='nippers')

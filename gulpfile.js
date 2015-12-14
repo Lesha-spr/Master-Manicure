@@ -111,12 +111,7 @@ gulp.task('less', ['sprite'], function() {
 });
 
 gulp.task('compress', ['handlebars'], function() {
-    var b = browserify({
-        entries: 'src/js/initialize.js',
-        debug: true,
-        // defining transforms here will avoid crashing your stream
-        transform: [babelify]
-    });
+    var b = browserify('src/js/initialize.js').transform("babelify", {presets: ["es2015"]});
 
     return b.bundle()
         .pipe(source('./app.js'))

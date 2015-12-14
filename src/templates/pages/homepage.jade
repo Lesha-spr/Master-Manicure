@@ -1,4 +1,13 @@
-extends ./../layouts/main
+extends ./../layouts/base
+
+block mini-cart
+    - var miniCartMod = 'mini-cart_home'
+    include ./../components/mini-cart
+
+block navigation
+    include ./../components/navigation
 
 block content
     include ../components/main-carousel
+    .reducer.reducer_supressed
+        include ../components/seo-text

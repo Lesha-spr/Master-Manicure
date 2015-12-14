@@ -3,12 +3,16 @@ import app from './../app.js';
 import AjaxError from './../errors/base.js';
 
 const DEFAULTS = {
-    ENTRIES: 0,
+    COUNT: 0,
     SELECTORS: {
-        INNER: '.mini-cart__inner'
+        INNER: '.mini-cart__inner',
+        WRAPPER: '.mini-cart__icon',
+        SIDE_CART: '.mini-cart__side',
+        CLOSE: '.mini-cart__close'
     },
     CLASSES: {
-        TOGGLING: 'mini-cart__inner_state_toggling'
+        TOGGLING: 'mini-cart__icon_state_toggling',
+        SIDE_ACTIVE: 'mini-cart__side_state_active'
     }
 };
 
@@ -18,7 +22,8 @@ class MiniCart {
 
         this.elems = {
             $root: $root,
-            $inner: $root.find(DEFAULTS.SELECTORS.INNER)
+            $inner: $root.find(DEFAULTS.SELECTORS.INNER),
+            $sideCart: $('')
         };
 
         this.initialize();
@@ -30,21 +35,28 @@ class MiniCart {
     }
 
     bindEvents() {
-        this.elems.$inner.on('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', () => {
-            this.elems.$inner.removeClass(DEFAULTS.CLASSES.TOGGLING);
+        this.elems.$root.on('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', DEFAULTS.SELECTORS.WRAPPER, () => {
+            this.elems.$root.find(DEFAULTS.SELECTORS.WRAPPER).removeClass(DEFAULTS.CLASSES.TOGGLING);
         });
+        this.elems.$root.on('click', DEFAULTS.SELECTORS.WRAPPER, this.toggleSide.bind(this));
+        this.elems.$root.on('click', DEFAULTS.SELECTORS.CLOSE, this.toggleSide.bind(this));
         app.pubsub.subscribe(app.EVENTS.UPDATE_CART, this.onUpdateCart.bind(this));
-        app.pubsub.subscribe(app.EVENTS.IN_YOUR_CART, this.render);
+    }
+
+    toggleSide(event) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        this.elems.$sideCart.toggleClass(DEFAULTS.CLASSES.SIDE_ACTIVE);
     }
 
     onUpdateCart() {
-        this.elems.$inner.addClass(DEFAULTS.CLASSES.TOGGLING);
-        this.getCart();
+        this.elems.$root.find(DEFAULTS.SELECTORS.WRAPPER).addClass(DEFAULTS.CLASSES.TOGGLING);
     }
 
     getCart() {
         $.ajax({
-            url: app.SERVICES.IN_YOUR_CART,
+            url: app.SERVICES.CART,
             dataType: 'json',
             success: data => {
                 this.render(data);
@@ -52,7 +64,7 @@ class MiniCart {
             error: (jqXhr, textStatus, errorThrown) => {
                 // TODO: here should be proper error handling
                 this.render({
-                    entries: DEFAULTS.ENTRIES
+                    count: DEFAULTS.COUNT
                 });
 
                 new AjaxError(...arguments);
@@ -64,6 +76,9 @@ class MiniCart {
         let template = app.templates['mini-cart'](data);
 
         this.elems.$inner.html(template);
+        this.elems.$sideCart = this.elems.$root.find(DEFAULTS.SELECTORS.SIDE_CART);
+
+        app.submodules(this.elems.$sideCart);
     }
 }
 

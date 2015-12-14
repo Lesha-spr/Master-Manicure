@@ -1,17 +1,19 @@
 import app from './../app.js';
 import $ from 'jquery';
 import AjaxError from './../errors/base.js';
+import Menu from './menu.js';
 
 const DEFAULTS = {
     SELECTORS: {
         ITEM: '.filters__item',
         SIDE: '.filters__side',
         CONTROL: '.filters__control',
-        CLOSE: '.filters__close',
+        CLOSE: '.filters__close, .nav__close',
         NAV: '.nav__main',
         NAV_WRAPPER: '.nav__wrapper',
         NAV_MENU: '.nav__menu',
-        NAV_BACK: '.nav__back'
+        NAV_BACK: '.nav__back',
+        NAV_MOBILE_GET_FILTERS: '.nav__filter-icon'
     },
     CLASSES: {
         ACTIVE_ITEM: 'filters__item_state_active',
@@ -19,39 +21,35 @@ const DEFAULTS = {
         LAST_ACTIVE_ITEM: 'filters__item_state_last-active',
         ACTIVE_SIDE: 'filters__side_state_active',
         FILTER_EXPANDED: 'g-filter-expanded',
+        NAV_ACTIVE: 'g-nav-active',
         NAV_EXPANDED: 'nav__wrapper_expanded'
     }
 };
 
-class Filters {
+class Filters extends Menu {
     constructor(element) {
-        let $root = $(element);
+        super(element);
 
-        this.elems = {
-            $root: $root,
-            $item: $root.find(DEFAULTS.SELECTORS.ITEM),
-            $side: $root.find(DEFAULTS.SELECTORS.SIDE),
-            $nav: $root.find(DEFAULTS.SELECTORS.NAV),
-            $navWrapper: $root.find(DEFAULTS.SELECTORS.NAV_WRAPPER),
-            $navBack: $root.find(DEFAULTS.SELECTORS.NAV_BACK),
-            $html: $(document.documentElement),
-            $window: $(window)
-        };
-
-        this.initialize();
-        this.bindEvents();
+        this.lastMod = '';
     }
 
     initialize() {
         this.getActive();
     }
 
-    getActive() {
+    getActive(isCategoryChosen) {
         let category = $.bbq.getState().category;
-
-        this.elems.$item.removeClass(DEFAULTS.CLASSES.CURRENT_ITEM).filter((index, item) => {
+        let $current = this.elems.$item.removeClass(DEFAULTS.CLASSES.CURRENT_ITEM).filter((index, item) => {
             return $(item).data('category') === category;
-        }).addClass(DEFAULTS.CLASSES.CURRENT_ITEM);
+        });
+
+        this.elems.$mobFilter.removeClass(this.lastMod).addClass(`nav__filter_${$current.data('category')}`);
+
+        this.lastMod = `nav__filter_${$current.data('category')}`;
+
+        if (!isCategoryChosen) {
+            this.chooseCategory($current);
+        }
     }
 
     bindEvents() {
@@ -60,26 +58,7 @@ class Filters {
         this.elems.$root.on('click', DEFAULTS.SELECTORS.CLOSE, this.closeFilters.bind(this));
         this.elems.$navBack.on('click',this.closeNav.bind(this));
         this.elems.$root.on('change', DEFAULTS.SELECTORS.CONTROL, this.pushState.bind(this));
-    }
-
-    closeFilters(event) {
-        event.preventDefault();
-
-        this.elems.$item.removeClass(DEFAULTS.CLASSES.ACTIVE_ITEM);
-        this.elems.$html.removeClass(DEFAULTS.CLASSES.FILTER_EXPANDED);
-    }
-
-    toggleMenu(event) {
-        event.preventDefault();
-
-        this.elems.$navWrapper.addClass(DEFAULTS.CLASSES.NAV_EXPANDED);
-        this.elems.$html.removeClass(DEFAULTS.CLASSES.FILTER_EXPANDED);
-    }
-
-    closeNav(event) {
-        event.preventDefault();
-
-        this.elems.$navWrapper.removeClass(DEFAULTS.CLASSES.NAV_EXPANDED);
+        this.elems.$root.on('click', DEFAULTS.SELECTORS.NAV_MOBILE_GET_FILTERS, this.openMenu.bind(this));
     }
 
     pushState(event) {
@@ -94,14 +73,28 @@ class Filters {
         this.getFilter();
     }
 
-    chooseCategory(event) {
-        let $current = $(event.currentTarget);
-        let isCurrentActive = $current.hasClass(DEFAULTS.CLASSES.ACTIVE_ITEM);
-
+    openMenu(event) {
         event.preventDefault();
 
+        this.elems.$html.toggleClass(DEFAULTS.CLASSES.FILTER_EXPANDED);
+    }
+
+    chooseCategory(param) {
+        let $current;
+        if (param.currentTarget) {
+            $current = $(param.currentTarget);
+            param.preventDefault();
+        } else {
+            $current = param;
+        }
+
+        let isCurrentActive = $current.hasClass(DEFAULTS.CLASSES.ACTIVE_ITEM);
+
         this.elems.$navWrapper.removeClass(DEFAULTS.CLASSES.NAV_EXPANDED);
-        this.elems.$html.toggleClass(DEFAULTS.CLASSES.FILTER_EXPANDED, !isCurrentActive);
+        this.elems.$html.removeClass(DEFAULTS.CLASSES.NAV_ACTIVE);
+        if (!this.elems.$navMobile.is(':visible')) {
+            this.elems.$html.toggleClass(DEFAULTS.CLASSES.FILTER_EXPANDED, !isCurrentActive);
+        }
         this.elems.$item.removeClass(DEFAULTS.CLASSES.ACTIVE_ITEM);
         $current.toggleClass(DEFAULTS.CLASSES.ACTIVE_ITEM, !isCurrentActive);
 
@@ -112,11 +105,11 @@ class Filters {
                 page: 1
             });
 
-            this.elems.$item.removeClass(DEFAULTS.CLASSES.LAST_ACTIVE_ITEM);
-            $current.addClass(DEFAULTS.CLASSES.LAST_ACTIVE_ITEM);
+            this.elems.$item.removeClass(DEFAULTS.CLASSES.LAST_ACTIVE_ITEM).removeClass(DEFAULTS.CLASSES.CURRENT_ITEM);
+            $current.addClass(DEFAULTS.CLASSES.LAST_ACTIVE_ITEM).addClass(DEFAULTS.CLASSES.CURRENT_ITEM);
 
-            this.getActive();
             this.getFilter();
+            this.getActive(true);
         }
     }
 
@@ -124,7 +117,7 @@ class Filters {
         let data = $.bbq.getState();
 
         if (data.category) {
-            $.ajax({
+            return $.ajax({
                 url: app.SERVICES.FILTERS,
                 data: data,
                 dataType: 'json',

@@ -4,16 +4,14 @@ html
         title Master Manicure
         meta(charset='UTF-8')
         meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
-        link(href='https://fonts.googleapis.com/css?family=Ubuntu:400,300' rel='stylesheet' type='text/css')
+        link(href='https://fonts.googleapis.com/css?family=Ubuntu:400,500,700,300&subset=latin,cyrillic' rel='stylesheet' type='text/css')
         link(rel='stylesheet' href='../../styles/styles.css')
-        <!--[if lt IE 9]>
-        <script src='../../../src/js/utils/html5shiv'></script>
-        <![endif]-->
     body
         block navigation
         include ./../components/top-button
         main.main
             block sorting
             block mini-cart
+            block side-cart
             block content
         script(src='../../js/app.js')

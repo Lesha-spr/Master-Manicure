@@ -1,4 +1,5 @@
 import app from './app.js';
+import $ from 'jquery';
 
 export default () => {
     let elements = document.querySelectorAll('[data-module]');
@@ -13,11 +14,12 @@ export default () => {
                 app.modules[Module] = new Map();
             }
 
-            if (!app.modules[Module].has(element)) {
+            if (!$.data(element, Module)) {
                 try {
                     // NOTE: prevent empty strings as Module name
                     if (Module) {
                         app.modules[Module].set(element, new app[Module](element));
+                        $.data(element, Module, true);
                     }
                 } catch (error) {
                     let message = ['Attempt to initialize', Module, 'on', element, 'but there was an', error];

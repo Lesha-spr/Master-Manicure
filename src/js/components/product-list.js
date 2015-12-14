@@ -82,7 +82,7 @@ class ProductList {
         let template = app.templates['product-list'](data);
 
         this.elems.$list[shouldAppend ? 'append' : 'html'](template);
-        app.submodules(this.elems.$list, {});
+        app.submodules(this.elems.$list);
     }
 }
 

@@ -12,6 +12,8 @@ let DEFAULTS = {
     SLICK_OPTIONS: {
         dots: true,
         respondTo: 'slider',
+        autoplay: true,
+        autoplaySpeed: 2000,
         prevArrow: app.templates['carousel-prev'](),
         nextArrow: app.templates['carousel-next']()
     }

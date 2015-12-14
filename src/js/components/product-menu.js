@@ -4,7 +4,7 @@ import waypoints from 'waypoints/lib/noframework.waypoints.js';
 
 const DEFAULTS = {
     SELECTORS: {
-        NAV_ITEM: '.product-menu__nav-item',
+        NAV_ITEM: '[data-anchor-link]',
         ANCHOR: '[data-anchor]'
     },
     CLASSES: {

@@ -9,9 +9,6 @@ const DEFAULTS = {
         QTY: '.cart__item-qty',
         REMOVE: '.cart__item-remove',
         ARTICLE: '.cart__item-article'
-    },
-    CLASSES: {
-        ACTIVE_ITEM: 'block__item_state_active'
     }
 };
 
@@ -29,7 +26,9 @@ class Cart {
     }
 
     initialize() {
-        this.getCart();
+        if (!this.elems.$root.data('prevent-initial')) {
+            this.getCart();
+        }
     }
 
     getCart(data = {}, method = 'GET') {
@@ -41,7 +40,6 @@ class Cart {
             data: data,
             method: method,
             success: data => {
-                app.pubsub.publish(app.EVENTS.UPDATE_CART);
                 this.render(data);
             },
             error: (jqXhr, textStatus, errorThrown) => {

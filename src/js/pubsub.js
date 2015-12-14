@@ -16,7 +16,7 @@ class PubSub {
 
     publish(event, ...args) {
         if (this.observers[event]) {
-            this.observers[event].fire.apply(event, ...args);
+            this.observers[event].fire.apply(event, args);
         }
     }
 

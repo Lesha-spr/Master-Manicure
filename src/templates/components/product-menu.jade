@@ -6,11 +6,12 @@
             .product-menu__details-info
                 .product-menu__details-title Маникюрный набор Zauber MS-508
                 .product-menu__details-article Артикул 29811
-                .rating.rating_product
+                .rating.rating_menu
                     .rating__stars
                         .rating__stars_all
                         .rating__stars_active
                 span.product__votes 4.7 (69 голосов)
+                br
                 span.ui-pseudo_style1.product__reviews-counter 15 отзывов
         .product-menu__actions
             .product-menu__actions__inner
@@ -21,10 +22,11 @@
                     input(type='hidden' name='product' value='product-000001')
                     // NOTE: we need this double to make easier to find all such buttons on page/component
                     button(data-product-id='product-000001' type='submit').ui-button.ui-button_accent.product__button.add-to-cart Купить
-                    a(href='/Master-Manicure/build/templates/pages/checkout.html').ui-button.ui-button_simple.product__button Купить в 1 клик
+                    span(data-module='OneClickBuy' data-product-id='product-000001').ui-button.ui-button_simple.product__button Купить в 1 клик
+                        span.one-click
         .product-menu__info
             .product-menu__info-item
-                |Описание товара
+                span(data-anchor-link='description-1') Описание товара
                 .product-menu__nav
                     a(href='#' data-anchor-link='description-1').product-menu__nav-item
                     |&nbsp;
@@ -32,7 +34,7 @@
                     |&nbsp;
                     a(href='#' data-anchor-link='description-3').product-menu__nav-item
             .product-menu__info-item
-                |Отзывы (15)
+                span(data-anchor-link='reviews') Отзывы (15)
                 .product-menu__nav.product-menu__nav_center
                     a(href='#' data-anchor-link='reviews').product-menu__nav-item
             .product-menu__info-item(data-module='Delivery')
