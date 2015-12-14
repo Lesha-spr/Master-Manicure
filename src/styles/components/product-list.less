@@ -70,10 +70,12 @@
 }
 
 .product-list__item__actions {
-  line-height: 37px;
 
   .product-list & {
-    .oban-grid-fluid(2, 10px);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
   }
 }
 
@@ -93,6 +95,12 @@
 
 .product-list__item__format {
   .font-size(17);
+}
+
+@media (max-width: 480px) {
+  .product-list__wrapper {
+    padding: 0;
+  }
 }
 
 @media (max-width: (@endMobile + 1)) {
