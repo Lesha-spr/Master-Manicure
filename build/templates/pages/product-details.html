@@ -4,15 +4,16 @@
     <title>Master Manicure</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,300" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700,300&amp;subset=latin,cyrillic" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="../../styles/styles.css">
-    <script src="//cdn.polyfill.io/v2/polyfill.min.js?features=Intl.~locale.ru-RU"></script>
   </head>
   <body>
-    <nav data-module="Navigation SupFilters" class="nav">
+    <nav data-module="Navigation Menu " class="nav">
       <div class="nav__wrapper">
         <button class="ui-back-button nav__back"></button>
-        <div class="nav__mobile"><a href="/Master-Manicure/build/templates/pages/homepage.html" class="nav__logo"></a><a href="#" class="nav__menu"><span class="nav__menu__link"></span></a></div>
+        <div class="nav__mobile"><a href="/Master-Manicure/build/templates/pages/homepage.html" class="nav__logo"></a><a href="#" class="nav__menu"><span class="nav__menu__link"></span></a>
+          <div class="nav__filter"><span class="nav__filter-icon"></span></div>
+        </div>
         <div class="nav__main">
           <div class="nav__row nav__row_top">
             <div class="nav__reducer"><a href="/Master-Manicure/build/templates/pages/homepage.html" class="nav__logo"></a>
@@ -25,8 +26,8 @@
           <div class="nav__row nav__row_middle">
             <div class="nav__reducer">
               <ul class="filters">
-                <li data-category="manicure-kit" class="filters__item"><a href="/Master-Manicure/build/templates/pages/product-list.html#category=manicure-kit&amp;page=1" class="filters__link filters__link_manicure-kit">Маникюрные наборы</a></li>
-                <li data-category="scissors" class="filters__item"><a href="/Master-Manicure/build/templates/pages/product-list.html#category=scissprs&amp;page=1" class="filters__link filters__link_scissors">Ножницы</a></li>
+                <li data-category="manicure-kit" class="filters__item filters__item_state_current"><a href="/Master-Manicure/build/templates/pages/product-list.html#category=manicure-kit&amp;page=1" class="filters__link filters__link_manicure-kit">Маникюрные наборы</a></li>
+                <li data-category="scissors" class="filters__item"><a href="/Master-Manicure/build/templates/pages/product-list.html#category=scissors&amp;page=1" class="filters__link filters__link_scissors">Ножницы</a></li>
                 <li data-category="nailfile" class="filters__item"><a href="/Master-Manicure/build/templates/pages/product-list.html#category=nailfile&amp;page=1" class="filters__link filters__link_nailfile">Пилочки</a></li>
                 <li data-category="nippers" class="filters__item"><a href="/Master-Manicure/build/templates/pages/product-list.html#category=nippers&amp;page=1" class="filters__link filters__link_nippers">Кусачки</a></li>
                 <li data-category="tweezers" class="filters__item"><a href="/Master-Manicure/build/templates/pages/product-list.html#category=tweezers&amp;page=1" class="filters__link filters__link_tweezers">Пинцеты</a></li>
@@ -43,19 +44,25 @@
                 <li class="nav__sections__item"><a href="#" data-module="Delivery" class="nav__sections__item__link">Оплата и доставка</a></li>
                 <li class="nav__sections__item"><a href="/Master-Manicure/build/templates/pages/contacts.html" class="nav__sections__item__link">Контакты</a></li>
               </ul>
+              <div class="nav__reducer nav__reducer_social">
+                <div class="nav__social"><a href="#" class="nav__social-item nav__social-item_facebook"></a>&nbsp;<a href="#" class="nav__social-item nav__social-item_twitter"></a>&nbsp;<a href="#" class="nav__social-item nav__social-item_google"></a>&nbsp;</div>
+              </div>
               <div class="nav__copy">© 2014 Все права защищены<br>Сделано в&nbsp;<a href="#" class="nav__copy__link">Сделано в Conceptor</a></div>
               <div class="nav__menu-hint">Оплата и<br>доставка</div>
+              <div class="nav__close">
+                <div class="nav__close-inner"></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="filters__side"></div>
     </nav>
     <button data-module="TopButton" class="top-button">наверх</button>
-    <main class="main"><a href="/Master-Manicure/build/templates/pages/checkout.html" data-module="MiniCart" class="mini-cart"><span class="mini-cart__inner"></span></a>
+    <main class="main">
+      <div data-module="MiniCart" class="mini-cart "><span class="mini-cart__inner"></span></div>
       <div class="product">
         <div class="main-content">
-          <div class="product__inner content">
+          <div class="product__inner">
             <div data-module="ProductMenu" class="product-menu">
               <div class="product-menu__inner">
                 <div class="product-menu__details">
@@ -63,12 +70,12 @@
                   <div class="product-menu__details-info">
                     <div class="product-menu__details-title">Маникюрный набор Zauber MS-508</div>
                     <div class="product-menu__details-article">Артикул 29811</div>
-                    <div class="rating rating_product">
+                    <div class="rating rating_menu">
                       <div class="rating__stars">
                         <div class="rating__stars_all"></div>
                         <div class="rating__stars_active"></div>
                       </div>
-                    </div><span class="product__votes">4.7 (69 голосов)</span><span class="ui-pseudo_style1 product__reviews-counter">15 отзывов</span>
+                    </div><span class="product__votes">4.7 (69 голосов)</span><br><span class="ui-pseudo_style1 product__reviews-counter">15 отзывов</span>
                   </div>
                 </div>
                 <div class="product-menu__actions">
@@ -77,15 +84,15 @@
                     <form data-module="AddToCart" class="product__actions ui-buttons">
                       <input type="hidden" name="product" value="product-000001">
                       <!-- NOTE: we need this double to make easier to find all such buttons on page/component-->
-                      <button data-product-id="product-000001" type="submit" class="ui-button ui-button_accent product__button add-to-cart">Купить</button><a href="/Master-Manicure/build/templates/pages/checkout.html" class="ui-button ui-button_simple product__button">Купить в 1 клик</a>
+                      <button data-product-id="product-000001" type="submit" class="ui-button ui-button_accent product__button add-to-cart">Купить</button><span data-module="OneClickBuy" data-product-id="product-000001" class="ui-button ui-button_simple product__button">Купить в 1 клик<span class="one-click"></span></span>
                     </form>
                   </div>
                 </div>
                 <div class="product-menu__info">
-                  <div class="product-menu__info-item">Описание товара
+                  <div class="product-menu__info-item"><span data-anchor-link="description-1">Описание товара</span>
                     <div class="product-menu__nav"><a href="#" data-anchor-link="description-1" class="product-menu__nav-item"></a>&nbsp;<a href="#" data-anchor-link="description-2" class="product-menu__nav-item"></a>&nbsp;<a href="#" data-anchor-link="description-3" class="product-menu__nav-item"></a></div>
                   </div>
-                  <div class="product-menu__info-item">Отзывы (15)
+                  <div class="product-menu__info-item"><span data-anchor-link="reviews">Отзывы (15)</span>
                     <div class="product-menu__nav product-menu__nav_center"><a href="#" data-anchor-link="reviews" class="product-menu__nav-item"></a></div>
                   </div>
                   <div data-module="Delivery" class="product-menu__info-item">Оплата и доставка
@@ -96,31 +103,31 @@
                 </div>
               </div>
             </div>
-            <div class="column1 product__thumbnail"><img src="./../../i/product.jpg" alt="Product"></div>
-            <div class="column1 product__info">
+            <div class="product__thumbnail"><img src="./../../i/product.jpg" alt="Product"></div>
+            <div class="product__info">
               <h2 class="product__category">Маникюрный набор</h2>
               <h1 class="product__title">Zauber MS-508</h1>
-              <div class="product__article">Артикул 29811</div>
+              <div class="product__article">Код 29811</div>
               <div class="product__rows">
                 <div class="product__row">
                   <div class="rating rating_product">
                     <div class="rating__stars">
                       <div class="rating__stars_all"></div>
                       <div class="rating__stars_active"></div>
-                    </div>
-                  </div><span class="product__votes">4.7 (69 голосов)</span><span class="ui-pseudo_style1 product__reviews-counter">15 отзывов</span>
+                    </div><span class="product__votes">4.7 (69 голосов)</span>
+                  </div><span class="ui-pseudo_style1 product__reviews-counter">15 отзывов</span>
                 </div>
-                <div class="product__row product__row_extended">
+                <div class="product__row product__row_extended product__row_justify">
                   <div class="product__price-box"><span class="product__price">480</span><span class="product__format">грн</span></div>
                   <form data-module="AddToCart" class="product__actions ui-buttons">
                     <!-- NOTE: we need this double to make easier to find all such buttons on page/component-->
                     <input type="hidden" name="product" value="product-000001">
-                    <button data-product-id="product-000001" type="submit" class="ui-button ui-button_accent product__button">Купить</button><a href="/Master-Manicure/build/templates/pages/checkout.html" class="ui-button ui-button_simple product__button">Купить в 1 клик</a>
+                    <button data-product-id="product-000001" type="submit" class="ui-button ui-button_accent product__button">Купить</button><span data-module="OneClickBuy" data-product-id="product-000001" class="ui-button ui-button_simple product__button">Купить в 1 клик<span class="one-click"></span></span>
                   </form>
                 </div>
-                <div class="product__row"><span data-module="Delivery" class="product__delivery-promo"><span class="ui-pseudo">Бесплатная доставка по Украине</span></span><br>
+                <div class="product__row product__row_flexless"><span data-module="Delivery" class="product__delivery-promo"><span class="ui-pseudo">Бесплатная доставка по Украине</span></span><br>
                   <div class="product__share ui-button-set">
-                    <div class="ui-button ui-button_link">Поделиться</div><a href="#" class="ui-button ui-button_link ui-button_link_icon ui-button_link_icon_facebook"></a><a href="#" class="ui-button ui-button_link ui-button_link_icon ui-button_link_icon_twitter"></a><a href="#" class="ui-button ui-button_link ui-button_link_icon ui-button_link_icon_google"></a>
+                    <div class="ui-button ui-button_link ui-button_link_disabled">Поделиться</div><a href="#" class="ui-button ui-button_link ui-button_link_icon ui-button_link_icon_facebook"></a><a href="#" class="ui-button ui-button_link ui-button_link_icon ui-button_link_icon_twitter"></a><a href="#" class="ui-button ui-button_link ui-button_link_icon ui-button_link_icon_google"></a>
                   </div>
                 </div>
               </div>
@@ -128,24 +135,24 @@
           </div>
           <div data-anchor="description-1" class="product__description">
             <div class="content">
-              <h2>Описание маникюрного набора Zauber MS-508</h2>
+              <div class="product__description-title">Описание маникюрного набора Zauber MS-508</div>
               <div class="product__description-cols">
-                <div class="product__description-lead column1">
+                <div class="product__description-lead">
                   <p>Маникюрный набор Zauber-manicure 8-предметный, страна производитель Германия. Футляр в виде рамки. Внешняя отделка футляра – кожа, внутренняя отделка – велюр под замшу. Упаковывается в коробку из картона.</p>
                   <p>Материал инструментов - высококачественная нержавеющая сталь.</p>
                 </div>
-                <div class="product__description-thumbnail column1"><img src="./../../i/product-description.png" alt="Product"></div>
+                <div class="product__description-thumbnail"><img src="./../../i/product-description.png" alt="Product"></div>
               </div>
             </div>
           </div>
         </div>
         <div class="content">
           <div data-anchor="description-2" class="product__params">
-            <h2>Удобство и практичность</h2>
+            <div class="product__description-title">Удобство и практичность</div>
             <div class="product__params-thumbnail"><img src="./../../i/product-params.png" alt="Product"></div>
           </div>
           <div data-anchor="description-3" class="product__params">
-            <h2>8 инструментов для идеального маникюра</h2>
+            <div class="product__description-title">8 инструментов для идеального маникюра</div>
             <div class="product__params-thumbnail"><img src="./../../i/product-params-1.jpg" alt="Product"></div>
           </div>
           <div class="product__rating rating rating_summary">

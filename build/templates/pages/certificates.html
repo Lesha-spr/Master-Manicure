@@ -4,15 +4,16 @@
     <title>Master Manicure</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,300" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700,300&amp;subset=latin,cyrillic" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="../../styles/styles.css">
-    <script src="//cdn.polyfill.io/v2/polyfill.min.js?features=Intl.~locale.ru-RU"></script>
   </head>
   <body>
-    <nav data-module="Navigation SupFilters" class="nav">
+    <nav data-module="Navigation Menu " class="nav">
       <div class="nav__wrapper">
         <button class="ui-back-button nav__back"></button>
-        <div class="nav__mobile"><a href="/Master-Manicure/build/templates/pages/homepage.html" class="nav__logo"></a><a href="#" class="nav__menu"><span class="nav__menu__link"></span></a></div>
+        <div class="nav__mobile"><a href="/Master-Manicure/build/templates/pages/homepage.html" class="nav__logo"></a><a href="#" class="nav__menu"><span class="nav__menu__link"></span></a>
+          <div class="nav__filter"><span class="nav__filter-icon"></span></div>
+        </div>
         <div class="nav__main">
           <div class="nav__row nav__row_top">
             <div class="nav__reducer"><a href="/Master-Manicure/build/templates/pages/homepage.html" class="nav__logo"></a>
@@ -25,8 +26,8 @@
           <div class="nav__row nav__row_middle">
             <div class="nav__reducer">
               <ul class="filters">
-                <li data-category="manicure-kit" class="filters__item"><a href="/Master-Manicure/build/templates/pages/product-list.html#category=manicure-kit&amp;page=1" class="filters__link filters__link_manicure-kit">Маникюрные наборы</a></li>
-                <li data-category="scissors" class="filters__item"><a href="/Master-Manicure/build/templates/pages/product-list.html#category=scissprs&amp;page=1" class="filters__link filters__link_scissors">Ножницы</a></li>
+                <li data-category="manicure-kit" class="filters__item "><a href="/Master-Manicure/build/templates/pages/product-list.html#category=manicure-kit&amp;page=1" class="filters__link filters__link_manicure-kit">Маникюрные наборы</a></li>
+                <li data-category="scissors" class="filters__item"><a href="/Master-Manicure/build/templates/pages/product-list.html#category=scissors&amp;page=1" class="filters__link filters__link_scissors">Ножницы</a></li>
                 <li data-category="nailfile" class="filters__item"><a href="/Master-Manicure/build/templates/pages/product-list.html#category=nailfile&amp;page=1" class="filters__link filters__link_nailfile">Пилочки</a></li>
                 <li data-category="nippers" class="filters__item"><a href="/Master-Manicure/build/templates/pages/product-list.html#category=nippers&amp;page=1" class="filters__link filters__link_nippers">Кусачки</a></li>
                 <li data-category="tweezers" class="filters__item"><a href="/Master-Manicure/build/templates/pages/product-list.html#category=tweezers&amp;page=1" class="filters__link filters__link_tweezers">Пинцеты</a></li>
@@ -43,16 +44,22 @@
                 <li class="nav__sections__item"><a href="#" data-module="Delivery" class="nav__sections__item__link">Оплата и доставка</a></li>
                 <li class="nav__sections__item"><a href="/Master-Manicure/build/templates/pages/contacts.html" class="nav__sections__item__link">Контакты</a></li>
               </ul>
+              <div class="nav__reducer nav__reducer_social">
+                <div class="nav__social"><a href="#" class="nav__social-item nav__social-item_facebook"></a>&nbsp;<a href="#" class="nav__social-item nav__social-item_twitter"></a>&nbsp;<a href="#" class="nav__social-item nav__social-item_google"></a>&nbsp;</div>
+              </div>
               <div class="nav__copy">© 2014 Все права защищены<br>Сделано в&nbsp;<a href="#" class="nav__copy__link">Сделано в Conceptor</a></div>
               <div class="nav__menu-hint">Оплата и<br>доставка</div>
+              <div class="nav__close">
+                <div class="nav__close-inner"></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="filters__side"></div>
     </nav>
     <button data-module="TopButton" class="top-button">наверх</button>
-    <main class="main"><a href="/Master-Manicure/build/templates/pages/checkout.html" data-module="MiniCart" class="mini-cart"><span class="mini-cart__inner"></span></a>
+    <main class="main">
+      <div data-module="MiniCart" class="mini-cart "><span class="mini-cart__inner"></span></div>
       <div class="certificates">
         <div class="certificates__wrapper">
           <div data-module="Certificates" data-slick-options='{"dots":false}' class="certificates__carousel carousel_state_loading">
