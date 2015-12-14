@@ -8,7 +8,7 @@
   position: fixed;
   z-index: 1;
   top: 0;
-  left: 250px;
+  left: 270px;
   right: 0;
   padding: 10px;
   background: #fff;
@@ -21,19 +21,23 @@
   &_state_shown {
     visibility: visible;
   }
+
+  .product__actions {
+    white-space: nowrap;
+  }
 }
 
 .product-menu__inner {
-  display: table;
-  width: 100%;
   padding-right: 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .product-menu__details,
 .product-menu__info,
 .product-menu__actions {
-  display: table-cell;
-  vertical-align: middle;
 }
 
 .product-menu__details {
@@ -61,7 +65,18 @@
 
 .product-menu__actions {
   overflow: hidden;
-  padding: 0 50px;
+  padding: 0 20px;
+}
+
+.product-menu__actions__inner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  .product__price-box {
+    padding-right: 20px;
+  }
 }
 
 .product-menu__info {
@@ -70,6 +85,7 @@
 }
 
 .product-menu__info-item {
+  cursor: pointer;
   display: inline-block;
   vertical-align: middle;
   border-left: 1px solid #b2b2b2;
@@ -125,41 +141,31 @@
   }
 }
 
-@media screen and (max-width: 1365px) {
+@media (min-width: 1024px) and (max-width: 1365px) {
   .product-menu__info {
     display: none;
+  }
+
+  .product-menu__inner {
+    justify-content: flex-start;
+  }
+}
+
+@media (min-width: 1366px) and (max-width: 1699px) {
+  .product-menu__actions__inner {
+    flex-direction: column;
   }
 }
 
 @media screen and (max-width: 1700px) {
   .product-menu {
-    .product__price-box,
-    .product__actions {
-      text-align: center;
-      float: none;
-    }
 
     .product-menu__details {
-      width: 320px;
-    }
-
-    .product__price-box {
-      margin-bottom: 4px;
-    }
-
-    .product-menu__actions__inner {
-      max-width: 200px;
+      width: 260px;
     }
 
     .product__button {
-      display: block;
-      width: 100%;
-      margin-right: 0;
       .font-size(12);
-    }
-
-    .ui-button_accent {
-      margin-bottom: 4px;
     }
 
     .product__reviews-counter {

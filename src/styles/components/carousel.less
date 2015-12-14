@@ -6,7 +6,6 @@
 .carousel {
   position: relative;
   height: 100vh;
-  overflow-y: hidden;
 }
 
 .slick-list,
@@ -119,25 +118,37 @@
 }
 
 .carousel__category {
-  .font-size(18);
+  .font-size(25);
   margin-bottom: .5em;
 }
 
 .carousel__title {
-  .font-size(22);
+  .font-size(36);
   margin-bottom: 2em;
 }
 
 .carousel__price {
-  .font-size(32);
+  .font-size(40);
   margin-bottom: .8em;
 }
 
 .carousel__value {
-  .font-size(24);
+  .font-size(20);
 }
 
-@media (max-width: @endMobile) {
+@media (min-width: 0) and (max-width: @endMobile) {
+  .carousel__category {
+    .font-size(18);
+  }
+
+  .carousel__title {
+    .font-size(22);
+  }
+
+  .carousel__price {
+    .font-size(24);
+  }
+
   .carousel__item {
     height: 65vh;
     text-align: left;
@@ -170,19 +181,43 @@
 
   .carousel_main & {
     .carousel__control {
-      top: auto;
-      bottom: 35vh;
-      margin-bottom: 18px;
-
-      &_prev {
-        left: 50%;
-        margin-left: -((@i-carousel-prev-width / 2) + 30px);
-      }
-
-      &_next {
-        right: 50%;
-        margin-right: -((@i-carousel-next-width / 2) + 30px);
-      }
+      display: none !important;
     }
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1366px) {
+  .carousel__category {
+    .font-size(20);
+  }
+
+  .carousel__title {
+    .font-size(30);
+  }
+
+  .carousel__price {
+    .font-size(36);
+  }
+
+  .carousel__value {
+    .font-size(30);
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .carousel__category {
+    .font-size(18);
+  }
+
+  .carousel__title {
+    .font-size(22);
+  }
+
+  .carousel__price {
+    .font-size(32);
+  }
+
+  .carousel__value {
+    .font-size(24);
   }
 }

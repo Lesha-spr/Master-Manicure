@@ -4,11 +4,12 @@
 @import "./../vars";
 
 .rating {
+  color: #000;
+  .font-size(16);
 
-  &_product {
+  &_menu {
     display: inline-block;
-    margin-right: 10px;
-    vertical-align: middle;
+    margin-right: 5px;
   }
 }
 
@@ -16,6 +17,10 @@
   line-height: 18px;
   display: inline-block;
   position: relative;
+
+  .rating_product & {
+    margin-right: 10px;
+  }
 
   &_all {
     .retina-sprite(@i-rating-group);
@@ -37,8 +42,10 @@
   }
 }
 
-@media (max-width: (@endMobile)) {
-  .rating {
-    margin-bottom: 15px;
+@media (max-width: 480px) {
+  .rating_summary {
+    .rating__stars {
+      transform: scale(0.6);
+    }
   }
 }

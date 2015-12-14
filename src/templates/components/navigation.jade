@@ -1,13 +1,15 @@
 block vars
     - var extraModules = '';
 
-nav.nav(data-module='Navigation #{extraModules}')
+nav.nav(data-module='Navigation Menu #{extraModules}')
     .nav__wrapper
         button.ui-back-button.nav__back
         .nav__mobile
             a.nav__logo(href='/Master-Manicure/build/templates/pages/homepage.html')
             a.nav__menu(href='#')
                 span.nav__menu__link
+            .nav__filter
+                span.nav__filter-icon
         .nav__main
             .nav__row.nav__row_top
                 .nav__reducer
@@ -29,6 +31,14 @@ nav.nav(data-module='Navigation #{extraModules}')
                             a.nav__sections__item__link(href='#' data-module='Delivery') Оплата и доставка
                         li.nav__sections__item
                             a.nav__sections__item__link(href='/Master-Manicure/build/templates/pages/contacts.html') Контакты
+                    .nav__reducer.nav__reducer_social
+                        .nav__social
+                            a(href='#').nav__social-item.nav__social-item_facebook
+                            |&nbsp;
+                            a(href='#').nav__social-item.nav__social-item_twitter
+                            |&nbsp;
+                            a(href='#').nav__social-item.nav__social-item_google
+                            |&nbsp;
                     .nav__copy © 2014 Все права защищены
                         br
                         |Сделано в&nbsp;
@@ -36,4 +46,6 @@ nav.nav(data-module='Navigation #{extraModules}')
                     .nav__menu-hint Оплата и
                         br
                         |доставка
+                    .nav__close
+                        .nav__close-inner
     block side

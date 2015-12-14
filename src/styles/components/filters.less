@@ -15,12 +15,20 @@
 .filters__item {
   cursor: pointer;
 
-  &_state_active {
+  &_state_last-active {
     background: @colorGreyLight;
+
+    .filters__link {
+      color: #000;
+    }
   }
 
-  &_state_current {
+  &:hover {
     background: @colorGreyLight;
+
+    .filters__link {
+      color: #000;
+    }
   }
 
   .g-filter-expanded & {
@@ -30,15 +38,15 @@
 
 .filters__link {
   display: block;
-  border-bottom: 1px dotted #fff;
+  border-bottom: 1px dotted #666;
   .font-size(14);
   line-height: 1.95;
   text-transform: uppercase;
   text-decoration: none;
-  color: #fff;
+  color: #ccc;
 
   .filters__item:first-child & {
-    border-top: 1px dotted #fff;
+    border-top: 1px dotted #666;
   }
 
   .g-filter-expanded & {
@@ -83,7 +91,9 @@
 }
 
 .filters__title {
-  .font-size(16);
+  .font-size(20);
+  text-transform: uppercase;
+  font-weight: bold;
   margin-bottom: 2em;
   text-align: center;
   color: #000;
@@ -108,7 +118,7 @@
 }
 
 .filters__set__title {
-  .font-size(14);
+  .font-size(18);
   margin-bottom: 1em;
 }
 
@@ -139,9 +149,7 @@
   .filters__side {
     width: auto;
   }
-}
 
-@media screen and (max-width: @endMobile) {
   .filters__close {
     display: block;
   }
@@ -149,6 +157,7 @@
 
 @media (min-width: @endMobile) {
   .filters__link {
+    .g-filter-expanded .filters__item:hover &,
     .filters__item_state_active & {
       &_manicure-kit {
         .retina-sprite(@i-manicure-kit-active-group);

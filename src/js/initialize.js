@@ -10,6 +10,7 @@ import Popup from './components/popup.js'; app.Popup = new Popup();
 import Navigation from './components/navigation.js'; app.Navigation = Navigation;
 import TopButton from './components/top-button.js'; app.TopButton = TopButton;
 import MiniCart from './components/mini-cart.js'; app.MiniCart = MiniCart;
+import Menu from './components/menu.js'; app.Menu = Menu;
 import Filters from './components/filters.js'; app.Filters = Filters;
 import SupFilters from './components/supfilter.js'; app.SupFilters = SupFilters;
 import Carousel from './components/carousel.js'; app.Carousel = Carousel;
@@ -27,6 +28,7 @@ import Checkout from './components/checkout.js'; app.Checkout = Checkout;
 import Recommendations from './components/recommendations.js'; app.Recommendations = Recommendations;
 import Delivery from './components/delivery.js'; app.Delivery = Delivery;
 import ProductMenu from './components/product-menu.js'; app.ProductMenu = ProductMenu;
+import OneClickBuy from './components/one-click-buy.js'; app.OneClickBuy = OneClickBuy;
 
 // Template
 import Template from './components/template.js'; app.Template = Template;

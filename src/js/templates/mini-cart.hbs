@@ -1,1 +1,21 @@
-<div class="mini-cart__entries">{{entries}}</div>
+<div class="mini-cart__icon">
+    <div class="mini-cart__entries">{{count}}</div>
+</div>
+
+<div class="mini-cart__side">
+    <button class="mini-cart__close"></button>
+    <div class="mini-cart__side-inner">
+        <div class="mini-cart__side-title">Корзина</div>
+        <div class="mini-cart__row">
+            <div class="mini-cart__side-entries">В корзине {{count}} товаров</div>
+            <div class="mini-cart__side-cost">К оплате <span class="mini-cart__side-cost-format">{{total.price}} {{total.priceFormat}}</span></div>
+            <a class="ui-button ui-button_accent product__button" href="/Master-Manicure/build/templates/pages/checkout.html">Оформить заказ</a>
+        </div>
+        <div data-module="Cart" data-prevent-initial="true" class="cart cart_side">
+            <ul class="cart__list">
+                {{>cart}}
+            </ul>
+        </div>
+        <a class="ui-button ui-button_accent product__button" href="/Master-Manicure/build/templates/pages/checkout.html">Оформить заказ</a>
+    </div>
+</div>

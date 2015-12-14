@@ -1,4 +1,3 @@
-import polyfill from 'babelify/polyfill';
 import Handlebars from 'handlebars';
 import PubSub from './pubsub.js';
 import {EVENTS} from './defaults.js';

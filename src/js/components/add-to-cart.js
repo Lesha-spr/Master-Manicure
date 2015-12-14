@@ -35,13 +35,14 @@ class AddToCart {
         event.preventDefault();
 
         $.ajax({
-            url: app.SERVICES.ADD_TO_CART,
+            url: app.SERVICES.CART,
             data: data,
+            type: 'POST',
             dataType: 'json',
             success: (data) => {
                 $(selector).addClass(DEFAULTS.CLASSES.ACTIVE_BUTTON).text(DEFAULTS.TEXT);
 
-                app.pubsub.publish(app.EVENTS.UPDATE_CART);
+                app.pubsub.publish(app.EVENTS.UPDATE_CART, data);
                 console.log(data);
             }
         });

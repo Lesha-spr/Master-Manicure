@@ -3,17 +3,19 @@ extends ./../layouts/sup
 block content
     .main-content
         .reducer.reducer_wide
-            h1 МОЙ ЗАКАЗ
+            h1 ОФОРМЛЕНИЕ ЗАКАЗА
             .checkout(data-module='Checkout')
                 .checkout__cart
                     include ../components/cart
+                    .checkout__return
+                        a(href='/Master-Manicure/build/templates/pages/product-list.html#category=manicure-kit&page=1').ui-return Вернуться к покупкам
                 .checkout__shipping
                     .checkout__shipping-inner
                         form.ui-form
                             ul.ui-form__rows
                                 li.ui-form__row
                                     .ui-form__label
-                                        label(for='name' required) Имя получателя
+                                        label(for='name') Имя получателя
                                     .ui-form__input
                                         input(type='text' name='name' required)#name.ui-input.ui-input_wide
                                 li.ui-form__row
@@ -21,11 +23,6 @@ block content
                                         label(for='phone') Телефон
                                     .ui-form__input
                                         input(type='tel' name='phone' required)#phone.ui-input.ui-input_wide
-                                li.ui-form__row
-                                    .ui-form__label
-                                        label(for='email') Электронная почта
-                                    .ui-form__input
-                                        input(type='email' name='email' required)#email.ui-input.ui-input_wide
                                 li.ui-form__row
                                     .ui-form__label
                                         label(for='shipping_address') Адрес доставки
@@ -55,12 +52,13 @@ block content
                                     .ui-form__label
                                         label(for='comment') Пожелания к заказу
                                     .ui-form__input
-                                        textarea(name='comment' rows=8 resize=0)#comment.ui-textarea.ui-textarea_wide
+                                        textarea(name='comment' rows=8)#comment.ui-textarea.ui-textarea_wide
                                 li.ui-form__row
                                     .ui-form__label
                                     .ui-form__input
                                         .checkout__submit
                                             .checkout__policy
-                                                span.ui-hint Оформляя заказ, вы соглашаетесь с&nbsp;
+                                                span.ui-hint Оформляя заказ, вы соглашаетесь с
+                                                    br
                                                     span.ui-pseudo Политикой конфиденциальности
                                             button(type='submit').ui-button.ui-button_accent Заказ подтверждаю

@@ -49,7 +49,7 @@ class Recommendations {
         let template = app.templates['product-list'](data);
 
         this.elems.$list.html(template);
-        app.submodules(this.elems.$list, {});
+        app.submodules(this.elems.$list);
     }
 }
 

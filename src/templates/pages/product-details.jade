@@ -1,25 +1,32 @@
-extends ./../layouts/sup
+extends ./../layouts/base
+
+block mini-cart
+    include ./../components/mini-cart
+
+block navigation
+    - var current = 'filters__item_state_current';
+    include ./../components/navigation
 
 block content
     .product
         .main-content
-            .product__inner.content
+            .product__inner
                 include ./../components/product-menu
-                .column1.product__thumbnail
+                .product__thumbnail
                     img(src='./../../i/product.jpg' alt='Product')
-                .column1.product__info
+                .product__info
                     h2.product__category Маникюрный набор
                     h1.product__title Zauber MS-508
-                    .product__article Артикул 29811
+                    .product__article Код 29811
                     .product__rows
                         .product__row
                             .rating.rating_product
                                 .rating__stars
                                     .rating__stars_all
                                     .rating__stars_active
-                            span.product__votes 4.7 (69 голосов)
+                                span.product__votes 4.7 (69 голосов)
                             span.ui-pseudo_style1.product__reviews-counter 15 отзывов
-                        .product__row.product__row_extended
+                        .product__row.product__row_extended.product__row_justify
                             .product__price-box
                                 span.product__price 480
                                 span.product__format грн
@@ -27,32 +34,33 @@ block content
                                 // NOTE: we need this double to make easier to find all such buttons on page/component
                                 input(type='hidden' name='product' value='product-000001')
                                 button(data-product-id='product-000001' type='submit').ui-button.ui-button_accent.product__button Купить
-                                a(href='/Master-Manicure/build/templates/pages/checkout.html').ui-button.ui-button_simple.product__button Купить в 1 клик
-                        .product__row
+                                span(data-module='OneClickBuy' data-product-id='product-000001').ui-button.ui-button_simple.product__button Купить в 1 клик
+                                    span.one-click
+                        .product__row.product__row_flexless
                             span(data-module='Delivery').product__delivery-promo
                                 span.ui-pseudo Бесплатная доставка по Украине
                             br
                             .product__share.ui-button-set
-                                .ui-button.ui-button_link Поделиться
+                                .ui-button.ui-button_link.ui-button_link_disabled Поделиться
                                 a(href='#').ui-button.ui-button_link.ui-button_link_icon.ui-button_link_icon_facebook
                                 a(href='#').ui-button.ui-button_link.ui-button_link_icon.ui-button_link_icon_twitter
                                 a(href='#').ui-button.ui-button_link.ui-button_link_icon.ui-button_link_icon_google
             .product__description(data-anchor='description-1')
                 .content
-                    h2 Описание маникюрного набора Zauber MS-508
+                    .product__description-title Описание маникюрного набора Zauber MS-508
                     .product__description-cols
-                        .product__description-lead.column1
+                        .product__description-lead
                             p Маникюрный набор Zauber-manicure 8-предметный, страна производитель Германия. Футляр в виде рамки. Внешняя отделка футляра – кожа, внутренняя отделка – велюр под замшу. Упаковывается в коробку из картона.
                             p Материал инструментов - высококачественная нержавеющая сталь.
-                        .product__description-thumbnail.column1
+                        .product__description-thumbnail
                             img(src='./../../i/product-description.png' alt='Product')
         .content
             .product__params(data-anchor='description-2')
-                h2 Удобство и практичность
+                .product__description-title Удобство и практичность
                 .product__params-thumbnail
                     img(src='./../../i/product-params.png' alt='Product')
             .product__params(data-anchor='description-3')
-                h2 8 инструментов для идеального маникюра
+                .product__description-title 8 инструментов для идеального маникюра
                 .product__params-thumbnail
                     img(src='./../../i/product-params-1.jpg' alt='Product')
             .product__rating.rating.rating_summary
