@@ -318,6 +318,10 @@
 @media (max-width: @endMobile) {
   .nav__wrapper {
     overflow-y: inherit;
+
+    .g-nav-active & {
+      overflow-y: scroll;
+    }
   }
 
   .nav {
