@@ -5,9 +5,6 @@ import {SERVICES} from './defaults.js'
 import HandlebarsIntl from 'handlebars-intl';
 import paginate from 'handlebars-paginate';
 
-require('intl');
-require('intl/locale-data/json/ru-RU.json');
-
 // Global objects
 window.Handlebars = window.Handlebars || Handlebars;
 window.MM = window.MM || {};

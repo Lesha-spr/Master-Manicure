@@ -56,7 +56,7 @@ class ProductList {
             beforeSend: () => {
                 this.shouldAppend = false;
                 this.isLoading = true;
-                app.Spinner.show(this.elems.$root, true);
+                app.Spinner.show(this.elems.$root);
             },
             complete: () => {
                 this.isLoading = false;

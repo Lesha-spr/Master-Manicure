@@ -12,7 +12,6 @@ import TopButton from './components/top-button.js'; app.TopButton = TopButton;
 import MiniCart from './components/mini-cart.js'; app.MiniCart = MiniCart;
 import Menu from './components/menu.js'; app.Menu = Menu;
 import Filters from './components/filters.js'; app.Filters = Filters;
-import SupFilters from './components/supfilter.js'; app.SupFilters = SupFilters;
 import Carousel from './components/carousel.js'; app.Carousel = Carousel;
 import MainCarousel from './components/main-carousel.js'; app.MainCarousel = MainCarousel;
 import Sorting from './components/sorting.js'; app.Sorting = Sorting;

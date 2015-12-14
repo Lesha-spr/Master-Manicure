@@ -5,8 +5,7 @@ import mask from 'jquery.inputmask';
 const DEFAULTS = {
     SELECTORS: {
         PHONE: '[name="phone"]'
-    },
-    MASK: '(999) 9999999'
+    }
 };
 
 class Checkout {
@@ -22,7 +21,7 @@ class Checkout {
     }
 
     initialize() {
-        this.elems.$phone.inputmask(DEFAULTS.MASK);
+        this.elems.$phone.inputmask('(999) 9999999');
     }
 }
 
