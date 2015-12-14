@@ -29,8 +29,6 @@ const DEFAULTS = {
 class Filters extends Menu {
     constructor(element) {
         super(element);
-
-        this.lastMod = '';
     }
 
     initialize() {
@@ -43,9 +41,7 @@ class Filters extends Menu {
             return $(item).data('category') === category;
         });
 
-        this.elems.$mobFilter.removeClass(this.lastMod).addClass(`nav__filter_${$current.data('category')}`);
-
-        this.lastMod = `nav__filter_${$current.data('category')}`;
+        this.elems.$mobFilter.removeAttr('class').addClass(`nav__filter nav__filter_${$current.data('category')}`);
 
         if (!isCategoryChosen) {
             this.chooseCategory($current);
