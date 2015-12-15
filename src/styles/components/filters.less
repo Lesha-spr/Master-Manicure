@@ -107,6 +107,7 @@
   width: 200px;
   height: 100%;
   display: none;
+  float: left;
   padding: 13px 21px;
   overflow-y: auto;
   background: @colorGreyLight;
@@ -131,6 +132,10 @@
 }
 
 @media (max-width: @endMobile) {
+  .filters__side {
+    float: none;
+  }
+
   .filters__title {
     .font-size(26);
   }
