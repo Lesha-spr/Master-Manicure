@@ -2,8 +2,7 @@ require("babel-polyfill");
 
 import Handlebars from 'handlebars';
 import PubSub from './pubsub.js';
-import {EVENTS} from './defaults.js';
-import {SERVICES} from './defaults.js'
+import {EVENTS, SERVICES, ACTIONS} from './defaults.js';
 import HandlebarsIntl from 'handlebars-intl';
 import paginate from 'handlebars-paginate';
 
@@ -22,5 +21,6 @@ MM.modules = MM.modules || new Set();
 MM.pubsub = MM.pubsub || new PubSub();
 MM.EVENTS = EVENTS;
 MM.SERVICES = SERVICES;
+MM.ACTIONS = ACTIONS;
 
 export default MM;

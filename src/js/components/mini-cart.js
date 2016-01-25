@@ -3,10 +3,10 @@ import app from './../app.js';
 import AjaxError from './../errors/base.js';
 
 const DEFAULTS = {
-    COUNT: 0,
     SELECTORS: {
         INNER: '.mini-cart__inner',
         WRAPPER: '.mini-cart__icon',
+        ENTRIES: '.mini-cart__entries',
         SIDE_CART: '.mini-cart__side',
         CLOSE: '.mini-cart__close'
     },
@@ -24,7 +24,7 @@ class MiniCart {
         this.elems = {
             $root: $root,
             $inner: $root.find(DEFAULTS.SELECTORS.INNER),
-            $sideCart: $(''),
+            $sideCart: $root.find(DEFAULTS.SELECTORS.SIDE_CART),
             $html: $('html')
         };
 
@@ -33,7 +33,7 @@ class MiniCart {
     }
 
     initialize() {
-        this.getCart();
+
     }
 
     bindEvents() {
@@ -42,46 +42,52 @@ class MiniCart {
         });
         this.elems.$root.on('click', DEFAULTS.SELECTORS.WRAPPER, this.toggleSide.bind(this));
         this.elems.$root.on('click', DEFAULTS.SELECTORS.CLOSE, this.toggleSide.bind(this));
-        app.pubsub.subscribe(app.EVENTS.UPDATE_CART, this.onUpdateCart.bind(this));
+        app.pubsub.subscribe(app.EVENTS.UPDATE_CART, this.updateCart.bind(this));
     }
 
     toggleSide(event) {
         event.preventDefault();
         event.stopPropagation();
 
-        this.elems.$html.toggleClass(DEFAULTS.CLASSES.GLOBAL_SIDE_ACTIVE);
-        this.elems.$sideCart.toggleClass(DEFAULTS.CLASSES.SIDE_ACTIVE);
+        // KOSTYL style
+        if (+this.elems.$root.find(DEFAULTS.SELECTORS.ENTRIES).text()) {
+            this.elems.$html.toggleClass(DEFAULTS.CLASSES.GLOBAL_SIDE_ACTIVE);
+            this.elems.$sideCart.toggleClass(DEFAULTS.CLASSES.SIDE_ACTIVE);
+        }
     }
 
-    onUpdateCart() {
-        this.elems.$root.find(DEFAULTS.SELECTORS.WRAPPER).addClass(DEFAULTS.CLASSES.TOGGLING);
-    }
+    updateCart(options) {
+        let data = $.extend({
+            action: app.ACTIONS.UPDATE_CART
+        }, app.SERVICES.BASE);
 
-    getCart() {
         $.ajax({
-            url: app.SERVICES.CART,
-            dataType: 'json',
-            success: data => {
-                this.render(data);
+            url: '/?' + $.param(data),
+            type: 'GET',
+            beforeSend: () => {
+                this.elems.$root.find(DEFAULTS.SELECTORS.WRAPPER).addClass(DEFAULTS.CLASSES.TOGGLING);
             },
-            error: (jqXhr, textStatus, errorThrown) => {
-                // TODO: here should be proper error handling
-                this.render({
-                    count: DEFAULTS.COUNT
-                });
+            success: (html) => {
+                this.elems.$root.html(html);
 
-                new AjaxError(...arguments);
+                this.elems.$inner = this.elems.$root.find(DEFAULTS.SELECTORS.INNER);
+                this.elems.$sideCart = this.elems.$root.find(DEFAULTS.SELECTORS.SIDE_CART);
+
+                if (!+this.elems.$root.find(DEFAULTS.SELECTORS.ENTRIES).text()) {
+                    this.elems.$html.removeClass(DEFAULTS.CLASSES.GLOBAL_SIDE_ACTIVE);
+                    this.elems.$sideCart.removeClass(DEFAULTS.CLASSES.SIDE_ACTIVE);
+
+                    return this;
+                }
+
+                if (options && options.isOpen) {
+                    this.elems.$html.addClass(DEFAULTS.CLASSES.GLOBAL_SIDE_ACTIVE);
+                    this.elems.$sideCart.addClass(DEFAULTS.CLASSES.SIDE_ACTIVE);
+                }
+
+                app.submodules(this.elems.$sideCart);
             }
         });
-    }
-
-    render(data) {
-        let template = app.templates['mini-cart'](data);
-
-        this.elems.$inner.html(template);
-        this.elems.$sideCart = this.elems.$root.find(DEFAULTS.SELECTORS.SIDE_CART);
-
-        app.submodules(this.elems.$sideCart);
     }
 }
 

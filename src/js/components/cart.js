@@ -26,22 +26,27 @@ class Cart {
     }
 
     initialize() {
-        if (!this.elems.$root.data('prevent-initial')) {
-            this.getCart();
-        }
+
     }
 
-    getCart(data = {}, method = 'GET') {
+    bindEvents() {
+        this.elems.$root.on('change', DEFAULTS.SELECTORS.QTY, this.changeCart.bind(this));
+        this.elems.$root.on('click', DEFAULTS.SELECTORS.REMOVE, this.removeFromCart.bind(this));
+    }
+
+    changeCart(event) {
+        let $current = $(event.currentTarget).parents(DEFAULTS.SELECTORS.ITEM);
+        let id = $current.find(DEFAULTS.SELECTORS.ARTICLE).val();
+        let count = $current.find(DEFAULTS.SELECTORS.QTY).val();
+        let data = $.extend({
+            action: app.ACTIONS.CHANGE_CART_COUNT,
+            count: count,
+            id: id
+        }, app.SERVICES.BASE);
 
         $.ajax({
-            // NOTE: DELETE should be handled
-            url: app.SERVICES.CART,
-            dataType: 'json',
-            data: data,
-            method: method,
-            success: data => {
-                this.render(data);
-            },
+            url: '/?' + $.param(data),
+            method: 'GET',
             error: (jqXhr, textStatus, errorThrown) => {
                 new AjaxError(...arguments);
             },
@@ -49,40 +54,34 @@ class Cart {
                 app.Spinner.show(this.elems.$root);
             },
             complete: () => {
+                app.pubsub.publish(app.EVENTS.UPDATE_CART, {isOpen: true});
                 app.Spinner.hide(this.elems.$root);
             }
         });
     }
 
-    bindEvents() {
-        this.elems.$root.on('change', DEFAULTS.SELECTORS.QTY, this.updateCart.bind(this));
-        this.elems.$root.on('click', DEFAULTS.SELECTORS.REMOVE, this.removeFromCart.bind(this));
-    }
-
-    updateCart(event) {
-        let $current = $(event.currentTarget).parents(DEFAULTS.SELECTORS.ITEM);
-        let article = $current.find(DEFAULTS.SELECTORS.ARTICLE).val();
-        let qty = $current.find(DEFAULTS.SELECTORS.QTY).val();
-
-        this.getCart({
-            article: article,
-            qty: qty
-        });
-    }
-
     removeFromCart(event) {
         let $current = $(event.currentTarget).parents(DEFAULTS.SELECTORS.ITEM);
-        let article = $current.find(DEFAULTS.SELECTORS.ARTICLE).val();
+        let id = $current.find(DEFAULTS.SELECTORS.ARTICLE).val();
+        let data = $.extend({
+            action: app.ACTIONS.DELETE_FROM_CART,
+            id: id
+        }, app.SERVICES.BASE);
 
-        this.getCart({
-            article: article
-        }, 'DELETE');
-    }
-
-    render(data = {title: 'Template'}) {
-        let template = app.templates['cart'](data);
-
-        this.elems.$list.html(template);
+        $.ajax({
+            url: '/?' + $.param(data),
+            method: 'GET',
+            error: (jqXhr, textStatus, errorThrown) => {
+                new AjaxError(...arguments);
+            },
+            beforeSend: () => {
+                app.Spinner.show(this.elems.$root);
+            },
+            complete: () => {
+                app.pubsub.publish(app.EVENTS.UPDATE_CART);
+                app.Spinner.hide(this.elems.$root);
+            }
+        });
     }
 }
 

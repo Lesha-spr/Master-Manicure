@@ -28,22 +28,21 @@ class AddToCart {
     }
 
     addToCart(event) {
-        let data = $.deparam(this.elems.$root.serialize());
-        let selector = `[data-product-id="${data.product}"]`;
+        let data = $.extend({
+            count: 1,
+            action: app.ACTIONS.ADD_TO_CART
+        }, app.SERVICES.BASE, $.deparam(this.elems.$root.serialize()));
+        let selector = `[data-product-id="${this.elems.$root[0].elements[0].value}"]`;
 
         event.stopPropagation();
         event.preventDefault();
 
         $.ajax({
-            url: app.SERVICES.CART,
-            data: data,
+            url: '/?' + $.param(data),
             type: 'POST',
-            dataType: 'json',
             success: (data) => {
+                app.pubsub.publish(app.EVENTS.UPDATE_CART);
                 $(selector).addClass(DEFAULTS.CLASSES.ACTIVE_BUTTON).text(DEFAULTS.TEXT);
-
-                app.pubsub.publish(app.EVENTS.UPDATE_CART, data);
-                console.log(data);
             }
         });
     }
