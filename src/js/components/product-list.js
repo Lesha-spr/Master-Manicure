@@ -31,12 +31,12 @@ class ProductList {
     }
 
     initialize() {
-        this.getProducts();
+        //this.getProducts();
     }
 
     bindEvents() {
-        this.elems.$window.on('hashchange', this.getProducts.bind(this));
-        this.elems.$window.on('scroll', _.throttle(this.lazyLoad.bind(this), 200));
+        //this.elems.$window.on('hashchange', this.getProducts.bind(this));
+        //this.elems.$window.on('scroll', _.throttle(this.lazyLoad.bind(this), 200));
     }
 
     getProducts() {

@@ -13,21 +13,10 @@
 }
 
 .filters__item {
+  display: block;
   cursor: pointer;
 
-  &_state_last-active {
-    background: @colorGreyLight;
-
-    .filters__link {
-      color: #000;
-    }
-  }
-
-  &_state_current {
-    background: @colorGreyLight;
-  }
-
-  &:hover {
+  &.active, &:hover {
     background: @colorGreyLight;
 
     .filters__link {
@@ -60,27 +49,27 @@
     font-size: 0;
     border: 0;
 
-    &_manicure-kit {
+    &_manikjurnye_nabory {
       .retina-sprite(@i-manicure-kit-group);
     }
 
-    &_scissors {
+    &_nozhnicy {
       .retina-sprite(@i-scissors-group);
     }
 
-    &_nailfile {
+    &_pilochki {
       .retina-sprite(@i-nailfile-group);
     }
 
-    &_nippers {
+    &_kusachki {
       .retina-sprite(@i-nippers-group);
     }
 
-    &_tweezers {
+    &_pincety {
       .retina-sprite(@i-tweezers-group);
     }
 
-    &_pedicure-kit {
+    &_nabory_dlya_pedikyura {
       .retina-sprite(@i-pedicure-kit-group);
     }
 
@@ -167,28 +156,28 @@
 @media (min-width: @endMobile) {
   .filters__link {
     .g-filter-expanded .filters__item:hover &,
-    .filters__item_state_active & {
-      &_manicure-kit {
+    .g-filter-expanded .filters__item.active & {
+      &_manikjurnye_nabory {
         .retina-sprite(@i-manicure-kit-active-group);
       }
 
-      &_scissors {
+      &_nozhnicy {
         .retina-sprite(@i-scissors-active-group);
       }
 
-      &_nailfile {
+      &_pilochki {
         .retina-sprite(@i-nailfile-active-group);
       }
 
-      &_nippers {
+      &_kusachki {
         .retina-sprite(@i-nippers-active-group);
       }
 
-      &_tweezers {
+      &_pincety {
         .retina-sprite(@i-tweezers-active-group);
       }
 
-      &_pedicure-kit {
+      &_nabory_dlya_pedikyura {
         .retina-sprite(@i-pedicure-kit-active-group);
       }
     }

@@ -67,6 +67,10 @@
   .oban-grid-fluid(2, 10px);
 }
 
+.reviews__submit {
+  margin-top: 10px;
+}
+
 .reviews__actions-social {
   text-align: right;
   height: 35px;
@@ -77,18 +81,28 @@
   text-align: center;
 }
 
+.reviews__form {
+  .oban-grid-fluid(9, 22px);
+  margin-bottom: 20px;
+}
+
+.comments__form {
+  margin-top: 20px;
+}
+
 @media screen and (max-width: @endMobile) {
-  .reviews__list-item {
+  .reviews__form, .reviews__list-item {
     [class*=column] {
       width: 100%;
     }
 
-    .reviews__actions-button{
-      .ui-button{
+    .reviews__form, .reviews__actions-button {
+      .ui-button {
         width: 100%;
         margin-bottom: 15px;
       }
     }
+
     .reviews__actions-social{
       text-align: center;
 
