@@ -13,7 +13,8 @@ const DEFAULTS = {
         NAV_MENU: '.nav__menu',
         NAV_BACK: '.nav__back',
         MOB_FILTER: '.nav__filter',
-        NAV_MOBILE: '.nav__mobile'
+        NAV_MOBILE: '.nav__mobile',
+        NAV_MOBILE_GET_FILTERS: '.nav__filter-icon'
     },
     CLASSES: {
         ACTIVE_ITEM: 'filters__item_state_active',
@@ -52,9 +53,27 @@ class Filters {
     }
 
     bindEvents() {
+        this.elems.$root.on('click', DEFAULTS.SELECTORS.ITEM, this.open.bind(this));
         this.elems.$root.on('click', DEFAULTS.SELECTORS.NAV_MENU, this.toggleMenu.bind(this));
         this.elems.$root.on('click', DEFAULTS.SELECTORS.CLOSE, this.closeFilters.bind(this));
+        this.elems.$root.on('click', DEFAULTS.SELECTORS.NAV_MOBILE_GET_FILTERS, this.openMenu.bind(this));
         this.elems.$navBack.on('click',this.closeNav.bind(this));
+    }
+
+    open(event) {
+        if ($(event.currentTarget).is('.active')) {
+            event.preventDefault();
+            this.elems.$navWrapper.toggleClass(DEFAULTS.CLASSES.NAV_EXPANDED);
+            this.elems.$html.toggleClass(DEFAULTS.CLASSES.FILTER_EXPANDED).toggleClass(DEFAULTS.CLASSES.NAV_ACTIVE);
+        }
+    }
+
+    openMenu(event) {
+        if (event) {
+            event.preventDefault();
+        }
+
+        this.elems.$html.toggleClass(DEFAULTS.CLASSES.FILTER_EXPANDED);
     }
 
     closeFilters(event) {
