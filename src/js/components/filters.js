@@ -32,7 +32,7 @@ class Filters extends Menu {
     }
 
     initialize() {
-        this.getActive();
+        this.openMenu();
     }
 
     getActive(isCategoryChosen) {
@@ -70,7 +70,9 @@ class Filters extends Menu {
     }
 
     openMenu(event) {
-        event.preventDefault();
+        if (event) {
+            event.preventDefault();
+        }
 
         this.elems.$html.toggleClass(DEFAULTS.CLASSES.FILTER_EXPANDED);
     }
