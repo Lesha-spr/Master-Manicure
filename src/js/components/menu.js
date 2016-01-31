@@ -61,7 +61,7 @@ class Filters {
     }
 
     open(event) {
-        if ($(event.currentTarget).is('.active')) {
+        if ($(event.currentTarget).is('.active') && this.elems.$root.find('.filters__set').length) {
             event.preventDefault();
             this.elems.$navWrapper.toggleClass(DEFAULTS.CLASSES.NAV_EXPANDED);
             this.elems.$html.toggleClass(DEFAULTS.CLASSES.FILTER_EXPANDED).toggleClass(DEFAULTS.CLASSES.NAV_ACTIVE);
