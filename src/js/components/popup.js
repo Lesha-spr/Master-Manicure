@@ -16,8 +16,8 @@ class Popup {
 
     }
 
-    open(template, data = {}) {
-        let html = app.templates[template](data);
+    open(template) {
+        let html = $(template).html();
 
         $.magnificPopup.open({
             items: {

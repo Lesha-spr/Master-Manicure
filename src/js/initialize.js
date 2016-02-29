@@ -28,6 +28,7 @@ import Recommendations from './components/recommendations.js'; app.Recommendatio
 import Delivery from './components/delivery.js'; app.Delivery = Delivery;
 import ProductMenu from './components/product-menu.js'; app.ProductMenu = ProductMenu;
 import OneClickBuy from './components/one-click-buy.js'; app.OneClickBuy = OneClickBuy;
+import Gallery from './components/gallery.js'; app.Gallery = Gallery;
 
 // Template
 import Template from './components/template.js'; app.Template = Template;
