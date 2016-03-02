@@ -12,6 +12,10 @@
 .product-list {
   .oban-list-unstyled();
   .oban-grid-fluid(3, 40px);
+
+  .column1:nth-child(4n+4) {
+    clear: left;
+  }
 }
 
 .product-list__item {
@@ -107,6 +111,14 @@
   .product-list {
     .oban-list-unstyled();
     .oban-grid-fluid(2, 96px);
+
+    .column1:nth-child(4n+4) {
+      clear: none;
+    }
+
+    .column1:nth-child(3n+3) {
+      clear: left;
+    }
   }
 }
 
