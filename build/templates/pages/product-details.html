@@ -61,7 +61,42 @@
     <button data-module="TopButton" class="top-button">наверх</button>
     <main class="main">
       <div data-module="MiniCart" class="mini-cart "><span class="mini-cart__inner"></span></div>
-      <div class="product">
+      <div data-module="Gallery" class="product">
+        <noindex>
+          <div id="gallery" hidden>
+            <div class="modal modal_gallery">
+              <div class="product__gallery-wrapper">
+                <div class="product__gallery">
+                  <div class="product__gallery-item"><img src="./../../i/gallery.jpg"></div>
+                  <div class="product__gallery-item"><img src="./../../i/gallery-1.jpg"></div>
+                  <div class="product__gallery-item"><img src="./../../i/gallery-2.jpg"></div>
+                  <div class="product__gallery-item"><img src="./../../i/gallery.jpg"></div>
+                  <div class="product__gallery-item"><img src="./../../i/gallery-1.jpg"></div>
+                  <div class="product__gallery-item"><img src="./../../i/gallery-2.jpg"></div>
+                </div>
+                <div class="product__gallery-nav">
+                  <div class="product__gallery-nav-item"><img src="./../../i/gallery.jpg"></div>
+                  <div class="product__gallery-nav-item"><img src="./../../i/gallery-1.jpg"></div>
+                  <div class="product__gallery-nav-item"><img src="./../../i/gallery-2.jpg"></div>
+                  <div class="product__gallery-nav-item"><img src="./../../i/gallery.jpg"></div>
+                  <div class="product__gallery-nav-item"><img src="./../../i/gallery-1.jpg"></div>
+                  <div class="product__gallery-nav-item"><img src="./../../i/gallery-2.jpg"></div>
+                </div>
+              </div>
+              <div class="product__gallery-flex">
+                <div class="product__gallery-title">Маникюрный набор</div>
+                <div class="product__gallery-actions">
+                  <div class="product__price-box"><span class="product__price">480</span><span class="product__format">грн</span></div>
+                  <form data-module="AddToCart" class="product__actions ui-buttons">
+                    <!-- NOTE: we need this double to make easier to find all such buttons on page/component-->
+                    <input type="hidden" name="product" value="product-000001">
+                    <button data-product-id="product-000001" type="submit" class="ui-button ui-button_accent product__button">Купить</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </noindex>
         <div class="main-content">
           <div class="product__inner">
             <div data-module="ProductMenu" class="product-menu">
@@ -104,7 +139,7 @@
                 </div>
               </div>
             </div>
-            <div class="product__thumbnail"><img src="./../../i/product.jpg" alt="Product"></div>
+            <div class="product__thumbnail pop-gallery"><img src="./../../i/product.jpg" alt="Product"></div>
             <div class="product__info">
               <h2 class="product__category">Маникюрный набор</h2>
               <h1 class="product__title">Zauber MS-508</h1>

@@ -8,11 +8,51 @@ block navigation
     include ./../components/navigation
 
 block content
-    .product
+    .product(data-module='Gallery')
+        noindex
+            #gallery(hidden)
+                .modal.modal_gallery
+                    .product__gallery-wrapper
+                        .product__gallery
+                            .product__gallery-item
+                                img(src='./../../i/gallery.jpg')
+                            .product__gallery-item
+                                img(src='./../../i/gallery-1.jpg')
+                            .product__gallery-item
+                                img(src='./../../i/gallery-2.jpg')
+                            .product__gallery-item
+                                img(src='./../../i/gallery.jpg')
+                            .product__gallery-item
+                                img(src='./../../i/gallery-1.jpg')
+                            .product__gallery-item
+                                img(src='./../../i/gallery-2.jpg')
+                        .product__gallery-nav
+                            .product__gallery-nav-item
+                                img(src='./../../i/gallery.jpg')
+                            .product__gallery-nav-item
+                                img(src='./../../i/gallery-1.jpg')
+                            .product__gallery-nav-item
+                                img(src='./../../i/gallery-2.jpg')
+                            .product__gallery-nav-item
+                                img(src='./../../i/gallery.jpg')
+                            .product__gallery-nav-item
+                                img(src='./../../i/gallery-1.jpg')
+                            .product__gallery-nav-item
+                                img(src='./../../i/gallery-2.jpg')
+                    .product__gallery-flex
+                        .product__gallery-title Маникюрный набор
+                        .product__gallery-actions
+                            .product__price-box
+                                span.product__price 480
+                                span.product__format грн
+                            form(data-module='AddToCart').product__actions.ui-buttons
+                                // NOTE: we need this double to make easier to find all such buttons on page/component
+                                input(type='hidden' name='product' value='product-000001')
+                                button(data-product-id='product-000001' type='submit').ui-button.ui-button_accent.product__button Купить
         .main-content
             .product__inner
                 include ./../components/product-menu
-                .product__thumbnail
+                .product__thumbnail.pop-gallery
                     img(src='./../../i/product.jpg' alt='Product')
                 .product__info
                     h2.product__category Маникюрный набор

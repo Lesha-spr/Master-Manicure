@@ -16,14 +16,15 @@ class Popup {
 
     }
 
-    open(template) {
+    open(template, callbacks) {
         let html = $(template).html();
 
         $.magnificPopup.open({
             items: {
                 src: html
             },
-            type: 'inline'
+            type: 'inline',
+            callbacks: callbacks
         });
     }
 

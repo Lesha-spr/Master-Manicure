@@ -11,6 +11,12 @@
     display: inline-block;
     margin-right: 5px;
   }
+
+  &_product {
+    white-space: nowrap;
+    margin-right: 10px;
+    color: #3d3d3d;
+  }
 }
 
 .stars {
@@ -92,6 +98,15 @@
   .rating_summary {
     .rating__stars {
       transform: scale(0.6);
+    }
+  }
+}
+
+@media (max-width: 1366px) and (min-width: 1024px) {
+  .rating {
+
+    &_product {
+      .font-size(12);
     }
   }
 }
