@@ -100,6 +100,14 @@
   .font-size(14);
   padding-left: 28px;
   padding-right: 28px;
+
+  .product-in-basket & {
+    .font-size(0) !important;
+    &:before {
+      content: 'В корзине';
+      .font-size(14);
+    }
+  }
 }
 
 .product__delivery-promo {
@@ -409,6 +417,12 @@
     .font-size(12);
     padding-left: 24px;
     padding-right: 24px;
+
+    .product-in-basket & {
+      &:before {
+        .font-size(14);
+      }
+    }
   }
 
   .product__reviews-counter {

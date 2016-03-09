@@ -28,6 +28,10 @@ class AddToCart {
     }
 
     addToCart(event) {
+        if (this.elems.$root.parents('.product-in-basket').length) {
+            return false;
+        }
+
         let data = $.extend({
             count: 1,
             action: app.ACTIONS.ADD_TO_CART

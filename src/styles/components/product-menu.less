@@ -165,7 +165,11 @@
     }
 
     .product__button {
-      .font-size(12);
+      .product-in-basket & {
+        &:before {
+          .font-size(12);
+        }
+      }
     }
 
     .product__reviews-counter {
