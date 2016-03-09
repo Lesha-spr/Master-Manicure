@@ -1,13 +1,13 @@
-{{#each entries}}
+{{#each .}}
     <li data-module="ReviewItem" class="reviews__list-item">
         <div class="column3">
-            <div class="reviews__author">{{author}}</div>
+            <div class="reviews__author">{{name}}</div>
             {{#intl locales="ru-RU"}}
                 <div class="reviews__date">{{formatDate date day="numeric" month="long" year="numeric"}}</div>
             {{/intl}}
         </div>
         <div class="column6">
-            <div class="reviews__comment">{{review}}</div>
+            <div class="reviews__comment">{{text}}</div>
             {{> review-actions}}
             <div class="review__reply-form"></div>
         </div>

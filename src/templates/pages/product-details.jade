@@ -105,11 +105,21 @@ block content
                     img(src='./../../i/product-params-1.jpg' alt='Product')
             .product__rating.rating.rating_summary
                 .rating__stars
-                    .rating__stars_all
-                    .rating__stars_active(style='width: 30%')
+                    .stars__mask
+                    .stars__rating(style='width: 30%')
                 .product__rating-result 4.9 из 5
                 .product__rating-resume 99% покупателей рекомендуют этот продукт
-                button.ui-button.ui-button_simple Написать отзыв
+                .reducer.reducer_reviews
+                    form.product__write-review
+                        input(type='hidden' name='parent' value='0')
+                        .column1
+                            input.ui-input.ui-input_wide(type='text' placeholder='Ваше имя' name='name')
+                        .column2
+                            textarea.ui-textarea.ui-textarea_wide(rows='6' placeholder='Ваше мнение об этом товаре' name='text')
+                            br
+                            br
+                            button.ui-button.ui-button_accent Написать отзыв
+                            button.ui-button.ui-button_simple Отмена
         include ./../components/reviews
         .recommendations.product-list__wrapper(data-module='Recommendations')
             h2.recommendations__title Также рекомендуем

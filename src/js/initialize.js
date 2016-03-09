@@ -24,7 +24,6 @@ import Pagination from './components/pagination.js'; app.Pagination = Pagination
 import Cart from './components/cart.js'; app.Cart = Cart;
 import AddToCart from './components/add-to-cart.js'; app.AddToCart = AddToCart;
 import Checkout from './components/checkout.js'; app.Checkout = Checkout;
-import Recommendations from './components/recommendations.js'; app.Recommendations = Recommendations;
 import Delivery from './components/delivery.js'; app.Delivery = Delivery;
 import ProductMenu from './components/product-menu.js'; app.ProductMenu = ProductMenu;
 import OneClickBuy from './components/one-click-buy.js'; app.OneClickBuy = OneClickBuy;

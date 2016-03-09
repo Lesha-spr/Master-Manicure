@@ -4,7 +4,9 @@ import $ from 'jquery';
 const DEFAULTS = {
     SELECTORS: {
         REPLY: '.review__reply',
-        FORM_HOLDER: '.review__reply-form'
+        FORM_HOLDER: '.review__reply-form',
+        FORM: '.reply-form',
+        CANCEL: '.reply-form__cancel'
     }
 };
 
@@ -27,11 +29,67 @@ class ReviewItem {
     }
 
     bindEvents() {
-        this.elems.$reply.on('click', this.render.bind(this));
+        this.elems.$root.on('click', DEFAULTS.SELECTORS.REPLY, this.render.bind(this));
+        this.elems.$root.on('click', DEFAULTS.SELECTORS.CANCEL, this.cancel.bind(this));
+        this.elems.$root.on('submit', DEFAULTS.SELECTORS.FORM, this.onSubmit.bind(this));
     }
 
-    render(data = {}) {
+    cancel(event) {
+        event.preventDefault();
 
+        this.elems.$reply.show();
+        this.elems.$formHolder.html('');
+    }
+
+    onSubmit(event) {
+        event.preventDefault();
+
+        let data = $.extend({
+            action: app.ACTIONS.POST_REVIEW
+        }, app.SERVICES.REVIEWS);
+
+        let formData = $.deparam($(event.target).serialize());
+        formData.cid = 1;
+        formData.mid = 1;
+        formData.mark = Number(formData.mark);
+
+        event.stopPropagation();
+        event.preventDefault();
+
+        $.ajax({
+            url: '/?' + $.param(data),
+            data: JSON.stringify({
+                data: formData
+            }),
+            type: 'POST',
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: (data) => {
+                this.renderReply(data);
+            },
+            beforeSend: () => {
+                app.Spinner.show(this.elems.$root);
+            },
+            complete: () => {
+                app.Spinner.hide(this.elems.$root);
+            }
+        });
+    }
+
+    renderReply(data = {}) {
+        console.log(data);
+    }
+
+    render() {
+        let data = {};
+
+        data.id = this.elems.$reply.data('id');
+        data.mark = this.elems.$reply.data('mark') || 5;
+
+        this.elems.$reply.hide();
+
+        let template = app.templates['review-form'](data);
+        this.elems.$formHolder.html(template);
     }
 }
 

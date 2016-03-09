@@ -193,21 +193,31 @@
           </div>
           <div class="product__rating rating rating_summary">
             <div class="rating__stars">
-              <div class="rating__stars_all"></div>
-              <div style="width: 30%" class="rating__stars_active"></div>
+              <div class="stars__mask"></div>
+              <div style="width: 30%" class="stars__rating"></div>
             </div>
             <div class="product__rating-result">4.9 из 5</div>
             <div class="product__rating-resume">99% покупателей рекомендуют этот продукт</div>
-            <button class="ui-button ui-button_simple">Написать отзыв</button>
+            <div class="reducer reducer_reviews">
+              <form class="product__write-review">
+                <input type="hidden" name="parent" value="0">
+                <div class="column1">
+                  <input type="text" placeholder="Ваше имя" name="name" class="ui-input ui-input_wide">
+                </div>
+                <div class="column2">
+                  <textarea rows="6" placeholder="Ваше мнение об этом товаре" name="text" class="ui-textarea ui-textarea_wide"></textarea><br><br>
+                  <button class="ui-button ui-button_accent">Написать отзыв</button>
+                  <button class="ui-button ui-button_simple">Отмена</button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
         <section data-module="Reviews" data-anchor="reviews" class="reviews">
-          <div class="reducer reducer_supressed">
-            <div class="reviews__title">Комментарии к этой статье</div>
+          <div class="reducer reducer_reviews">
+            <div class="reviews__title">Отзывы о маникюрном наборе zauber MS-508</div>
             <div class="reviews__delimeter">
-              <div class="reviews__anchor">
-                <button class="ui-button ui-button_simple">Комментировать</button>
-              </div>
+              <div class="reviews__anchor"></div>
               <div class="reviews__wrapper">
                 <ul class="reviews__list"></ul>
               </div>

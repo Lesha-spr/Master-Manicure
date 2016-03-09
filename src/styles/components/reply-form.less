@@ -1,0 +1,26 @@
+@import "./../mixins/oban";
+@import "./../mixins/custom-mixins";
+@import "./../sprite";
+@import "./../vars";
+
+.reply-form {
+  padding-top: 12px;
+  padding-left: @i-reply-width + 10px;
+  position: relative;
+  margin-top: 40px;
+  .oban-clearfix;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    .retina-sprite(@i-reply-group);
+  }
+}
+
+.reply-form__cancel {
+  &.ui-button_link {
+    padding: 8px 35px;
+  }
+}

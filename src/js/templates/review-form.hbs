@@ -1,0 +1,14 @@
+<form class="reply-form">
+    <input type="hidden" name="parent" value="{{id}}">
+    <input type="hidden" name="mark" value="{{mark}}">
+    <div class="column3">
+        <input class="ui-input ui-input_wide" name="name" type="text" placeholder="Ваше имя">
+    </div>
+    <div class="column6">
+        <textarea name="text" rows="6" placeholder="Ваш ответ" class="ui-textarea ui-textarea_wide"></textarea>
+        <br>
+        <br>
+        <button class="ui-button ui-button_reply reply-form__submit">Ответить</button>
+        <button class="ui-button ui-button_link reply-form__cancel">Отмена</button>
+    </div>
+</form>

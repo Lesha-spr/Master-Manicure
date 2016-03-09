@@ -4,10 +4,8 @@ import $ from 'jquery';
 const DEFAULTS = {
     SELECTORS: {
         LIST: '.reviews__list',
-        GET_MORE: '.reviews__get-more',
-        REPLY: '.review__reply'
-    },
-    STEP: 1
+        GET_MORE: '.reviews__get-more'
+    }
 };
 
 class Reviews {
@@ -35,17 +33,18 @@ class Reviews {
     }
 
     getReviews() {
-        let data = {
-            step: this.step
-        };
+        let data = $.extend({
+            action: app.ACTIONS.GET_REVIEWS
+        }, app.SERVICES.REVIEWS, {mid: 1, cid: 1});
+
+        event.stopPropagation();
+        event.preventDefault();
 
         $.ajax({
-            url: app.SERVICES.REVIEWS,
+            url: '/?' + $.param(data),
+            type: 'GET',
             dataType: 'json',
-            data: data,
-            success: data => {
-                this.step += DEFAULTS.STEP;
-
+            success: (data) => {
                 this.render(data);
             },
             beforeSend: () => {
@@ -57,12 +56,12 @@ class Reviews {
         });
     }
 
-    render(data = {}) {
-        if (data.entries && data.entries.length) {
+    render(data = []) {
+        if (data && data.length) {
             let template = app.templates['reviews'](data);
 
             this.elems.$list.append(template);
-            app.start();
+            app.submodules(this.elems.$list);
         } else {
             this.elems.$getMore.remove();
         }
