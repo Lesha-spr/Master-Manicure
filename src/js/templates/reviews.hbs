@@ -1,5 +1,5 @@
 {{#each .}}
-    <li data-module="ReviewItem" class="reviews__list-item">
+    <li data-module="ReviewItem" class="reviews__list-item{{#if level}} reviews__list-item_level{{/if}}">
         <div class="column3">
             <div class="reviews__author">{{name}}</div>
             {{#intl locales="ru-RU"}}
@@ -7,9 +7,20 @@
             {{/intl}}
         </div>
         <div class="column6">
+            {{#unless level}}
+            <div class="rating">
+                <div class="stars">
+                    <div class="stars__mask"></div>
+                    <div class="stars__rating" style="width: {{math mark '*' 20}}%;"></div>
+                    <div class="stars__empty"></div>
+                </div>
+            </div>
+            {{/unless}}
             <div class="reviews__comment">{{text}}</div>
-            {{> review-actions}}
-            <div class="review__reply-form"></div>
+            {{#unless level}}
+                {{> review-actions}}
+                <div class="review__reply-form"></div>
+            {{/unless}}
         </div>
     </li>
 {{/each}}
