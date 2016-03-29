@@ -113,9 +113,20 @@
 }
 
 @media screen and (max-width: @endMobile) {
+  .reviews__title {
+    .font-size(20);
+  }
+
   .reviews__form, .reviews__list-item {
     [class*=column] {
       width: 100%;
+    }
+
+    &_level {
+      width: 100%;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      padding-left: 8px;
     }
 
     .reviews__form, .reviews__actions-button {

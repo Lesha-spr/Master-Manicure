@@ -99,10 +99,17 @@
   display: none !important;
 }
 
-@media (max-width: 480px) {
-  .rating_summary {
-    .rating__stars {
-      transform: scale(0.6);
+@media (max-width: @endMobile) {
+  .stars__mask {
+
+    .rating_summary & {
+      .retina-sprite(@i-rating-mobile-group);
+    }
+  }
+
+  .stars__rating {
+    .rating_summary & {
+      .retina-sprite(@i-rating-mobile-active-group);
     }
   }
 }

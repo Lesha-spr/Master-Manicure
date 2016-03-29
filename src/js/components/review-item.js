@@ -3,6 +3,7 @@ import $ from 'jquery';
 
 const DEFAULTS = {
     SELECTORS: {
+        LIST: '.reviews__list',
         ITEM: '.reviews__list-item',
         REPLY: '.review__reply',
         REPLIES: '.reviews__replies',
@@ -34,7 +35,7 @@ class ReviewItem {
     bindEvents() {
         this.elems.$root.on('click', DEFAULTS.SELECTORS.REPLY, this.render.bind(this));
         this.elems.$root.on('click', DEFAULTS.SELECTORS.CANCEL, this.cancel.bind(this));
-        this.elems.$root.on('submit', DEFAULTS.SELECTORS.FORM, this.onSubmit.bind(this));
+        this.elems.$root.on('submit', 'form', this.onSubmit.bind(this));
     }
 
     cancel(event) {
@@ -56,6 +57,7 @@ class ReviewItem {
         let formData = $.deparam($(event.target).serialize());
         formData.cid = 1;
         formData.mid = 1;
+        formData.mark = 5;
 
         event.stopPropagation();
         event.preventDefault();
@@ -83,7 +85,11 @@ class ReviewItem {
     renderReply(data) {
         let template = app.templates['reviews']([data]);
 
-        this.elems.$root.after(template);
+        if (this.elems.$root.data('single')) {
+            $(DEFAULTS.SELECTORS.LIST).prepend(template);
+        } else {
+            this.elems.$root.after(template);
+        }
         this.cancel();
     }
 

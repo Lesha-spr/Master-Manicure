@@ -49,7 +49,9 @@ class Filters {
     }
 
     initialize() {
-
+        if (window.innerWidth < 1023) {
+            this.elems.$html.removeClass(DEFAULTS.CLASSES.FILTER_EXPANDED);
+        }
     }
 
     bindEvents() {
