@@ -35,6 +35,7 @@ class ReviewItem {
     bindEvents() {
         this.elems.$root.on('click', DEFAULTS.SELECTORS.REPLY, this.render.bind(this));
         this.elems.$root.on('click', DEFAULTS.SELECTORS.CANCEL, this.cancel.bind(this));
+        this.elems.$root.on('submit', this.onSubmit.bind(this));
         this.elems.$root.on('submit', 'form', this.onSubmit.bind(this));
     }
 
@@ -45,6 +46,7 @@ class ReviewItem {
 
         this.elems.$reply.show();
         this.elems.$formHolder.html('');
+        this.elems.$root.find('.product__write-review').hide();
     }
 
     onSubmit(event) {
@@ -55,9 +57,10 @@ class ReviewItem {
         }, app.SERVICES.REVIEWS);
 
         let formData = $.deparam($(event.target).serialize());
+
         formData.cid = 1;
         formData.mid = 1;
-        formData.mark = 5;
+        formData.mark = formData.mark || 5;
 
         event.stopPropagation();
         event.preventDefault();
@@ -90,11 +93,16 @@ class ReviewItem {
         } else {
             this.elems.$root.after(template);
         }
+
+        app.submodules($(DEFAULTS.SELECTORS.LIST));
+
         this.cancel();
     }
 
-    render() {
+    render(event) {
         let data = {};
+
+        event.preventDefault();
 
         data.id = this.elems.$reply.data('id');
         data.mark = this.elems.$reply.data('mark') || 5;
@@ -103,6 +111,7 @@ class ReviewItem {
 
         let template = app.templates['review-form'](data);
         this.elems.$formHolder.html(template);
+        this.elems.$root.find('.product__write-review').show();
     }
 }
 

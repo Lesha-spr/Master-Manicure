@@ -54,17 +54,13 @@
     width: 66.66%;
     float: right;
 
-    &:before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      .retina-sprite(@i-reply-group);
-    }
-
-    ~ .reviews__list-item_level {
+    .reviews__list-item:not(.reviews__list-item_level) + & {
       &:before {
-        content: none;
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        .retina-sprite(@i-reply-group);
       }
     }
   }
